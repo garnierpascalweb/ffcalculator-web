@@ -1,0 +1,51 @@
+<mat-tab-group>
+  <mat-tab label="First">
+    <form class="example-full-width">
+      <p>
+        <mat-form-field class="example-full-width">
+          <mat-label>Lieu ou nom de l'épreuve</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="example-full-width">
+          <mat-label>Type d'épreuve</mat-label>
+          <mat-select [disabled]="disableSelect.value">
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="example-full-width">
+          <mat-label>Place Obtenue</mat-label>
+          <mat-select [disabled]="disableSelect.value">
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre de partants</mat-label>
+          <mat-select [disabled]="disableSelect.value">
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option2" disabled>Option 2 (disabled)</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+      <div class="example-full-width">
+        <button mat-flat-button color="primary">Ajouter le résultat</button>
+        <a mat-flat-button href="https://www.google.com/" target="_blank">Link</a>
+      </div>
+
+    </form>
+
+  </mat-tab>
+  <mat-tab label="Second"> Content 2 </mat-tab>
+  <mat-tab label="Third"> Content 3 </mat-tab>
+</mat-tab-group>
