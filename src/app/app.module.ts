@@ -15,12 +15,14 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import { AccueilComponent } from './accueil/accueil.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    TestComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +40,9 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    AccueilComponent
+  ]
 })
 export class AppModule { }
