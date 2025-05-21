@@ -16,18 +16,22 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { AccueilComponent } from './accueil/accueil.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DateFrFormatReadablePipe } from './pipes/date-fr-format-readable.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    AccueilComponent
+    AccueilComponent,
+    DateFrFormatReadablePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatSlideToggleModule,
     MatTabsModule,
     MatGridListModule,
