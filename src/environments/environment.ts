@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  trackingUrl: 'http://localhost/tracking/log.php'
+  trackingUrl: 'https://garnierpascalweb.fr/core/common/visiteurs.php'
 };
