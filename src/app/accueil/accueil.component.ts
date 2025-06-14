@@ -11,17 +11,11 @@ export class AccueilComponent {
   versionService: VersionService;
   buildDate!: string;
   
-  constructor(private meta: Meta, private title: Title,versionService: VersionService) {
+  constructor(versionService: VersionService) {
     this.versionService = versionService;
   }
 
-  ngOnInit() {
-     this.title.setTitle('FFCalculator');
-      this.meta.addTags([
-    { name: 'description', content: 'Page d’accueil de l’application Angular' },
-    { name: 'keywords', content: 'FFCalculator, Calcul de points FFC, Open 1, Open 2, Open 3, Access, Elite, U17, U23, Android, cyclisme, course FFC' },
-    { name: 'author', content: 'Pascal GARNIER' }
-  ]);
+  ngOnInit() {     
   this.versionService.getVersion().subscribe(data => {
     this.buildDate = data.buildDate;
   });

@@ -1,2 +1,56 @@
-<p>accueil works!</p>
-<footer>Dernier build : {{ buildDate | dateFrFormatReadable }}</footer>
+<header>
+  <img src="assets/image_pres_1024_500.png" alt="Logo" class="logo">
+  <h2>FFCalculator</h2>
+</header>
+
+<div class="container">
+  
+  <div class="article">
+    <div class="article-content">
+      <p>
+        Cette application Android s’adresse aux <strong>coureurs hommes</strong> disposant
+        d’une licence dans une des catégories suivantes :
+        <em>Elite, Open 1, Open 2, Open 3, Access</em> ou <em>U17</em>.
+      </p>
+
+      <p>
+        Compatible avec les appareils Android <strong>8 et plus</strong>, elle permet de :
+      </p>
+      <ul>
+        <li class="media-item">📌 Saisir ses résultats</li>
+        <li class="media-item">📌 Calculer automatiquement les points obtenus</li>
+        <li class="media-item">📌 Obtenir une estimation de son classement dans la hiérarchie nationale</li>
+      </ul>
+
+      <p>
+        Cette application est un <strong>projet personnel de formation</strong> au développement Android. Elle a été développée avec l'aide (extraordinairement bluffante et efficace) de l'intelligence artificielle. Elle est
+        publiée en <strong>mode test uniquement</strong> sur le Play Store et ne vise pas une mise en production.
+      </p>
+
+      <h3>📥 Comment participer au test ?</h3>
+      Participer au test me permettra de valider mon compte développeur auprès de Google (au dela de 12 testeurs), et éventuellement avoir des retours sur cette première expérience en vue de futurs projets.
+      <ul>
+        <li class="media-item">1. Rejoindre <a href="https://groups.google.com/g/ffcalculatortesteurs"
+            target="_blank">le groupe de testeurs </a> en cliquant sur "Rejoindre le groupe" - il faut etre connecté a son compte Google. </li>
+        <li class="media-item">2. Ensuite <a
+            href="https://play.google.com/apps/testing/com.gpwsofts.ffcalculator.mobile" target="_blank">Installer
+            l’application depuis le Play Store</a>en cliquant sur "Download it on Google Play" (ca n'apparait pas si on est pas dans le groupe de testeurs)</li>
+      </ul>
+
+      <p>
+        L’application est très basique, donc <strong>légère</strong> et ne requiert <strong>aucune autorisation sensible</strong> (ni
+        contacts, ni géolocalisation, rien du tout), juste un accès au réseau pour le calcul es points.
+      </p>
+    </div>
+  </div>
+  <h3>📸 Aperçu de l'application</h3>
+<div class="screenshot-gallery">
+  <img src="assets/ecran-resultat.png" alt="Capture écran 1">
+  <img src="assets/ecran-saison.png" alt="Capture écran 2">
+</div>
+
+</div>
+
+<footer>
+  Update {{ buildDate | dateFrFormatReadable}}
+</footer>
