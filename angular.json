@@ -39,7 +39,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ffcalculator-web",
+            "outputPath": "dist/ffcalculator-web/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -127,6 +127,66 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/ffcalculator-web/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "ffcalculator-web:build:development",
+              "serverTarget": "ffcalculator-web:server:development"
+            },
+            "production": {
+              "browserTarget": "ffcalculator-web:build:production",
+              "serverTarget": "ffcalculator-web:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ffcalculator-web:build:production",
+              "serverTarget": "ffcalculator-web:server:production"
+            },
+            "development": {
+              "browserTarget": "ffcalculator-web:build:development",
+              "serverTarget": "ffcalculator-web:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

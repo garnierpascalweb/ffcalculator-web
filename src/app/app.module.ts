@@ -28,7 +28,7 @@ import { DateFrFormatReadablePipe } from './pipes/date-fr-format-readable.pipe';
     DateFrFormatReadablePipe
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
