@@ -11,7 +11,8 @@
     "dev:ssr": "ng run ffcalculator-web:serve-ssr",
     "serve:ssr": "node dist/ffcalculator-web/server/main.js",
     "build:ssr": "ng build && ng run ffcalculator-web:server",
-    "prerender": "ng run ffcalculator-web:prerender"
+    "generate-version": "node generate-version.js",
+    "prerender": "npm run generate-version && ng run ffcalculator-web:prerender"
   },
   "private": true,
   "dependencies": {

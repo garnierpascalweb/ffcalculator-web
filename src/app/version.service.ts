@@ -8,6 +8,6 @@ export class VersionService {
 
   constructor(private http: HttpClient) { }
   getVersion() {
-    return this.http.get<{ buildDate: string }>('/assets/version.json');
+    return this.http.get<{ buildDate: string }>('./assets/version.json');
   }
 }
