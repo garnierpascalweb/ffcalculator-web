@@ -17,6 +17,11 @@ export class AppComponent implements OnInit {
     { name: 'keywords', content: 'FFCalculator, Calcul de points FFC, Open 1, Open 2, Open 3, Access, Elite, U17, U23, Android, cyclisme, course FFC' },
     { name: 'author', content: 'Pascal GARNIER' }
   ]);
-     this.http.get(environment.trackingUrl).subscribe();
+     //this.http.get(environment.trackingUrl).subscribe();
+     // 28/08/2025 - POST et utilisation du nouveau service
+    this.http.post(environment.trackingUrl,{}, {
+        params: { script: 'FFCalculator' }
+      }
+    ).subscribe();
   }
 }
