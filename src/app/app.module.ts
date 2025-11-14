@@ -10,7 +10,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatGridListModule} from '@angular/material/grid-list'; 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
@@ -18,6 +18,12 @@ import {MatButtonModule} from '@angular/material/button';
 import { AccueilComponent } from './accueil/accueil.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DateFrFormatReadablePipe } from './pipes/date-fr-format-readable.pipe';
+import { SimulatorComponent } from './simulator/simulator.component';
+import { ResultEditComponent } from './simulator/result-edit/result-edit.component';
+import { ResultListComponent } from './simulator/result-list/result-list.component';
+import { ResultDetailsComponent } from './simulator/result-details/result-details.component';
+import { ResultAddComponent } from './simulator/result-add/result-add.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -25,7 +31,12 @@ import { DateFrFormatReadablePipe } from './pipes/date-fr-format-readable.pipe';
     AppComponent,
     TestComponent,
     AccueilComponent,
-    DateFrFormatReadablePipe
+    DateFrFormatReadablePipe,    
+    SimulatorComponent,
+    ResultEditComponent,
+    ResultListComponent,
+    ResultDetailsComponent,
+    ResultAddComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -41,7 +52,9 @@ import { DateFrFormatReadablePipe } from './pipes/date-fr-format-readable.pipe';
     MatIconModule,
     MatDividerModule,
     MatButtonModule,
-    FormsModule
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
