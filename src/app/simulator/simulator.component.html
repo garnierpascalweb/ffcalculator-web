@@ -1,1 +1,31 @@
-<p>simulator works!</p>
+<mat-toolbar color="primary">
+  <span>Mon Application</span>
+  <span class="spacer"></span>
+
+  <!-- Menu dans la barre -->
+  <app-view-menu></app-view-menu>
+</mat-toolbar>
+
+<!-- Tabs -->
+<mat-tab-group mat-stretch-tabs>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      
+       <img src="./assets/icons/mylogo.svg" alt="logo" width="24" height="24"> 
+    </ng-template>
+    <app-result-add></app-result-add>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <img src="./assets/icons/mylogo2.svg" alt="logo" width="24" height="24">     
+    </ng-template>
+    <app-result-details></app-result-details>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <img src="" alt="logo" width="24" height="24">
+      <span>Synthese</span>
+    </ng-template>
+    <app-result-details></app-result-details>
+  </mat-tab>
+</mat-tab-group>

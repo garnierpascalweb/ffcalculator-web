@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
+import { map, Observable, of, startWith, switchMap } from 'rxjs';
+import { CityService } from 'src/app/services/city.service';
+import { ViewService } from 'src/app/services/view.service';
 
 @Component({
   selector: 'app-result-add',
@@ -14,6 +16,7 @@ export class ResultAddComponent {
   places: string[] = [
     'Paris', 'Marseille', 'Lyon', 'Toulouse'
   ];
+  filteredCities!: Observable<string[]>;
 
   classes: string[] = [
     'GT', 'Tourisme', 'Prototype', 'Rallye'
@@ -26,11 +29,35 @@ export class ResultAddComponent {
   posCtrl = new FormControl('');
   prtsCtrl = new FormControl('');
 
+  constructor(private cityService: CityService, private viewService : ViewService) {}
+
   ngOnInit() {
     this.filteredPlaces = this.placeCtrl.valueChanges.pipe(
       startWith(''),
       map(value => this.filterPlaces(value || ''))
     );
+    // Charge la liste des villes + filtre dynamique
+    this.filteredCities = this.placeCtrl.valueChanges.pipe(
+      startWith(''),
+      switchMap(value => {
+        // Ne rien afficher avant 3 caractères
+        if (!value || value.length < 3) {
+          return of([]);  // liste vide
+        }
+
+        return this.cityService.getCities().pipe(
+          map((cities: string[]) => this.filterCities(cities, value))
+        );
+      })
+    );
+    // 
+    // on s'abonne à l'observable
+    this.viewService.selectedView$.subscribe(view => {
+      //TODO changer la liste des classes
+      //TODO changer la liste des pos
+    });
+    
+
   }
 
   private filterPlaces(value: string): string[] {
@@ -38,5 +65,10 @@ export class ResultAddComponent {
     return this.places.filter(
       item => item.toLowerCase().includes(filterValue)
     );
+  }
+
+   private filterCities(cities: string[], value: string): string[] {
+    const v = value.toLowerCase();
+    return cities.filter(c => c.toLowerCase().includes(v));
   }
 }

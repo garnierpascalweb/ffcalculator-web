@@ -1,0 +1,15 @@
+<!-- Bouton qui déclenche le menu -->
+  <button mat-icon-button [matMenuTriggerFor]="viewMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <!-- Menu -->
+<mat-menu #viewMenu="matMenu">
+  <button mat-menu-item *ngFor="let v of viewOptions" (click)="changeView(v.id)">
+    <!-- coche si c’est la vue courante -->
+    <ng-container *ngIf="currentView$ | async as current">
+      <mat-icon *ngIf="current.id === v.id">check</mat-icon>
+    </ng-container>
+    {{ v.label }} ({{ v.id }})
+  </button>
+</mat-menu>

@@ -24,6 +24,10 @@ import { ResultListComponent } from './simulator/result-list/result-list.compone
 import { ResultDetailsComponent } from './simulator/result-details/result-details.component';
 import { ResultAddComponent } from './simulator/result-add/result-add.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { ViewListComponent } from './simulator/view-list/view-list.component';
+import { ViewMenuComponent } from './simulator/view-menu/view-menu.component';
 
 
 @NgModule({
@@ -36,7 +40,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     ResultEditComponent,
     ResultListComponent,
     ResultDetailsComponent,
-    ResultAddComponent
+    ResultAddComponent,
+    ViewListComponent,
+    ViewMenuComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -53,8 +59,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatDividerModule,
     MatButtonModule,
     MatAutocompleteModule,
+    MatToolbarModule,
+    MatMenuModule,
     FormsModule,
     ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

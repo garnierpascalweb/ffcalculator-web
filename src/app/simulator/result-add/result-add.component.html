@@ -11,9 +11,9 @@
       [matAutocomplete]="autoPlace"
       maxlength="30">
     <mat-autocomplete #autoPlace="matAutocomplete">
-      <mat-option *ngFor="let item of filteredPlaces | async" [value]="item">
-        {{ item }}
-      </mat-option>
+     <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+      {{ city }}
+    </mat-option>
     </mat-autocomplete>
     <mat-hint></mat-hint>
   </mat-form-field>
