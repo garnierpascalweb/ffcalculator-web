@@ -9,6 +9,7 @@ import { Grid } from '../models/grid.model';
 export class GridService {
   private grids$!: Observable<Grid[]>;
 
+
   constructor(private http: HttpClient) { }
 
   /** Charge les données une seule fois + cache */

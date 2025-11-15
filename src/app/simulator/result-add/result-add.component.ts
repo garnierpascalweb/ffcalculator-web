@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, Observable, of, startWith, switchMap } from 'rxjs';
 import { CityService } from 'src/app/services/city.service';
+import { GridService } from 'src/app/services/grid.service';
 import { ViewService } from 'src/app/services/view.service';
 
 @Component({
@@ -12,15 +13,13 @@ import { ViewService } from 'src/app/services/view.service';
 export class ResultAddComponent {
  placeCtrl = new FormControl('');
   filteredPlaces!: Observable<string[]>;
+  classes$!: Observable<string[]>;
 
   places: string[] = [
     'Paris', 'Marseille', 'Lyon', 'Toulouse'
   ];
   filteredCities!: Observable<string[]>;
-
-  classes: string[] = [
-    'GT', 'Tourisme', 'Prototype', 'Rallye'
-  ];
+  
 
   positions: number[] = Array.from({ length: 50 }, (_, i) => i + 1);
   partants: number[] = Array.from({ length: 50 }, (_, i) => i + 1);
@@ -29,7 +28,7 @@ export class ResultAddComponent {
   posCtrl = new FormControl('');
   prtsCtrl = new FormControl('');
 
-  constructor(private cityService: CityService, private viewService : ViewService) {}
+  constructor(private cityService: CityService, private viewService : ViewService, private gridService: GridService) {}
 
   ngOnInit() {
     this.filteredPlaces = this.placeCtrl.valueChanges.pipe(
@@ -53,8 +52,11 @@ export class ResultAddComponent {
     // 
     // on s'abonne à l'observable
     this.viewService.selectedView$.subscribe(view => {
-      //TODO changer la liste des classes
-      //TODO changer la liste des pos
+      if (view) {
+        this.classes$ = this.viewService.selectedView$.pipe(
+  switchMap(view => this.gridService.getLibelleClasses(view.id))
+);
+      } 
     });
     
 
