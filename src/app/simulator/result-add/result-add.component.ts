@@ -13,30 +13,20 @@ import { ViewService } from 'src/app/services/view.service';
 })
 export class ResultAddComponent {
   placeCtrl = new FormControl('');
-  filteredPlaces!: Observable<string[]>;  
-  grids$!: Observable<Grid[]>;
-
-
-  places: string[] = [
-    'Paris', 'Marseille', 'Lyon', 'Toulouse'
-  ];
-  filteredCities!: Observable<string[]>;
-
-
-  positions: number[] = Array.from({ length: 50 }, (_, i) => i + 1);
-  partants: number[] = Array.from({ length: 200 }, (_, i) => i + 1);
-
   classCtrl = new FormControl('');
   posCtrl = new FormControl('');
   prtsCtrl = new FormControl('');
 
+
+  grids$!: Observable<Grid[]>;
+  filteredCities!: Observable<string[]>;
+  positions: number[] = Array.from({ length: 50 }, (_, i) => i + 1);
+  partants: number[] = Array.from({ length: 200 }, (_, i) => i + 1);
+  
+
   constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService) { }
 
-  ngOnInit() {
-    this.filteredPlaces = this.placeCtrl.valueChanges.pipe(
-      startWith(''),
-      map(value => this.filterPlaces(value || ''))
-    );
+  ngOnInit() {   
     // Charge la liste des villes + filtre dynamique
     this.filteredCities = this.placeCtrl.valueChanges.pipe(
       startWith(''),
@@ -72,12 +62,10 @@ export class ResultAddComponent {
     this.positions = Array.from({ length: grid.maxPos }, (_, i) => i + 1);
   }
 
-  private filterPlaces(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.places.filter(
-      item => item.toLowerCase().includes(filterValue)
-    );
+  onAddResult(){
+
   }
+
 
   private filterCities(cities: string[], value: string): string[] {
     const v = value.toLowerCase();
