@@ -29,7 +29,7 @@ export class ViewService {
   constructor() {
 
     const saved = localStorage.getItem(this.STORAGE_KEY);
-    const defaultView = this.views.find(v => v.id === (saved ?? 'E'))!;
+    const defaultView = this.views.find(v => v.id === (saved ?? 'G'))!;
 
     // 👉 INITIALISATION EFFECTIVE ICI
     this.selectedViewSubject = new BehaviorSubject<ViewOption>(defaultView);
