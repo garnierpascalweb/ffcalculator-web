@@ -24,7 +24,7 @@ export class ResultAddComponent {
 
 
   positions: number[] = Array.from({ length: 50 }, (_, i) => i + 1);
-  partants: number[] = Array.from({ length: 50 }, (_, i) => i + 1);
+  partants: number[] = Array.from({ length: 200 }, (_, i) => i + 1);
 
   classCtrl = new FormControl('');
   posCtrl = new FormControl('');
@@ -64,11 +64,12 @@ export class ResultAddComponent {
   }
 
   /**
-   * 
+   * Choix d'une grille dans la liste déroulante
    * @param classeLibelle le libelle selectionné dans la liste déroulante
    */
   onGridSelectionChange(grid:Grid){
     console.log('selection de ' + grid.code);
+    this.positions = Array.from({ length: grid.maxPos }, (_, i) => i + 1);
   }
 
   private filterPlaces(value: string): string[] {
