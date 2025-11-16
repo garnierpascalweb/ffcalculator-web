@@ -15,6 +15,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 import { AccueilComponent } from './accueil/accueil.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DateFrFormatReadablePipe } from './pipes/date-fr-format-readable.pipe';
@@ -28,6 +29,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { ViewListComponent } from './simulator/view-list/view-list.component';
 import { ViewMenuComponent } from './simulator/view-menu/view-menu.component';
+import { ResultLogoComponent } from './simulator/result-details/result-logo/result-logo.component';
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { ViewMenuComponent } from './simulator/view-menu/view-menu.component';
     ResultDetailsComponent,
     ResultAddComponent,
     ViewListComponent,
-    ViewMenuComponent
+    ViewMenuComponent,    
+    ResultLogoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -60,7 +63,8 @@ import { ViewMenuComponent } from './simulator/view-menu/view-menu.component';
     MatButtonModule,
     MatAutocompleteModule,
     MatToolbarModule,
-    MatMenuModule,
+    MatMenuModule,  
+    MatCardModule,  
     FormsModule,
     ReactiveFormsModule
     
@@ -68,7 +72,9 @@ import { ViewMenuComponent } from './simulator/view-menu/view-menu.component';
   providers: [],
   bootstrap: [AppComponent],
   exports: [
-    AccueilComponent
+    AccueilComponent,
+    ResultListComponent,
+    ResultDetailsComponent,    
   ]
 })
 export class AppModule { }

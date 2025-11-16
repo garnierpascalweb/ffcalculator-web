@@ -1,1 +1,26 @@
-<p>result-details works!</p>
+<mat-card class="result-card">
+
+  <div class="card-container">
+
+    <!--  LEFT : LOGO -->
+    <div class="left">
+      <app-result-logo [value]="'Elite'"></app-result-logo>
+    </div>
+
+    <!--  CENTER : TITRE + SUB INFOS -->
+    <div class="center">
+      <div class="title">{{place}}</div>
+      <div class="subtitle">{{details}}</div>
+      <div class="subtitle">1er sur 144 prts</div>
+    </div>
+
+    <!--  RIGHT : BIG LABEL + ACTIONS -->
+    <div class="right">
+      <div class="big-label">{{pts}}</div>
+
+
+    </div>
+
+  </div>
+
+</mat-card>

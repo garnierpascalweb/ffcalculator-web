@@ -4,6 +4,7 @@
  */
 export interface Result {
     code: string;
+    place: string;
     pos: number;
     prts: number;
     pts: number;
