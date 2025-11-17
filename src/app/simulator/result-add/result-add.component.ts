@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { map, Observable, of, startWith, switchMap } from 'rxjs';
 import { Grid } from 'src/app/models/grid.model';
 import { CityService } from 'src/app/services/city.service';
 import { GridService } from 'src/app/services/grid.service';
+import { ResultService } from 'src/app/services/result.service';
 import { ViewService } from 'src/app/services/view.service';
 
 @Component({
@@ -12,10 +13,10 @@ import { ViewService } from 'src/app/services/view.service';
   styleUrls: ['./result-add.component.scss']
 })
 export class ResultAddComponent {
-  placeCtrl = new FormControl('');
-  classCtrl = new FormControl('');
-  posCtrl = new FormControl('');
-  prtsCtrl = new FormControl('');
+  placeCtrl = new FormControl<string>('',{nonNullable: true,validators:Validators.required});
+  classCtrl = new FormControl<Grid | null>(null,{nonNullable: true,validators:Validators.required});
+  posCtrl = new FormControl<number>(1,{nonNullable: true,validators:Validators.required});
+  prtsCtrl = new FormControl<number>(1,{nonNullable: true,validators:Validators.required});
 
 
   grids$!: Observable<Grid[]>;
@@ -24,7 +25,9 @@ export class ResultAddComponent {
   partants: number[] = Array.from({ length: 200 }, (_, i) => i + 1);
   
 
-  constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService) { }
+  constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService:ResultService) { 
+
+  }
 
   ngOnInit() {   
     // Charge la liste des villes + filtre dynamique
@@ -59,11 +62,13 @@ export class ResultAddComponent {
    */
   onGridSelectionChange(grid:Grid){
     console.log('selection de ' + grid.code);
+    this.gridService.setGrid(grid);
     this.positions = Array.from({ length: grid.maxPos }, (_, i) => i + 1);
   }
 
   onAddResult(){
-
+    console.log("appui sur addResult");
+    this.resultService.addResult(this.placeCtrl.value, this.gridService.getCurrentGrid(), this.posCtrl.value, this.prtsCtrl.value);
   }
 
 
