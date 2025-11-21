@@ -1,26 +1,19 @@
-<mat-card class="result-card">
-
-  <div class="card-container">
-
-    <!--  LEFT : LOGO -->
-    <div class="left">
-      <app-result-logo [value]="'Elite'"></app-result-logo>
-    </div>
-
-    <!--  CENTER : TITRE + SUB INFOS -->
-    <div class="center">
-      <div class="title">{{place}}</div>
-      <div class="subtitle">{{details}}</div>
-      <div class="subtitle">1er sur 144 prts</div>
-    </div>
-
-    <!--  RIGHT : BIG LABEL + ACTIONS -->
-    <div class="right">
-      <div class="big-label">{{pts}}</div>
 
 
-    </div>
+<div class="card-container">
+  <mat-card class="responsive-card">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image"></div>
+      <mat-card-title>Serbannes</mat-card-title>
+      <mat-card-subtitle>Open 1/2/3</mat-card-subtitle>
+      <mat-card-subtitle>Open 1/2/3</mat-card-subtitle>
+    </mat-card-header>
 
-  </div>
+    
 
-</mat-card>
+    <mat-card-actions>
+      <button mat-button color="primary">Action</button>
+      <button mat-button>Annuler</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

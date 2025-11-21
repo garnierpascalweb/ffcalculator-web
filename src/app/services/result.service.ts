@@ -18,10 +18,12 @@ export class ResultService {
   constructor(private log: LoggerService, private ptsService: PointsService) {
     this.log.debug(this.TAG, "lecture de la liste des resultats dans le localStorage sous <" + this.STORAGE_KEY + ">");
     const saved = localStorage.getItem(this.STORAGE_KEY);
-    const defaultValue = saved ? JSON.parse(saved) as Result[] : [];    
-    this.resultsSubject = new BehaviorSubject<Result[]>(defaultValue);    
+    this.log.debug(this.TAG, "  json <" + saved + ">");
+    const stored: Result[] = saved ? JSON.parse(saved) : [];  
+    this.resultsSubject = new BehaviorSubject<Result[]>(stored);    
     this.results$ = this.resultsSubject.asObservable();
-    log.debug(this.TAG, "fin recuperation liste des resultats en localStorage - <" + defaultValue.length + "> resultats recuperes");
+    log.debug(this.TAG, "fin recuperation liste des resultats en localStorage - <" + stored.length + "> resultats recuperes");
+    log.debug(this.TAG, JSON.stringify(stored));
   }
 
   getResults() {

@@ -1,82 +1,23 @@
-.result-card {
-  margin: 12px 0;
-  padding: 8px;
-}
-
-.card-top {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.logo {
-  width: 60px;
-  height: 60px;
-  flex-shrink: 0;
-}
-
-mat-card-footer {
-  font-size: 12px;
-  color: #666;
-  margin-top: 8px;
-}
-
-mat-card-actions {
-  margin-top: 8px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.result-card {
-  padding: 12px;
-}
-
 .card-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  padding: 16px;
 }
 
-/* LEFT : LOGO */
-.left {
-  display: flex;
-  align-items: center;
-  margin-right: 16px;
+.responsive-card {
+  width: 100%;
+  max-width: 600px; /* largeur max sur grands écrans */
 }
 
-/* CENTER BLOCK */
-.center {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+/* Responsive : sur petits écrans, on réduit les marges */
+@media (max-width: 600px) {
+  .responsive-card {
+    max-width: 100%;
+  }
 }
 
-.title {
-  font-size: 20px;
-  font-weight: 600;
+/* Exemple : forme et couleur avatar */
+.header-image {
+  background-image: url('https://picsum.photos/200');
+  background-size: cover;
 }
-
-.subtitle {
-  font-size: 14px;
-  opacity: 0.75;
-}
-
-/* RIGHT BLOCK */
-.right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  min-width: 110px;
-}
-
-.big-label {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.actions {
-  display: flex;
-  gap: 6px;
-}
-

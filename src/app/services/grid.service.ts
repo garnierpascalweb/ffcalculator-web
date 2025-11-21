@@ -51,6 +51,12 @@ export class GridService {
     );
   }
 
+  getGridByCode(code: string): Observable<Grid | undefined> {
+  return this.getGrids().pipe(
+    map((grids: Grid[]) => grids.find(g => g.code === code))
+  );
+}
+
   /**
    * 
    * @returns la grille selectionnée

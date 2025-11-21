@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <span>Mon Application</span>
+  <span>FFCalculator</span>
   <span class="spacer"></span>
 
   <!-- Menu dans la barre -->
@@ -18,8 +18,10 @@
   <mat-tab>
     <ng-template mat-tab-label>
       <img src="./assets/icons/mylogo2.svg" alt="logo" width="24" height="24">     
-    </ng-template>
-    <app-result-list></app-result-list>
+    </ng-template> 
+    <ng-container *ngIf="results$ | async as results">
+    <app-result-list *ngIf="results" [results]="results"></app-result-list>
+    </ng-container>  
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label>

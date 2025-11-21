@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Result } from 'src/app/models/result.model';
+import { GridService } from 'src/app/services/grid.service';
 
 @Component({
   selector: 'app-result-details',
@@ -7,14 +9,37 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ResultDetailsComponent {
 
-  @Input() place!: string;
-  @Input() details!: string;
-  @Input() pts!: string;
+  @Input() result!: Result;
+
 
   @Output() edit = new EventEmitter<void>();
   @Output() delete = new EventEmitter<void>();
 
+  constructor(private gridService : GridService){
+
+  }
+
  ngOnInit() {
-  console.log("LOGO =", this.place);
+  //console.log("LOGO =", this.place);
+    console.log('result reçu =', this.result);
+  console.log('type =', typeof this.result);
 }
+
+ngOnChanges(changes: SimpleChanges) {
+  console.log('result reçu :', this.result);
+}
+  getLogo(code: string):string {
+    let gridLogo = "rien";
+    this.gridService.getGridByCode(code).subscribe(grid => {
+      if (grid){
+        gridLogo = grid.logo;
+      } else {
+        
+      }
+    }
+
+    );
+    return gridLogo;
+    
+  }
 }

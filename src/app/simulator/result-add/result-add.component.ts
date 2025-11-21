@@ -12,7 +12,7 @@ import { ViewService } from 'src/app/services/view.service';
   templateUrl: './result-add.component.html',
   styleUrls: ['./result-add.component.scss']
 })
-export class ResultAddComponent {
+export class ResultAddComponent  {
   placeCtrl = new FormControl<string>('',{nonNullable: true,validators:Validators.required});
   classCtrl = new FormControl<Grid | null>(null,{nonNullable: true,validators:Validators.required});
   posCtrl = new FormControl<number>(1,{nonNullable: true,validators:Validators.required});
