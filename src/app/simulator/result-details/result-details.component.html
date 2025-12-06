@@ -1,19 +1,40 @@
-
-
-<div class="card-container">
+<div class="card-container" *ngIf="result">
   <mat-card class="responsive-card">
+
     <mat-card-header>
-      <div mat-card-avatar class="header-image"></div>
-      <mat-card-title>Serbannes</mat-card-title>
-      <mat-card-subtitle>Open 1/2/3</mat-card-subtitle>
-      <mat-card-subtitle>Open 1/2/3</mat-card-subtitle>
+      <!-- Avatar -->
+      <div mat-card-avatar
+           class="avatar"
+           [style.background-image]="'url(' + getAvatarUrl() + ')'">
+      </div>
+
+      <!-- Contenu du header -->
+      <div class="header-content">
+        
+        <!-- Ligne principale : place à gauche, pts à droite -->
+        <div class="place-points">
+          <span class="place">{{ result.place }}</span>
+          <span class="points">{{ result.pts }} pts</span>
+        </div>
+
+        <!-- Ligne code -->
+        <div class="code">
+          Code : {{ result.code }}
+        </div>
+
+        <!-- Ligne position -->
+        <div class="details">
+          Position {{ result.pos }} / {{ result.prts }}
+        </div>
+
+      </div>
     </mat-card-header>
 
-    
-
-    <mat-card-actions>
+    <!-- Actions -->
+    <mat-card-actions align="end">
       <button mat-button color="primary">Action</button>
       <button mat-button>Annuler</button>
     </mat-card-actions>
+
   </mat-card>
 </div>
