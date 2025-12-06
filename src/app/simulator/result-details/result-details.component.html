@@ -19,22 +19,15 @@
 
         <!-- Ligne code -->
         <div class="code">
-          Code : {{ result.code }}
+          {{ getLibelle() }}
         </div>
 
         <!-- Ligne position -->
         <div class="details">
-          Position {{ result.pos }} / {{ result.prts }}
+          P{{ result.pos }} sur {{ result.prts }} participants
         </div>
 
       </div>
     </mat-card-header>
-
-    <!-- Actions -->
-    <mat-card-actions align="end">
-      <button mat-button color="primary">Action</button>
-      <button mat-button>Annuler</button>
-    </mat-card-actions>
-
   </mat-card>
 </div>

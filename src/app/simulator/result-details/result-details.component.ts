@@ -32,6 +32,21 @@ export class ResultDetailsComponent {
     //return `assets/icons/logo/logo-elite.svg`;
   }
 
+  getLibelle(){
+    let libelle = "";
+     this.gridService.getGridByCode(this.result?.code).subscribe(grid => {
+      if (grid) {        
+        libelle = grid.libelle + " - (" + grid.code + ")";
+      } else {
+       
+      }
+    }
+
+    );
+    return libelle;
+  }
+  
+
   getLogo(code: string): string { 
     let svgLogo: string = 'logo-default.svg';
     this.gridService.getGridByCode(code).subscribe(grid => {
