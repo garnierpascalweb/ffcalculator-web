@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="100" fill="#00cc66"/>
+  <text x="100"
+        y="100"
+        font-size="40"
+        font-weight="bold"
+        font-family="Rubik, sans-serif"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        fill="#ffffff">
+    <tspan x="100" dy="0">U17</tspan>    
+  </text>
+</svg>
