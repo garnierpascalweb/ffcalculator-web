@@ -16,6 +16,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AccueilComponent } from './accueil/accueil.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DateFrFormatReadablePipe } from './pipes/date-fr-format-readable.pipe';
@@ -64,7 +65,8 @@ import { ResultLogoComponent } from './simulator/result-details/result-logo/resu
     MatAutocompleteModule,
     MatToolbarModule,
     MatMenuModule,  
-    MatCardModule,  
+    MatCardModule,      
+    MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule
     
