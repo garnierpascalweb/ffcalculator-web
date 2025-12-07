@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, Observable, of, startWith, switchMap } from 'rxjs';
 import { Grid } from 'src/app/models/grid.model';
 import { CityService } from 'src/app/services/city.service';
@@ -13,11 +13,13 @@ import { ViewService } from 'src/app/services/view.service';
   styleUrls: ['./result-add.component.scss']
 })
 export class ResultAddComponent  {
-  placeCtrl = new FormControl<string>('',{nonNullable: true,validators:Validators.required});
-  classCtrl = new FormControl<Grid | null>(null,{nonNullable: true,validators:Validators.required});
-  posCtrl = new FormControl<number>(1,{nonNullable: true,validators:Validators.required});
-  prtsCtrl = new FormControl<number>(1,{nonNullable: true,validators:Validators.required});
 
+  resultFormGroup = new FormGroup({
+  placeCtrl : new FormControl<string>('',{nonNullable: true,validators:Validators.required}),
+  classCtrl : new FormControl<Grid | null>(null,{nonNullable: true,validators:Validators.required}),
+  posCtrl : new FormControl<number>(1,{nonNullable: true,validators:Validators.required}),
+  prtsCtrl : new FormControl<number>(1,{nonNullable: true,validators:Validators.required})
+});
 
   currentViewLabel:string;
   grids$!: Observable<Grid[]>;
@@ -40,7 +42,7 @@ export class ResultAddComponent  {
     this.placeHint = "Lieu ou nom de l'épreuve";    
 
     // Charge la liste des villes + filtre dynamique
-    this.filteredCities = this.placeCtrl.valueChanges.pipe(
+    this.filteredCities = this.resultFormGroup.get('placeCtrl')!.valueChanges.pipe(
       startWith(''),
       switchMap(value => {
         // Ne rien afficher avant 3 caractères
@@ -84,7 +86,7 @@ export class ResultAddComponent  {
   }
 
   onAddResult(){    
-    this.resultService.addResult(this.placeCtrl.value, this.getSelectedGrid(), this.posCtrl.value, this.prtsCtrl.value);
+    this.resultService.addResult(this.resultFormGroup.get('placeCtrl')!.value, this.getSelectedGrid(), this.resultFormGroup.get('posCtrl')!.value, this.resultFormGroup.get('prtsCtrl')!.value);
   }
 
   getSelectedGrid(){

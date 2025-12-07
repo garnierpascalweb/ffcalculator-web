@@ -1,72 +1,68 @@
 <div class="form-container">
 
-  <!-- Lieu de l'épreuve -->
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-icon matPrefix>place</mat-icon>
-    <mat-label>Lieu de l'épreuve</mat-label>
-    <input
-      type="text"
-      matInput
-      [formControl]="placeCtrl"
-      [matAutocomplete]="autoPlace"
-      maxlength="30">
-    <mat-autocomplete #autoPlace="matAutocomplete">
-     <mat-option *ngFor="let city of filteredCities | async" [value]="city">
-      {{ city }}
-    </mat-option>
-    </mat-autocomplete>
-    <mat-hint>A completer</mat-hint>
-  </mat-form-field>
+  <form [formGroup]="resultFormGroup">
+    <!-- Lieu de l'épreuve -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-icon matPrefix>place</mat-icon>
+      <mat-label>Lieu de l'épreuve</mat-label>
+      <input type="text" matInput formControlName="placeCtrl" [matAutocomplete]="autoPlace" maxlength="30">
+      <mat-autocomplete #autoPlace="matAutocomplete">
+        <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+          {{ city }}
+        </mat-option>
+      </mat-autocomplete>
+      <mat-hint>A completer</mat-hint>
+    </mat-form-field>
 
 
-  <!-- Type d'épreuve -->
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-icon matPrefix>list</mat-icon>
-    <mat-label>Type d'épreuve</mat-label>
-    <mat-select [formControl]="classCtrl" (selectionChange)="onGridSelectionChange($event.value)" >
-      <mat-option *ngFor="let grid of (grids$ | async)" [value]="grid" >
-        {{ grid.libelle }} ({{grid.code}})
-      </mat-option>
-    </mat-select>
-    <mat-hint>{{ gridsCount$ | async }} types d'épreuve disponibles pour la Vue {{currentViewLabel}}</mat-hint>
-  </mat-form-field>
+    <!-- Type d'épreuve -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-icon matPrefix>list</mat-icon>
+      <mat-label>Type d'épreuve</mat-label>
+      <mat-select formControlName="classCtrl" (selectionChange)="onGridSelectionChange($event.value)">
+        <mat-option *ngFor="let grid of (grids$ | async)" [value]="grid">
+          {{ grid.libelle }} ({{grid.code}})
+        </mat-option>
+      </mat-select>
+      <mat-hint>{{ gridsCount$ | async }} types d'épreuve disponibles pour la Vue {{currentViewLabel}}</mat-hint>
+    </mat-form-field>
 
 
-  <!-- Position obtenue -->
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-icon matPrefix>flag</mat-icon>
-    <mat-label>Place obtenue</mat-label>
-    <mat-select [formControl]="posCtrl">
-       <mat-option [value]="null" disabled>
-      Position Obtenue
-    </mat-option>
-      <mat-option *ngFor="let p of positions" [value]="p" >
-        {{ p }}
-      </mat-option>
-    </mat-select>
-    <mat-hint>{{posHint}}</mat-hint>
-  </mat-form-field>
+    <!-- Position obtenue -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-icon matPrefix>flag</mat-icon>
+      <mat-label>Place obtenue</mat-label>
+      <mat-select formControlName="posCtrl">
+        <mat-option [value]="null" disabled>
+          Position Obtenue
+        </mat-option>
+        <mat-option *ngFor="let p of positions" [value]="p">
+          {{ p }}
+        </mat-option>
+      </mat-select>
+      <mat-hint>{{posHint}}</mat-hint>
+    </mat-form-field>
 
 
-  <!-- Nombre de partants -->
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-icon matPrefix>groups</mat-icon>
-    <mat-label>Nombre de partants</mat-label>
-    <mat-select [formControl]="prtsCtrl">
-       <mat-option [value]="null" disabled>
-      Nombre de participants
-    </mat-option>
-      <mat-option *ngFor="let n of partants" [value]="n">
-        {{ n }}
-      </mat-option>
-    </mat-select>
-    <mat-hint>{{prtsHint}}</mat-hint>
-  </mat-form-field>
+    <!-- Nombre de partants -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-icon matPrefix>groups</mat-icon>
+      <mat-label>Nombre de partants</mat-label>
+      <mat-select formControlName="prtsCtrl">
+        <mat-option [value]="null" disabled>
+          Nombre de participants
+        </mat-option>
+        <mat-option *ngFor="let n of partants" [value]="n">
+          {{ n }}
+        </mat-option>
+      </mat-select>
+      <mat-hint>{{prtsHint}}</mat-hint>
+    </mat-form-field>
 
-  <div class="button-container">
-    <button mat-raised-button color="primary" (click)="onAddResult()">
-      Ajouter résultat
-    </button>
-  </div>
-
+    <div class="button-container">
+      <button mat-raised-button color="primary" (click)="onAddResult()"  [disabled]="!resultFormGroup.valid">
+        Ajouter résultat
+      </button>
+    </div>
+  </form>
 </div>
