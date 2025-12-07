@@ -12,6 +12,7 @@ export class ViewService {
 
   /** Liste des 8 vues possibles */
   private readonly views: ViewOption[] = [
+    { id: 'G',   label: 'Générale' },
     { id: 'E',   label: 'Elite' },
     { id: 'O1',  label: 'Open 1' },
     { id: 'O2',  label: 'Open 2' },
