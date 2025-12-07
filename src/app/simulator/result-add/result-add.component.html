@@ -37,7 +37,10 @@
     <mat-icon matPrefix>flag</mat-icon>
     <mat-label>Place obtenue</mat-label>
     <mat-select [formControl]="posCtrl">
-      <mat-option *ngFor="let p of positions" [value]="p">
+       <mat-option [value]="null" disabled>
+      Position Obtenue
+    </mat-option>
+      <mat-option *ngFor="let p of positions" [value]="p" >
         {{ p }}
       </mat-option>
     </mat-select>
@@ -50,6 +53,9 @@
     <mat-icon matPrefix>groups</mat-icon>
     <mat-label>Nombre de partants</mat-label>
     <mat-select [formControl]="prtsCtrl">
+       <mat-option [value]="null" disabled>
+      Nombre de participants
+    </mat-option>
       <mat-option *ngFor="let n of partants" [value]="n">
         {{ n }}
       </mat-option>

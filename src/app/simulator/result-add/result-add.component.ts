@@ -21,8 +21,8 @@ export class ResultAddComponent  {
 
   grids$!: Observable<Grid[]>;
   filteredCities!: Observable<string[]>;
-  positions: number[] = Array.from({ length: 50 }, (_, i) => i + 1);
-  partants: number[] = Array.from({ length: 200 }, (_, i) => i + 1);
+  positions: number[];// = Array.from({ length: 50 }, (_, i) => i + 1);
+  partants: number[];// = Array.from({ length: 200 }, (_, i) => i + 1);
   
 
   constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService:ResultService) { 
@@ -60,15 +60,18 @@ export class ResultAddComponent  {
    * Choix d'une grille dans la liste déroulante
    * @param classeLibelle le libelle selectionné dans la liste déroulante
    */
-  onGridSelectionChange(grid:Grid){
-    console.log('selection de ' + grid.code);
+  onGridSelectionChange(grid:Grid){    
     this.gridService.setGrid(grid);
     this.positions = Array.from({ length: grid.maxPos }, (_, i) => i + 1);
+    this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
   }
 
-  onAddResult(){
-    console.log("appui sur addResult");
-    this.resultService.addResult(this.placeCtrl.value, this.gridService.getCurrentGrid(), this.posCtrl.value, this.prtsCtrl.value);
+  onAddResult(){    
+    this.resultService.addResult(this.placeCtrl.value, this.getSelectedGrid(), this.posCtrl.value, this.prtsCtrl.value);
+  }
+
+  getSelectedGrid(){
+    return this.gridService.getCurrentGrid();
   }
 
 
