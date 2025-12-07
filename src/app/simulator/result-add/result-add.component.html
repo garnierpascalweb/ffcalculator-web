@@ -15,7 +15,7 @@
       {{ city }}
     </mat-option>
     </mat-autocomplete>
-    <mat-hint></mat-hint>
+    <mat-hint>A completer</mat-hint>
   </mat-form-field>
 
 
@@ -28,7 +28,7 @@
         {{ grid.libelle }} ({{grid.code}})
       </mat-option>
     </mat-select>
-    <mat-hint></mat-hint>
+    <mat-hint>{{ gridsCount$ | async }} types d'épreuve disponibles pour la Vue {{currentViewLabel}}</mat-hint>
   </mat-form-field>
 
 
@@ -44,7 +44,7 @@
         {{ p }}
       </mat-option>
     </mat-select>
-    <mat-hint></mat-hint>
+    <mat-hint>{{posHint}}</mat-hint>
   </mat-form-field>
 
 
@@ -60,7 +60,7 @@
         {{ n }}
       </mat-option>
     </mat-select>
-    <mat-hint></mat-hint>
+    <mat-hint>{{prtsHint}}</mat-hint>
   </mat-form-field>
 
   <div class="button-container">

@@ -19,10 +19,16 @@ export class ResultAddComponent  {
   prtsCtrl = new FormControl<number>(1,{nonNullable: true,validators:Validators.required});
 
 
+  currentViewLabel:string;
   grids$!: Observable<Grid[]>;
+  gridsCount$!: Observable<number>;
   filteredCities!: Observable<string[]>;
   positions: number[];// = Array.from({ length: 50 }, (_, i) => i + 1);
   partants: number[];// = Array.from({ length: 200 }, (_, i) => i + 1);
+  placeHint:string;
+  classHint:string;
+  posHint:string;
+  prtsHint:string;
   
 
   constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService:ResultService) { 
@@ -30,6 +36,9 @@ export class ResultAddComponent  {
   }
 
   ngOnInit() {   
+    // initialisation des hint
+    this.placeHint = "Lieu ou nom de l'épreuve";    
+
     // Charge la liste des villes + filtre dynamique
     this.filteredCities = this.placeCtrl.valueChanges.pipe(
       startWith(''),
@@ -48,9 +57,14 @@ export class ResultAddComponent  {
     // observation de la vue
     this.viewService.selectedView$.subscribe(view => {
       if (view) {
+        this.currentViewLabel = view.label;
         // changement de la liste des classes       
         this.grids$ = this.viewService.selectedView$.pipe(
           switchMap(view => this.gridService.getGridsFromCodeVue(view.id))
+        );
+        //
+        this.gridsCount$ = this.grids$.pipe(
+          map(grids => grids.length)
         );
       }
     });
@@ -62,8 +76,11 @@ export class ResultAddComponent  {
    */
   onGridSelectionChange(grid:Grid){    
     this.gridService.setGrid(grid);
-    this.positions = Array.from({ length: grid.maxPos }, (_, i) => i + 1);
+    // mise a jour de la liste des positions disponibles
+    this.positions = Array.from({ length: grid.maxPos }, (_, i) => i + 1);  
+    this.posHint = "Points attribués au TOP " + grid.maxPos + " pour une épreuve de type " + grid.libelle;
     this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
+    this.prtsHint = "200 participants maximum";
   }
 
   onAddResult(){    
@@ -73,7 +90,6 @@ export class ResultAddComponent  {
   getSelectedGrid(){
     return this.gridService.getCurrentGrid();
   }
-
 
   private filterCities(cities: string[], value: string): string[] {
     const v = value.toLowerCase();
