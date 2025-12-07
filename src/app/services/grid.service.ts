@@ -46,7 +46,8 @@ export class GridService {
     return this.getGrids().pipe(
       map((grids: Grid[]) =>
         grids
-          .filter(g => g.vues.includes(codeVue))     // ⬅️ filtre sur la vue          
+          .filter(g => g.vues.includes(codeVue))
+          .sort((a, b) => a.priority - b.priority)
       )
     );
   }
