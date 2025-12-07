@@ -19,8 +19,8 @@ export class ResultService {
     this.log.debug(this.TAG, "lecture de la liste des resultats dans le localStorage sous <" + this.STORAGE_KEY + ">");
     const saved = localStorage.getItem(this.STORAGE_KEY);
     this.log.debug(this.TAG, "  json <" + saved + ">");
-    const stored: Result[] = saved ? JSON.parse(saved) : [];  
-    this.resultsSubject = new BehaviorSubject<Result[]>(stored);    
+    const stored: Result[] = saved ? JSON.parse(saved) : [];
+    this.resultsSubject = new BehaviorSubject<Result[]>(stored);
     this.results$ = this.resultsSubject.asObservable();
     log.debug(this.TAG, "fin recuperation liste des resultats en localStorage - <" + stored.length + "> resultats recuperes");
     log.debug(this.TAG, JSON.stringify(stored));
@@ -49,4 +49,19 @@ export class ResultService {
     }
     this.log.debug(this.TAG, "fin ajout d'un nouveau resultat");
   }
+
+  /**
+   * @since 1.0.0
+   * @returns les points des 15 meilleurs résultats de la saison, arrondis a deux décimales
+   */
+  getPts(): number {
+    const results = this.getResults();
+    const sum = results
+      .map(result => result.pts)
+      .sort((a, b) => b - a)
+      .slice(0, 15)
+      .reduce((s, v) => s + v, 0);
+    return Math.round(sum * 100) / 100;
+  }
+
 }
