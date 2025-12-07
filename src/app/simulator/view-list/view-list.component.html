@@ -1,8 +1,8 @@
 <mat-form-field appearance="outline">
   <mat-label>Choisir une vue</mat-label>
   <mat-select [value]="currentView.id" (selectionChange)="changeView($event.value)">
-    <mat-option *ngFor="let v of viewOptions" [value]="v.id">
-      {{ v.label }} ({{ v.id }})
+    <mat-option *ngFor="let view of viewOptions" [value]="view.id">
+      {{ view.label }} ({{ view.id }})
     </mat-option>
   </mat-select>
 </mat-form-field>

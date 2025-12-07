@@ -1,7 +1,6 @@
 <mat-toolbar color="primary">
-  <span>FFCalculator</span>
+  <span>FFCalculator - Vue {{getCurrentViewLabel()}}</span>
   <span class="spacer"></span>
-
   <!-- Menu dans la barre -->
   <app-view-menu></app-view-menu>
 </mat-toolbar>
@@ -10,14 +9,13 @@
 <mat-tab-group mat-stretch-tabs>
   <mat-tab>
     <ng-template mat-tab-label>
-      
-       <img src="./assets/icons/mylogo.svg" alt="logo" width="24" height="24"> 
+       <img src="./assets/icons/add-logo.svg" alt="logo" width="24" height="24"> 
     </ng-template>
     <app-result-add></app-result-add>
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label>
-      <img src="./assets/icons/mylogo2.svg" alt="logo" width="24" height="24">     
+      <img src="./assets/icons/list-logo.svg" alt="logo" width="24" height="24">     
     </ng-template> 
     <ng-container *ngIf="results$ | async as results">
     <app-result-list *ngIf="results" [results]="results"></app-result-list>

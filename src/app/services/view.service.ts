@@ -52,8 +52,9 @@ export class ViewService {
   setView(viewId: string): void {
     const view = this.views.find(v => v.id === viewId);
     if (!view) return;
-
     this.selectedViewSubject.next(view);
     localStorage.setItem(this.STORAGE_KEY, viewId);
   }
+
+  
 }

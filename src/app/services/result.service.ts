@@ -56,6 +56,7 @@ export class ResultService {
    */
   getPts(): number {
     const results = this.getResults();
+    //TODO 15 a mettre en parametre
     const sum = results
       .map(result => result.pts)
       .sort((a, b) => b - a)
