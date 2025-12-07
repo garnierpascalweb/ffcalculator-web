@@ -5,6 +5,7 @@ import { map, Observable, of, startWith, switchMap } from 'rxjs';
 import { Grid } from 'src/app/models/grid.model';
 import { CityService } from 'src/app/services/city.service';
 import { GridService } from 'src/app/services/grid.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { ResultService } from 'src/app/services/result.service';
 import { ViewService } from 'src/app/services/view.service';
 
@@ -34,7 +35,7 @@ export class ResultAddComponent {
   prtsHint: string;
 
 
-  constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService: ResultService, private snackBar: MatSnackBar) {
+  constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService: ResultService, private notificationService: NotificationService) {
 
   }
 
@@ -87,12 +88,15 @@ export class ResultAddComponent {
   }
 
   onAddResult() {
-    this.resultService.addResult(this.resultFormGroup.get('placeCtrl')!.value, this.getSelectedGrid(), this.resultFormGroup.get('posCtrl')!.value, this.resultFormGroup.get('prtsCtrl')!.value);
-    this.snackBar.open('Données sauvegardées', 'OK', {
-      duration: 3000,
-      panelClass: 'snackbar-success'
-    });
-
+    this.resultService.addResult(this.resultFormGroup.get('placeCtrl')!.value, this.getSelectedGrid(), this.resultFormGroup.get('posCtrl')!.value, this.resultFormGroup.get('prtsCtrl')!.value)
+    .subscribe({
+    next: () => {
+      // this.snackBar.open("Résultat ajouté avec succès !", "OK", { duration: 3000 });
+      this.notificationService.success('résultat ajoute avec succes');
+    },
+    error: (err) => {
+      this.notificationService.error('erreur');
+    }});   
   }
 
   getSelectedGrid() {

@@ -30,7 +30,7 @@ export class ResultService {
     return this.resultsSubject.value;
   }
 
-  addResult(place: string, grid: Grid | null, pos: number, prts: number) {
+  addResultOld(place: string, grid: Grid | null, pos: number, prts: number) {
     this.log.debug(this.TAG, "ajout d'un nouveau resultat");
     if (grid) {
       const result: Result = {
@@ -49,6 +49,32 @@ export class ResultService {
     }
     this.log.debug(this.TAG, "fin ajout d'un nouveau resultat");
   }
+
+  addResult(place: string, grid: Grid | null, pos: number, prts: number): Observable<void> {
+    return new Observable<void>((observer) => {
+      try {
+        this.log.debug(this.TAG, "ajout d'un nouveau resultat");
+        if (!grid) {
+          throw new Error("Grid is null");
+        }
+        const result: Result = {
+          code: grid.code,
+          place,
+          pos,
+          prts,
+          pts: this.ptsService.calcPts(grid, pos, prts)
+        };
+        const newList = [...this.getResults(), result]; // <-- PAS de push(), immutabilité 💎
+        this.resultsSubject.next(newList);
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newList));
+        observer.next();
+        observer.complete();
+      } catch (e) {
+        observer.error(e);
+      }
+    });
+  }
+
 
   /**
    * @since 1.0.0
