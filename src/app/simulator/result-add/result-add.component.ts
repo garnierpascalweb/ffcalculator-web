@@ -8,6 +8,7 @@ import { GridService } from 'src/app/services/grid.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { ResultService } from 'src/app/services/result.service';
 import { ViewService } from 'src/app/services/view.service';
+import { PosLessThanPrtsValidator } from 'src/app/validators/pos-less-than-prts-validator';
 
 @Component({
   selector: 'app-result-add',
@@ -21,7 +22,9 @@ export class ResultAddComponent {
     classCtrl: new FormControl<Grid | null>(null, { nonNullable: true, validators: Validators.required }),
     posCtrl: new FormControl<number>(1, { nonNullable: true, validators: Validators.required }),
     prtsCtrl: new FormControl<number>(1, { nonNullable: true, validators: Validators.required })
-  });
+  }, 
+  { validators: PosLessThanPrtsValidator }
+);
 
   currentViewLabel: string;
   grids$!: Observable<Grid[]>;
