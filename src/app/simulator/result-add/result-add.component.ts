@@ -112,14 +112,26 @@ export class ResultAddComponent {
     }
     this.resultService.addResult(placeCtrl, classCtrl, posCtrl, prtsCtrl)
     .subscribe({
-    next: () => {
-      // this.snackBar.open("Résultat ajouté avec succès !", "OK", { duration: 3000 });
+    next: () => {      
       this.notificationService.success('résultat ajoute avec succes');
+      this.resetForm();
     },
     error: (err) => {
       this.notificationService.error('erreur');
     }});   
   }
+
+  /**
+   * Reinitialisation du formulaire
+   */
+  resetForm() {
+  this.resultFormGroup.reset({
+    placeCtrl: '',
+    classCtrl: null,
+    posCtrl: null,
+    prtsCtrl: 1
+  });
+}
 
   /**
    * 
