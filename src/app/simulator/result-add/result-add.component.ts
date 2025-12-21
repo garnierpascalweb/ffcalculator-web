@@ -21,7 +21,7 @@ export class ResultAddComponent {
     placeCtrl: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     classCtrl: new FormControl<Grid | null>(null, { nonNullable: true, validators: Validators.required }),
     posCtrl: new FormControl<number | null>(null, { validators: Validators.required }),
-    prtsCtrl: new FormControl<number>(1, { nonNullable: true, validators: Validators.required })
+    prtsCtrl: new FormControl<number | null>(null, { validators: Validators.required })
   }, 
   { validators: PosLessThanPrtsValidator }
 );
@@ -129,7 +129,7 @@ export class ResultAddComponent {
     placeCtrl: '',
     classCtrl: null,
     posCtrl: null,
-    prtsCtrl: 1
+    prtsCtrl: null
   });
 }
 
