@@ -20,7 +20,7 @@ export class ResultAddComponent {
   resultFormGroup = new FormGroup({
     placeCtrl: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     classCtrl: new FormControl<Grid | null>(null, { nonNullable: true, validators: Validators.required }),
-    posCtrl: new FormControl<number>(1, { nonNullable: true, validators: Validators.required }),
+    posCtrl: new FormControl<number | null>(null, { validators: Validators.required }),
     prtsCtrl: new FormControl<number>(1, { nonNullable: true, validators: Validators.required })
   }, 
   { validators: PosLessThanPrtsValidator }
@@ -32,6 +32,7 @@ export class ResultAddComponent {
   filteredCities!: Observable<string[]>;
   positions: number[];// = Array.from({ length: 50 }, (_, i) => i + 1);
   partants: number[];// = Array.from({ length: 200 }, (_, i) => i + 1);
+  isPosDisabled: boolean;
   placeHint: string;
   classHint: string;
   posHint: string;
@@ -84,6 +85,7 @@ export class ResultAddComponent {
   onGridSelectionChange(grid: Grid) {
     this.gridService.setGrid(grid);
     // mise a jour de la liste des positions disponibles
+    this.isPosDisabled = false;
     this.positions = Array.from({ length: grid.maxPos }, (_, i) => i + 1);
     this.posHint = "Points attribués au TOP " + grid.maxPos + " pour une épreuve de type " + grid.libelle;
     this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
@@ -91,7 +93,20 @@ export class ResultAddComponent {
   }
 
   onAddResult() {
-    this.resultService.addResult(this.resultFormGroup.get('placeCtrl')!.value, this.getSelectedGrid(), this.resultFormGroup.get('posCtrl')!.value, this.resultFormGroup.get('prtsCtrl')!.value)
+     if (this.resultFormGroup.invalid) {
+      this.resultFormGroup.markAllAsTouched();
+      return;
+    }
+    
+    // recuperation des données du formulaire
+    // getRawValue() retourne un objet strictement typé - Les clés ne sont plus optionnelles
+    // Respecte nonNullable: true
+    // typescript comprend alors  placeCtrl: string classCtrl: Grid | null posCtrl: number | null prtsCtrl: number
+    const { placeCtrl, classCtrl, posCtrl, prtsCtrl } = this.resultFormGroup.getRawValue(); 
+    if (posCtrl == null || prtsCtrl == null) {      
+      return;
+    }
+    this.resultService.addResult(placeCtrl, classCtrl, posCtrl, prtsCtrl)
     .subscribe({
     next: () => {
       // this.snackBar.open("Résultat ajouté avec succès !", "OK", { duration: 3000 });

@@ -50,11 +50,20 @@ export class ResultService {
     this.log.debug(this.TAG, "fin ajout d'un nouveau resultat");
   }
 
+  /**
+   * 
+   * @param place le lieu de l'épreuve
+   * @param grid l'instance de grille selectionnée
+   * @param pos la position obtenue
+   * @param prts le nombre de participants
+   * @returns un Observable qui renvoie rien mais permet de gerer les erreurs
+   */
   addResult(place: string, grid: Grid | null, pos: number, prts: number): Observable<void> {
     return new Observable<void>((observer) => {
       try {
         this.log.debug(this.TAG, "ajout d'un nouveau resultat");
         if (!grid) {
+           this.log.error(this.TAG, "aucune grille selectionnée");
           throw new Error("Grid is null");
         }
         const result: Result = {
@@ -64,12 +73,16 @@ export class ResultService {
           prts,
           pts: this.ptsService.calcPts(grid, pos, prts)
         };
-        const newList = [...this.getResults(), result]; // <-- PAS de push(), immutabilité 💎
+        const newList = [...this.getResults(), result]; // <-- PAS de push(), immutabilité
+        this.log.debug(this.TAG, "alimentation de la nouvelle liste de resultats");
         this.resultsSubject.next(newList);
+        this.log.debug(this.TAG, "mise a jour de la liste des resultats dans le localStorage sous " + this.STORAGE_KEY);
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newList));
         observer.next();
+        this.log.error(this.TAG, "notification observer complete");
         observer.complete();
       } catch (e) {
+        this.log.error(this.TAG, "notification observer error");
         observer.error(e);
       }
     });
