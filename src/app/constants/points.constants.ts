@@ -1,0 +1,7 @@
+export const POINTS_RULES = {
+  MIN_PARTICIPANTS: 10,
+  MAX_PARTICIPANTS: 150,
+  LOW_COEF: 0.1,
+  HIGH_COEF: 1.5,
+  COEF_DIVIDER: 100
+} as const;
