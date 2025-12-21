@@ -92,6 +92,10 @@ export class ResultAddComponent {
     this.prtsHint = "200 participants maximum";
   }
 
+  /**
+   * Ajout d'un nouveau resultat
+   * @returns Action delcnechée sur le clic du bouton "Ajouter Resultat"
+   */
   onAddResult() {
      if (this.resultFormGroup.invalid) {
       this.resultFormGroup.markAllAsTouched();
@@ -117,10 +121,20 @@ export class ResultAddComponent {
     }});   
   }
 
+  /**
+   * 
+   * @returns  la grisse sélectionnée actuellement
+   */
   getSelectedGrid() {
     return this.gridService.getCurrentGrid();
   }
 
+  /**
+   * 
+   * @param cities la liste de scommunes francaises
+   * @param value la valeur en train d'etre saisie a l'écran
+   * @returns une liste de resultats qui matchent
+   */
   private filterCities(cities: string[], value: string): string[] {
     const v = value.toLowerCase();
     return cities.filter(c => c.toLowerCase().includes(v));
