@@ -148,7 +148,17 @@ export class ResultAddComponent {
    * @returns une liste de resultats qui matchent
    */
   private filterCities(cities: string[], value: string): string[] {
-    const v = value.toLowerCase();
-    return cities.filter(c => c.toLowerCase().includes(v));
+    const normalizedValue = this.normalize(value);
+     return cities.filter(city =>
+    this.normalize(city).startsWith(normalizedValue)
+  );
   }
+
+  private normalize(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize('NFD')                  // sépare lettres / accents
+    .replace(/[\u0300-\u036f]/g, '')   // supprime les accents
+    .replace(/[-\s']/g, '');           // supprime tirets, espaces, apostrophes
+}
 }
