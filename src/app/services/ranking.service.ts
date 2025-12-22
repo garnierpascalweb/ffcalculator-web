@@ -5,8 +5,8 @@ import { map, Observable, shareReplay } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ClassementService {
-  private readonly TAG = 'ClassementService';
+export class RankingService {
+  private readonly TAG = 'RankingService';
   private readonly JSON_URL_H = 'assets/data/H.json';
   private readonly JSON_URL_U17 = 'assets/data/U17.json';
  
@@ -62,7 +62,7 @@ export class ClassementService {
    * @param pts 
    * @returns 
    */
-  getOverAllPosFromPts(pts: number): Observable<number> {
+  getRanking(pts: number): Observable<number> {
     return this.getValues().pipe(
       map(values => this.findClosestIndex(values, pts))
     );

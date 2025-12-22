@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ClassementService } from 'src/app/services/classement.service';
+import { RankingService } from 'src/app/services/ranking.service';
 import { LoggerService } from 'src/app/services/logger.service';
 import { ResultService } from 'src/app/services/result.service';
 
@@ -10,7 +10,7 @@ import { ResultService } from 'src/app/services/result.service';
 })
 export class OverviewComponent {
 
-  constructor(private log: LoggerService, private resultService: ResultService, private rankingService : ClassementService){
+  constructor(private log: LoggerService, private resultService: ResultService, private rankingService : RankingService){
 
   }
 }
