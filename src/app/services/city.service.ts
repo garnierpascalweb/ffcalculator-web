@@ -8,14 +8,14 @@ import { map, Observable, shareReplay } from 'rxjs';
 export class CityService {
  private readonly TAG = 'CityService';
  private cities$!: Observable<string[]>;
-
+  private readonly JSON_URL = 'assets/data/villes.txt';
   constructor(private http: HttpClient) {}
 
   /** Chargement unique + mise en cache */
   getCities(): Observable<string[]> {
     if (!this.cities$) {
       this.cities$ = this.http
-        .get('assets/data/villes.txt', { responseType: 'text' })
+        .get(this.JSON_URL, { responseType: 'text' })
         .pipe(
           map((text: string) =>
             text.split('\n')

@@ -31,6 +31,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ViewListComponent } from './simulator/view-list/view-list.component';
 import { ViewMenuComponent } from './simulator/view-menu/view-menu.component';
 import { ResultLogoComponent } from './simulator/result-details/result-logo/result-logo.component';
+import { OverviewComponent } from './simulator/overview/overview.component';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import { ResultLogoComponent } from './simulator/result-details/result-logo/resu
     ResultAddComponent,
     ViewListComponent,
     ViewMenuComponent,    
-    ResultLogoComponent
+    ResultLogoComponent, OverviewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
