@@ -5,7 +5,7 @@
 
   <!-- Menu -->
 <mat-menu #viewMenu="matMenu">
-  <button mat-menu-item *ngFor="let v of viewOptions" (click)="changeView(v.id)">
+  <button mat-menu-item *ngFor="let v of viewOptions" (click)="onChangeView(v.id)">
     <!-- coche si c’est la vue courante -->
     <ng-container *ngIf="currentView$ | async as current">
       <mat-icon *ngIf="current.id === v.id">check</mat-icon>

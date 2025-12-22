@@ -19,12 +19,15 @@ viewOptions!: ViewOption[];
   ngOnInit() {
     this.viewOptions = this.viewService.getViews();
     this.currentView = this.viewService.getCurrentView();
-
     // Pour réagir aux changements depuis d’autres composants
     this.viewService.selectedView$.subscribe(v => this.currentView = v);
   }
 
-  changeView(id: string) {
+  /**
+   * Action sur l'IHM : changement de vue
+   * @param id le code vue (exemple : O3)
+   */
+  onChangeView(id: string) {
     this.viewService.setView(id);
   }
 }

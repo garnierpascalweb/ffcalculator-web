@@ -79,7 +79,7 @@ export class ResultAddComponent {
   }
 
   /**
-   * Choix d'une grille dans la liste déroulante
+   * Action sur l'ihm : Choix d'une grille dans la liste déroulante
    * @param classeLibelle le libelle selectionné dans la liste déroulante
    */
   onGridSelectionChange(grid: Grid) {
@@ -93,7 +93,7 @@ export class ResultAddComponent {
   }
 
   /**
-   * Ajout d'un nouveau resultat
+   * Action sur l'ihm : Ajout d'un nouveau resultat
    * @returns Action delcnechée sur le clic du bouton "Ajouter Resultat"
    */
   onAddResult() {
