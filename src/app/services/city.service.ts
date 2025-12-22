@@ -6,7 +6,7 @@ import { map, Observable, shareReplay } from 'rxjs';
   providedIn: 'root'
 })
 export class CityService {
-
+ private readonly TAG = 'CityService';
  private cities$!: Observable<string[]>;
 
   constructor(private http: HttpClient) {}

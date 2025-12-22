@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class NotificationService {
-
+private readonly TAG = 'NotificationService';
  constructor(private snackBar: MatSnackBar) {}
 
   success(msg: string) {

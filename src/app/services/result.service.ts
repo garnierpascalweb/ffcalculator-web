@@ -23,7 +23,7 @@ export class ResultService {
     this.resultsSubject = new BehaviorSubject<Result[]>(stored);
     this.results$ = this.resultsSubject.asObservable();
     log.debug(this.TAG, "fin recuperation liste des resultats en localStorage - <" + stored.length + "> resultats recuperes");
-    log.debug(this.TAG, JSON.stringify(stored));
+    log.trace(this.TAG, JSON.stringify(stored));
   }
 
   getResults() {

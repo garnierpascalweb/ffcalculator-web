@@ -7,7 +7,7 @@ import { ViewOption } from '../models/viewoption.model';
   providedIn: 'root'
 })
 export class ViewService {
-
+private readonly TAG = 'ViewService';
   private readonly STORAGE_KEY = 'selectedView';
 
   /** Liste des 8 vues possibles */

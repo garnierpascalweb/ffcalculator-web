@@ -7,6 +7,7 @@ import { Grid } from '../models/grid.model';
   providedIn: 'root'
 })
 export class GridService {
+  private readonly TAG = 'GridService';
   private grids$!: Observable<Grid[]>;
    private readonly STORAGE_KEY = 'selectedGrid';
 

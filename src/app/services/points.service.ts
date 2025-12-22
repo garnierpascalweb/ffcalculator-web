@@ -15,6 +15,7 @@ export class PointsService {
 
   calcPts(grid: Grid, pos: number, prts: number): number {
   // --- Gestion des erreurs ---
+  //TODO 1.0.0 ne pas retourner zero mais faire un vrai objet retour avec succes true ou false
   if (!grid || !Array.isArray(grid.pts)) {
     this.log.error(this.TAG, "grille de points invalide");
     return 0;
