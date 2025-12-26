@@ -44,3 +44,5 @@ Thumbs.db
 ##ni les apk, ni le dist
 *.apk
 dist/*
+
+src/assets/data/*
