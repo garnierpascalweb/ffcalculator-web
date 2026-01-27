@@ -17,7 +17,7 @@ export class OverviewComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.pts = 5.64;
+    this.pts = 265.64;
     this.ranking$ = this.getRanking(this.pts);
   }
 

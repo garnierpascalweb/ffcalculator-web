@@ -5,6 +5,10 @@ import { map, Observable, shareReplay } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * Service pour le calcul de la position au classement national
+ */
 export class RankingService {
   private readonly TAG = 'RankingService';
   private readonly JSON_URL_H = 'assets/data/H.json';
@@ -58,9 +62,9 @@ export class RankingService {
   }
 
   /**
-   * API publique
-   * @param pts 
-   * @returns 
+   * API publique pour le classement national
+   * @param pts un nombre de points
+   * @returns la position au classement national par rapport a un nombre de points
    */
   getRanking(pts: number): Observable<number> {
     return this.getValues().pipe(

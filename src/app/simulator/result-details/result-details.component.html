@@ -1,33 +1,15 @@
 <div class="card-container" *ngIf="result">
-  <mat-card class="responsive-card">
-
-    <mat-card-header>
-      <!-- Avatar -->
-      <div mat-card-avatar
-           class="avatar"
-           [style.background-image]="'url(' + getAvatarUrl() + ')'">
-      </div>
-
-      <!-- Contenu du header -->
-      <div class="header-content">
-        
-        <!-- Ligne principale : place à gauche, pts à droite -->
-        <div class="place-points">
-          <span class="place">{{ result.place }}</span>
-          <span class="points">{{ result.pts }}</span>
-        </div>
-
-        <!-- Ligne code -->
-        <div class="code">
-          {{ getLibelle() }}
-        </div>
-
-        <!-- Ligne position -->
-        <div class="details">
-          P{{ result.pos }} sur {{ result.prts }} participants
-        </div>
-
-      </div>
-    </mat-card-header>
-  </mat-card>
+<mat-card class="responsive-card" appearance="outlined">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"  [ngStyle]="{ 'background-image': 'url(' +  getAvatarUrl() + ')' }"></div>
+    <mat-card-title>{{ result.place }}</mat-card-title>
+    <mat-card-subtitle>{{ getLibelle() }}</mat-card-subtitle>
+  </mat-card-header>    
+  <mat-card-content>
+  <div class="row">
+    <span>P{{ result.pos }} sur {{ result.prts }} participants</span>
+    <span class="points">{{ result.pts }}</span>
+  </div>
+</mat-card-content>
+</mat-card>
 </div>

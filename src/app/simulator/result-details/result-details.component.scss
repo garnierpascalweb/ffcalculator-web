@@ -1,70 +1,25 @@
 .card-container {
   display: flex;
   justify-content: center;
-  padding: 16px;
+  padding: 6px;
 }
 
 .responsive-card {
   width: 100%;
   max-width: 600px;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  background: #fff;
 }
 
-@media (max-width: 600px) {
-  .responsive-card {
-    max-width: 100%;
-  }
-}
-
-.avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+.example-header-image {  
   background-size: cover;
-  background-position: center;
-  border: 2px solid #eee;
 }
 
-.header-content {
+.row {
   display: flex;
-  flex-direction: column;
-  margin-left: 16px;
-}
-
-/* Ligne place / points */
-.place-points {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: center;      /* centrage vertical */
+  justify-content: space-between; /* gauche / droite */
   width: 100%;
-  font-weight: 600;
-  font-size: 1.2rem;
 }
 
 .points {
-  font-weight: 700;
-}
-
-/* Code et détails */
-.code {
-  font-size: 0.85rem;
-  color: #666;
-  margin-top: 2px;
-}
-
-.details {
-  font-size: 0.8rem;
-  color: #888;
-  margin-top: 2px;
-}
-
-/* Actions */
-mat-card-actions {
-  padding: 8px 16px 16px;
-}
-
-button[mat-button] {
-  text-transform: none;
+  font-weight: bold;
 }
