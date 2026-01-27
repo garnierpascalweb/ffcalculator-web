@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./position-marker.component.scss']
 })
 export class PositionMarkerComponent {
-  xPercent = 92.9;  
+  xPercent = 2.9;  
   yPercent = 20;  
 }

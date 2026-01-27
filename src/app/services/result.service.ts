@@ -30,25 +30,7 @@ export class ResultService {
     return this.resultsSubject.value;
   }
 
-  addResultOld(place: string, grid: Grid | null, pos: number, prts: number) {
-    this.log.debug(this.TAG, "ajout d'un nouveau resultat");
-    if (grid) {
-      const result: Result = {
-        code: grid.code,
-        place: place,
-        pos: pos,
-        prts: prts,
-        pts: this.ptsService.calcPts(grid, pos, prts)
-      };
-      this.log.debug(this.TAG, "  ajout du resultat dans la liste");
-      this.getResults().push(result);
-      this.log.debug(this.TAG, "  publication de la liste des resultats dans le subject");
-      this.resultsSubject.next(this.getResults());
-      this.log.debug(this.TAG, "  ecriture de la liste des resultats dans le localStorage sous <" + this.STORAGE_KEY + ">");
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.getResults()));
-    }
-    this.log.debug(this.TAG, "fin ajout d'un nouveau resultat");
-  }
+  
 
   /**
    * 
