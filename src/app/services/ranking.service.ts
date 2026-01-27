@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, shareReplay } from 'rxjs';
+import { combineLatest, map, Observable, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -61,22 +61,31 @@ export class RankingService {
       : high;
   }
 
-  /**
-   * API publique pour le classement national
-   * @param pts un nombre de points
-   * @returns la position au classement national par rapport a un nombre de points
-   */
-  getRanking(pts: number): Observable<number> {
-    return this.getValues().pipe(
-      map(values => this.findClosestIndex(values, pts))
-    );
-  }
 
-  getPercent(pts: number): Observable<number> {
-  return this.getValues().pipe(
-    map(values => {
+  /**
+   * combineLatest : À chaque changement des valeurs du classement ( a priori jamais) ou des points de l’utilisateur (a chaque add ou delete)
+   * le ranking se recalcul automatiquement
+   * @param pts$ un observable de points
+   * @returns une place au classement national 
+   */
+ getRanking(pts$: Observable<number>): Observable<number> {
+  return combineLatest([
+    this.getValues(), // Observable<number[]>
+    pts$
+  ]).pipe(
+    map(([values, pts]) => this.findClosestIndex(values, pts))
+  );
+}
+
+
+ getPercent(pts$: Observable<number>): Observable<number> {
+  return combineLatest([
+    this.getValues(), // Observable<number[]>
+    pts$
+  ]).pipe(
+    map(([values, pts]) => {
       const index = this.findClosestIndex(values, pts);
-      return 100 - ((index / 7000)*100);
+      return 100 - ((index / 7000) * 100);
     })
   );
 }

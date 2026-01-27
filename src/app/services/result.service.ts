@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Grid } from '../models/grid.model';
 import { Result } from '../models/result.model';
 import { LoggerService } from './logger.service';
@@ -26,11 +26,15 @@ export class ResultService {
     log.trace(this.TAG, JSON.stringify(stored));
   }
 
-  getResults() {
+  private getResults() {
     return this.resultsSubject.value;
   }
 
-  
+  getResultsObservable(): Observable<Result[]>{
+    return this.results$;
+  }
+
+
 
   /**
    * 
@@ -106,6 +110,7 @@ deleteResult(resultToDelete: Result): Observable<void> {
 
 
   /**
+   * @deprecated
    * @since 1.0.0
    * @returns les points des 15 meilleurs résultats de la saison, arrondis a deux décimales
    */
@@ -119,5 +124,18 @@ deleteResult(resultToDelete: Result): Observable<void> {
       .reduce((s, v) => s + v, 0);
     return Math.round(sum * 100) / 100;
   }
+
+  getSumPts(): Observable<number> {
+  return this.results$.pipe(
+    map(results =>
+      results
+        .map(r => r.pts)          // on prend les points
+        .sort((a, b) => b - a)    // tri décroissant
+        .slice(0, 15)             // top 15
+        .reduce((sum, pts) => sum + pts, 0) // somme
+    )
+  );
+}
+
 
 }
