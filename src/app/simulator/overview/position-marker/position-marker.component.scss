@@ -1,0 +1,33 @@
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 600px;
+}
+
+.image-wrapper img {
+  width: 100%;
+  display: block;
+}
+
+/* Corps de la flèche */
+.arrow {
+  position: absolute;
+  top: 0;
+  width: 3px;
+  background: red;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* Pointe de la flèche */
+.arrow::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 12px solid red;
+}

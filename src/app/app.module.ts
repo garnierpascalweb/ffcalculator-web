@@ -32,6 +32,8 @@ import { ViewListComponent } from './simulator/view-list/view-list.component';
 import { ViewMenuComponent } from './simulator/view-menu/view-menu.component';
 import { ResultLogoComponent } from './simulator/result-details/result-logo/result-logo.component';
 import { OverviewComponent } from './simulator/overview/overview.component';
+import { PositionMarkerComponent } from './simulator/overview/position-marker/position-marker.component';
+import { SynthesisComponent } from './simulator/overview/synthesis/synthesis.component';
 
 
 @NgModule({
@@ -47,7 +49,7 @@ import { OverviewComponent } from './simulator/overview/overview.component';
     ResultAddComponent,
     ViewListComponent,
     ViewMenuComponent,    
-    ResultLogoComponent, OverviewComponent
+    ResultLogoComponent, OverviewComponent, PositionMarkerComponent, SynthesisComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -1,2 +1,7 @@
-<p>overview works!</p>
-avec {{pts}} tu es {{ranking$ | async}}
+<div class="full-width">
+    Points : {{pts}}
+    Place {{ranking$ | async}}
+    Percent {{percent$ | async}}
+<app-synthesis></app-synthesis>
+<app-position-marker></app-position-marker>
+</div>

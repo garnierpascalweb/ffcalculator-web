@@ -13,12 +13,14 @@ export class OverviewComponent implements OnInit {
 
     pts: number;
   ranking$: Observable<number>;
+  percent$: Observable<number>;
   constructor(private log: LoggerService, private resultService: ResultService, private rankingService : RankingService){
 
   }
   ngOnInit(): void {
     this.pts = this.resultService.getPts();
     this.ranking$ = this.getRanking(this.pts);
+    this.percent$ = this.getPercent(this.pts);
   }
 
 
@@ -26,5 +28,9 @@ export class OverviewComponent implements OnInit {
 
   getRanking(pts: number){
     return this.rankingService.getRanking(pts);
+  }
+
+  getPercent(pts: number){
+    return this.rankingService.getPercent(pts);
   }
 }

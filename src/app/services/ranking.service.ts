@@ -72,4 +72,15 @@ export class RankingService {
     );
   }
 
+  getPercent(pts: number): Observable<number> {
+  return this.getValues().pipe(
+    map(values => {
+      const index = this.findClosestIndex(values, pts);
+      return 100 - ((index / 7000)*100);
+    })
+  );
+}
+
+  
+
 }
