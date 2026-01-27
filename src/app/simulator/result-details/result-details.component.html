@@ -1,9 +1,9 @@
 <div class="card-container" *ngIf="result">
 <mat-card class="responsive-card" appearance="outlined">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"  [ngStyle]="{ 'background-image': 'url(' +  getAvatarUrl() + ')' }"></div>
+    <div mat-card-avatar class="logo-header-image"  [ngStyle]="{ 'background-image': 'url(' +  getAvatarUrl() + ')' }"></div>
     <mat-card-title>{{ result.place }}</mat-card-title>
-    <mat-card-subtitle>{{ getLibelle() }}</mat-card-subtitle>
+    <mat-card-subtitle>{{ getLibelle() }}</mat-card-subtitle>      
   </mat-card-header>    
   <mat-card-content>
   <div class="row">
@@ -11,5 +11,10 @@
     <span class="points">{{ result.pts }}</span>
   </div>
 </mat-card-content>
+<mat-card-actions>
+   <button mat-icon-button color="warn" (click)="onDeleteResult(result)" >
+  <mat-icon>delete</mat-icon>
+</button>
+  </mat-card-actions>
 </mat-card>
 </div>

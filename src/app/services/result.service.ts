@@ -88,6 +88,40 @@ export class ResultService {
     });
   }
 
+  /**
+   * 
+   * @param resultToDelete 
+   * @returns un Observable qui renvoie rien mais permet de gerer les erreurs
+   */
+deleteResult(resultToDelete: Result): Observable<void> {
+  return new Observable<void>((observer) => {
+    try {
+      this.log.info(this.TAG, "suppression d'un resultat");
+      const currentResults = this.getResults();
+      // On filtre la liste pour retirer l'élément
+      const newList = currentResults.filter(r =>
+        !(
+          r.code === resultToDelete.code &&
+          r.place === resultToDelete.place &&
+          r.pos === resultToDelete.pos &&
+          r.prts === resultToDelete.prts &&
+          r.pts === resultToDelete.pts
+        )
+      );
+      this.log.debug(this.TAG, "nouvelle liste après suppression");
+      this.resultsSubject.next(newList);
+      this.log.debug(this.TAG, "mise a jour localStorage sous " + this.STORAGE_KEY);
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newList));
+      observer.next();
+      observer.complete();
+    } catch (e) {
+      this.log.error(this.TAG, "erreur suppression resultat");
+      observer.error(e);
+    }
+  });
+}
+
+
 
   /**
    * @since 1.0.0
