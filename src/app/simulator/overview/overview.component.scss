@@ -1,11 +1,8 @@
-.page-container {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  justify-content: center;
-}
-
 .full-width {
   width: 100%;
-  margin-top: 12px;
+  display: flex;
+  flex-direction: column;   // ⬅️ empile verticalement
+  align-items: center;      // ⬅️ centre horizontalement
+  justify-content: center;  // centre verticalement si hauteur dispo
+  gap: 24px;                // espace entre les deux composants
 }

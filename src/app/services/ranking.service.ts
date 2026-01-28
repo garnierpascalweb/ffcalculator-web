@@ -89,7 +89,4 @@ export class RankingService {
     })
   );
 }
-
-  
-
 }

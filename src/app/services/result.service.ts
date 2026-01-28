@@ -108,31 +108,21 @@ deleteResult(resultToDelete: Result): Observable<void> {
 }
 
 
-
   /**
-   * @deprecated
-   * @since 1.0.0
-   * @returns les points des 15 meilleurs résultats de la saison, arrondis a deux décimales
+   * Calcul du nombre total de points
+   * @returns un observable number : la somme des 15 meilleurs résultats : le nombre de points de la saison
    */
-  getPts(): number {
-    const results = this.getResults();
-    //TODO 15 a mettre en parametre
-    const sum = results
-      .map(result => result.pts)
-      .sort((a, b) => b - a)
-      .slice(0, 15)
-      .reduce((s, v) => s + v, 0);
-    return Math.round(sum * 100) / 100;
-  }
-
   getSumPts(): Observable<number> {
   return this.results$.pipe(
     map(results =>
-      results
-        .map(r => r.pts)          // on prend les points
-        .sort((a, b) => b - a)    // tri décroissant
-        .slice(0, 15)             // top 15
-        .reduce((sum, pts) => sum + pts, 0) // somme
+      Math.round(
+        results
+          .map(r => r.pts)               // points
+          .sort((a, b) => b - a)         // tri décroissant
+          .slice(0, 15)                  // top 15
+          .reduce((sum, pts) => sum + pts, 0) // somme
+        * 100
+      ) / 100
     )
   );
 }

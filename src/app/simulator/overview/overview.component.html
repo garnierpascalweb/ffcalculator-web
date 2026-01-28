@@ -1,7 +1,4 @@
 <div class="full-width">
-    Points : {{sumPts$ | async}}
-    Place {{ranking$ | async}}
-    Percent {{percent$ | async}}
-<app-synthesis></app-synthesis>
-<app-position-marker></app-position-marker>
+<app-synthesis [sumpts]="sumPts$" [ranking]="ranking$"></app-synthesis>
+<app-position-marker  [percent]="percent$" ></app-position-marker>
 </div>

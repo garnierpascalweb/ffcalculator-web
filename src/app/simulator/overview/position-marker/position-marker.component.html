@@ -3,7 +3,7 @@
 
   <div
     class="arrow"
-    [style.left.%]="xPercent"
+    [style.left.%]="percent | async"
     [style.height.%]="yPercent">
   </div>
 </div>
