@@ -87,7 +87,7 @@ export class ResultAddComponent {
     // mise a jour de la liste des positions disponibles
     this.isPosDisabled = false;
     this.positions = Array.from({ length: grid.maxPos }, (_, i) => i + 1);
-    this.posHint = "Points attribués au TOP " + grid.maxPos + " pour une épreuve de type " + grid.longName;
+    this.posHint = "Points attribués au TOP " + grid.maxPos + " pour une épreuve de type " + grid.longLabel;
     this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
     this.prtsHint = "200 participants maximum";
   }

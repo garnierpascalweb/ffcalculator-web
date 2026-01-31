@@ -21,7 +21,7 @@
       <mat-label>Type d'épreuve</mat-label>
       <mat-select formControlName="classCtrl" (selectionChange)="onGridSelectionChange($event.value)">
         <mat-option *ngFor="let grid of (grids$ | async)" [value]="grid">
-          {{ grid.longName }}
+          {{ grid.longLabel }}
         </mat-option>
       </mat-select>
       <mat-hint>{{ gridsCount$ | async }} types d'épreuve disponibles pour la Vue {{currentViewLabel}}</mat-hint>
