@@ -2,7 +2,8 @@ export interface Grid {
   code: string;
   priority: number;
   logo: string;
-  libelle: string;
+  shortName: string;
+  longName: string;
   vues: string[];
   type: string;
   cal: string;

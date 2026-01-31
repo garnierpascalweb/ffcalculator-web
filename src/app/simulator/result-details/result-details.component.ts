@@ -45,19 +45,6 @@ export class ResultDetailsComponent {
     return `assets/icons/logo/${this.getLogo(this.result?.code)}`;
   }
 
-  getLibelle(){
-    let libelle = "";
-     this.gridService.getGridByCode(this.result?.code).subscribe(grid => {
-      if (grid) {        
-        libelle = grid.libelle + " - (" + grid.code + ")";
-      } else {
-       
-      }
-    });
-    return libelle;
-  }
-  //TODO 1.0.0 getLibelle cest pourri, a integrer directement dans le json
-
   getLogo(code: string): string { 
     let imgLogo: string = 'logo-default.svg';
     this.gridService.getGridByCode(code).subscribe(grid => {
