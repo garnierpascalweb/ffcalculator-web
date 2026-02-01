@@ -1,5 +1,4 @@
 {
-    "HELLO": "Bonjour",
     "ADD_RESULT" : {
         "PLACE": {
             "LABEL": "Lieu de l'épreuve",
@@ -7,7 +6,7 @@
         },
         "CLASS": {
             "LABEL": "Type d'épreuve",
-            "HINT":"{{gridsCount}} types d'épreuve disponibles pour la Vue {{currentViewLabel}}"
+            "HINT":"{{gridsCount}} types d'épreuve disponibles pour la Vue {{view}}"
         },
         "POS": {
             "LABEL": "Place obtenue",

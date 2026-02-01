@@ -9,16 +9,15 @@ import { Grid } from '../models/grid.model';
 export class GridService {
   private readonly TAG = 'GridService';
   private grids$!: Observable<Grid[]>;
-   private readonly STORAGE_KEY = 'selectedGrid';
-
-  private selectedGridSubject!:  BehaviorSubject<Grid | null>;
+  private readonly STORAGE_KEY = 'selectedGrid';
+  private selectedGridSubject!: BehaviorSubject<Grid | null>;
   selectedGrid$!: Observable<Grid | null>;
 
-  constructor(private http: HttpClient) { 
-    const saved = localStorage.getItem(this.STORAGE_KEY);    
+  constructor(private http: HttpClient) {
+    const saved = localStorage.getItem(this.STORAGE_KEY);
     //const defaultView = this.grids$.find(v => v.id === (saved ?? 'E'))!;
-     // 👉 INITIALISATION EFFECTIVE ICI
-     // Subject et pas BehaviorSubject car pas de valeur par defaut
+    // 👉 INITIALISATION EFFECTIVE ICI
+    // Subject et pas BehaviorSubject car pas de valeur par defaut
     this.selectedGridSubject = new BehaviorSubject<Grid | null>(null);
     // 👉 maintenant seulement, on peut définir selectedGrid$
     this.selectedGrid$ = this.selectedGridSubject.asObservable();
@@ -33,7 +32,6 @@ export class GridService {
           shareReplay(1) // ⬅️ cache : un seul chargement
         );
     }
-
     return this.grids$;
   }
 
@@ -43,7 +41,7 @@ export class GridService {
    * @param codeVue O1,O2,A, etc
    * @returns la liste des grilles pour un codeVue
    */
-  getGridsFromCodeVue(codeVue: string) : Observable<Grid[]>{
+  getGridsFromCodeVue(codeVue: string): Observable<Grid[]> {
     return this.getGrids().pipe(
       map((grids: Grid[]) =>
         grids
@@ -54,21 +52,21 @@ export class GridService {
   }
 
   getGridByCode(code: string): Observable<Grid | undefined> {
-  return this.getGrids().pipe(
-    map((grids: Grid[]) => grids.find(g => g.code === code))
-  );
-}
+    return this.getGrids().pipe(
+      map((grids: Grid[]) => grids.find(g => g.code === code))
+    );
+  }
 
   /**
    * 
    * @returns la grille selectionnée
    */
-  getCurrentGrid(){
+  getCurrentGrid() {
     return this.selectedGridSubject.value;
   }
 
 
-  setGrid(grid:Grid){
+  setGrid(grid: Grid) {
     if (!grid)
       return;
     this.selectedGridSubject.next(grid);

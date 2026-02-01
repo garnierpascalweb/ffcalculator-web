@@ -17,6 +17,43 @@ import { PosLessThanPrtsValidator } from 'src/app/validators/pos-less-than-prts-
 })
 export class ResultAddComponent {
 
+  /**
+   * Label de 
+   */
+  currentViewLabel: string;
+  /**
+   * Observable de la liste des grilles
+   */
+  grids$!: Observable<Grid[]>;
+  /**
+   * Observable du nombre de la liste des grilles
+   */
+  gridsCount$!: Observable<number>;
+  /**
+   * Observable de la liste des villes filtrées
+   */
+  filteredCities!: Observable<string[]>;
+  /**
+   * Liste des positions possibles de 1 à N
+   */
+  positions: number[];
+  /**
+   * Liste des partants de 1 à N
+   */
+  partants: number[];
+  /**
+   * Positions 
+   */
+  isPosDisabled: boolean;
+  /**
+   * 
+   */
+  classHint: string;
+  /**
+   * 
+   */
+  maxPos: number;
+
   resultFormGroup = new FormGroup({
     placeCtrl: new FormControl<string>('', { nonNullable: true, validators: Validators.required }),
     classCtrl: new FormControl<Grid | null>(null, { nonNullable: true, validators: Validators.required }),
@@ -26,28 +63,17 @@ export class ResultAddComponent {
   { validators: PosLessThanPrtsValidator }
 );
 
-  currentViewLabel: string;
-  grids$!: Observable<Grid[]>;
-  gridsCount$!: Observable<number>;
-  filteredCities!: Observable<string[]>;
-  positions: number[];// = Array.from({ length: 50 }, (_, i) => i + 1);
-  partants: number[];// = Array.from({ length: 200 }, (_, i) => i + 1);
-  isPosDisabled: boolean;
-  placeHint: string;
-  classHint: string;
-  posHint: string;
-  prtsHint: string;
+
 
 
   constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService: ResultService, private notificationService: NotificationService) {
-
+    this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
+    this.isPosDisabled = true;
   }
 
   ngOnInit() {
-    // initialisation des hint
-    this.placeHint = "Lieu ou nom de l'épreuve";
-
     // Charge la liste des villes + filtre dynamique
+
     this.filteredCities = this.resultFormGroup.get('placeCtrl')!.valueChanges.pipe(
       startWith(''),
       switchMap(value => {
@@ -61,7 +87,16 @@ export class ResultAddComponent {
         );
       })
     );
-    // 
+
+    // observation de la grille selectionnée
+    this.gridService.selectedGrid$.subscribe(grid => {
+      if (grid){
+        this.maxPos = grid.maxPos;
+        this.positions = Array.from({ length: grid.maxPos }, (_, i) => i + 1);
+        this.isPosDisabled = false;
+      }
+    });
+    
     // observation de la vue
     this.viewService.selectedView$.subscribe(view => {
       if (view) {
@@ -84,12 +119,6 @@ export class ResultAddComponent {
    */
   onGridSelectionChange(grid: Grid) {
     this.gridService.setGrid(grid);
-    // mise a jour de la liste des positions disponibles
-    this.isPosDisabled = false;
-    this.positions = Array.from({ length: grid.maxPos }, (_, i) => i + 1);
-    this.posHint = "Points attribués au TOP " + grid.maxPos + " pour une épreuve de type " + grid.longLabel;
-    this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
-    this.prtsHint = "200 participants maximum";
   }
 
   /**
