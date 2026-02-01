@@ -1,5 +1,4 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Result } from 'src/app/models/result.model';
 import { LoggerService } from 'src/app/services/logger.service';
 import { ResultService } from 'src/app/services/result.service';

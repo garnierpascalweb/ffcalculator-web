@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TestComponent } from './test/test.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -22,7 +20,6 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DateFrFormatReadablePipe } from './pipes/date-fr-format-readable.pipe';
 import { SimulatorComponent } from './simulator/simulator.component';
-import { ResultEditComponent } from './simulator/result-edit/result-edit.component';
 import { ResultListComponent } from './simulator/result-list/result-list.component';
 import { ResultDetailsComponent } from './simulator/result-details/result-details.component';
 import { ResultAddComponent } from './simulator/result-add/result-add.component';
@@ -31,7 +28,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { ViewListComponent } from './simulator/view-list/view-list.component';
 import { ViewMenuComponent } from './simulator/view-menu/view-menu.component';
-import { ResultLogoComponent } from './simulator/result-details/result-logo/result-logo.component';
 import { OverviewComponent } from './simulator/overview/overview.component';
 import { PositionMarkerComponent } from './simulator/overview/position-marker/position-marker.component';
 import { SynthesisComponent } from './simulator/overview/synthesis/synthesis.component';
@@ -49,18 +45,16 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TestComponent,
+    AppComponent,    
     AccueilComponent,
     DateFrFormatReadablePipe,
     SimulatorComponent,
-    ResultEditComponent,
     ResultListComponent,
     ResultDetailsComponent,
     ResultAddComponent,
     ViewListComponent,
     ViewMenuComponent,
-    ResultLogoComponent, OverviewComponent, PositionMarkerComponent, SynthesisComponent
+    OverviewComponent, PositionMarkerComponent, SynthesisComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

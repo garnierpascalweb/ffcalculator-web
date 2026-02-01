@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, shareReplay, Subject } from 'rxjs';
+import { map, Observable, shareReplay } from 'rxjs';
 import { Grid } from '../models/grid.model';
 
 @Injectable({
