@@ -18,10 +18,15 @@
         }
 
     }, 
-    "RESULT_LIST" : {
-
+    "RESULT_DETAILS" : {
+        "CARD": {
+            "LABEL": "P{{pos}} sur {{prts}} participants"
+        }
     }, 
     "OVERVIEW" : {
-
+        "SYNTHESIS": {
+            "SUMPTS" : "{{sumpts}} points",
+            "RANKING": "{{ranking}} eme au classement national"
+        }
     }
 }
