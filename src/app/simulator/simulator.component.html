@@ -2,17 +2,14 @@
   <span>FFCalculator - Vue {{getCurrentViewLabel()}}</span>
   <span class="spacer"></span>
   <!-- Menu dans la barre -->
+     <button mat-icon-button  (click)="openAddDialog()" matTooltip="Ajouter un résultat">
+    <mat-icon>add_circle</mat-icon>
+  </button>
   <app-view-menu></app-view-menu>
 </mat-toolbar>
 
 <!-- Tabs -->
-<mat-tab-group mat-stretch-tabs>
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <img src="./assets/icons/add-logo.svg" alt="logo" width="24" height="24">
-    </ng-template>
-    <app-result-add></app-result-add>
-  </mat-tab>
+<mat-tab-group mat-stretch-tabs>  
   <mat-tab>
     <ng-template mat-tab-label>
       <img src="./assets/icons/list-logo.svg" alt="logo" width="24" height="24">

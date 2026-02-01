@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, map, Observable, of, startWith, switchMap } from 'rxjs';
 import { Grid } from 'src/app/models/grid.model';
@@ -71,7 +72,7 @@ export class ResultAddComponent {
 
 
 
-  constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService: ResultService, private notificationService: NotificationService) {
+  constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService: ResultService, private notificationService: NotificationService, private dialogRef: MatDialogRef<ResultAddComponent>) {
     this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
     this.isPosDisabled = true;
     this.gridSubject = new BehaviorSubject<Grid | null>(null);
@@ -152,6 +153,7 @@ export class ResultAddComponent {
       .subscribe({
         next: () => {
           this.notificationService.success('résultat ajoute avec succes');
+          this.dialogRef.close();
           this.resetForm();
         },
         error: (err) => {
@@ -172,6 +174,19 @@ export class ResultAddComponent {
     });
   }
 
+
+    /**
+   * sauvegarde du résultat (validation du modal)
+   */
+  save() {
+    this.dialogRef.close(this.resultFormGroup.value);
+  }
+  /**
+   * annulation du modal
+   */
+  cancel() {
+    this.dialogRef.close();
+  }
 
   /**
    * 

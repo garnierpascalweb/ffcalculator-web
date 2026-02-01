@@ -6,11 +6,11 @@
         },
         "CLASS": {
             "LABEL": "Type d'épreuve",
-            "HINT":"{{gridsCount}} types d'épreuve disponibles pour la Vue {{view}}"
+            "HINT":"Vue {{view}} - {{gridsCount}} types d'épreuve disponibles"
         },
         "POS": {
             "LABEL": "Place obtenue",
-            "HINT":"Points attribués au TOP {{maxPos}} pour une épreuve de type {{longLabel}}"
+            "HINT":"Points attribués au TOP {{maxPos}}"
         },
         "PRTS": {
             "LABEL": "Nombre de partants",
