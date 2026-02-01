@@ -26,7 +26,7 @@ export class ResultAddComponent {
    */
   grids$!: Observable<Grid[]>;
   /**
-   * Observable dde la grille sélectionnée et son subject
+   * Observable de la grille sélectionnée et son subject
    */
   grid$!: Observable<Grid | null>;
   private gridSubject: BehaviorSubject<Grid | null>;

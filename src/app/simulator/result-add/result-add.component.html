@@ -24,7 +24,8 @@
           {{ grid.longLabel }}
         </mat-option>
       </mat-select>
-      <mat-hint>{{ 'ADD_RESULT.CLASS.HINT' | translate:{ gridsCount: gridsCount$ | async, view: currentViewLabel } }}</mat-hint>
+      <mat-hint>{{ 'ADD_RESULT.CLASS.HINT' | translate:{ gridsCount: gridsCount$ | async, view: currentViewLabel }
+        }}</mat-hint>
     </mat-form-field>
 
 
@@ -40,7 +41,14 @@
           {{ pos }}
         </mat-option>
       </mat-select>
-      <mat-hint *ngIf="!isPosDisabled">{{ 'ADD_RESULT.POS.HINT' | translate:{ maxPos: maxPos, longLabel: currentViewLabel } }}</mat-hint>
+      <mat-hint *ngIf="!isPosDisabled">
+        <ng-container *ngIf="grid$ | async as grid">
+          {{ 'ADD_RESULT.POS.HINT' | translate:{
+          maxPos: maxPos,
+          longLabel: grid.longLabel
+          } }}
+        </ng-container>
+      </mat-hint>
     </mat-form-field>
 
 
@@ -60,10 +68,10 @@
     </mat-form-field>
 
     <div class="button-container">
-      <button mat-raised-button color="primary" (click)="onAddResult()"  [disabled]="!resultFormGroup.valid">
+      <button mat-raised-button color="primary" (click)="onAddResult()" [disabled]="!resultFormGroup.valid">
         Ajouter résultat
       </button>
     </div>
-  
+
   </form>
 </div>
