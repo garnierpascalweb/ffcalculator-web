@@ -1,17 +1,10 @@
-
 <div class="dashboard">
-
   <div class="summary-card">
-    <app-synthesis
-      [sumpts]="sumPts$"
-      [ranking]="ranking$">
+    <app-synthesis [sumpts]="sumPts$" [ranking]="ranking$">
     </app-synthesis>
   </div>
-
   <div class="visual-card">
-    <app-position-marker
-      [percent]="percent$">
+    <app-position-marker [percent]="percent$">
     </app-position-marker>
   </div>
-
 </div>

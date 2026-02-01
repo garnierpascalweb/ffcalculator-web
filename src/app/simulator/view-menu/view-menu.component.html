@@ -1,9 +1,9 @@
 <!-- Bouton qui déclenche le menu -->
-  <button mat-icon-button [matMenuTriggerFor]="viewMenu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
+<button mat-icon-button [matMenuTriggerFor]="viewMenu">
+  <mat-icon>more_vert</mat-icon>
+</button>
 
-  <!-- Menu -->
+<!-- Menu -->
 <mat-menu #viewMenu="matMenu">
   <button mat-menu-item *ngFor="let v of viewOptions" (click)="onChangeView(v.id)">
     <!-- coche si c’est la vue courante -->

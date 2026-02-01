@@ -20,13 +20,10 @@ export class SimulatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.results$ = this.resultService.results$;    
+    this.results$ = this.resultService.results$;
   }
 
-  getCurrentViewLabel(){
+  getCurrentViewLabel() {
     return this.viewService.getCurrentView()?.label;
   }
-
-
-
 }

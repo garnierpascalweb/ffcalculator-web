@@ -6,16 +6,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TestComponent } from './test/test.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatTabsModule} from '@angular/material/tabs'; 
-import {MatGridListModule} from '@angular/material/grid-list'; 
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AccueilComponent } from './accueil/accueil.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -51,14 +51,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     TestComponent,
     AccueilComponent,
-    DateFrFormatReadablePipe,    
+    DateFrFormatReadablePipe,
     SimulatorComponent,
     ResultEditComponent,
     ResultListComponent,
     ResultDetailsComponent,
     ResultAddComponent,
     ViewListComponent,
-    ViewMenuComponent,    
+    ViewMenuComponent,
     ResultLogoComponent, OverviewComponent, PositionMarkerComponent, SynthesisComponent
   ],
   imports: [
@@ -77,27 +77,27 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatButtonModule,
     MatAutocompleteModule,
     MatToolbarModule,
-    MatMenuModule,  
-    MatCardModule,      
+    MatMenuModule,
+    MatCardModule,
     MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
     TranslateModule.forRoot({
-  loader: {
-    provide: TranslateLoader,
-    useFactory: HttpLoaderFactory,
-    deps: [HttpClient]
-  }
-}),
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
 
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent],
   exports: [
     AccueilComponent,
     ResultListComponent,
-    ResultDetailsComponent,    
+    ResultDetailsComponent,
   ]
 })
 export class AppModule { }

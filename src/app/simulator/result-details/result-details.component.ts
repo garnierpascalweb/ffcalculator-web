@@ -24,7 +24,7 @@ export class ResultDetailsComponent {
 
   private readonly TAG = 'ResultDetailsComponent';
 
-  constructor(private log: LoggerService, private notificationService : NotificationService, private gridService: GridService, private resultService: ResultService) {
+  constructor(private log: LoggerService, private notificationService: NotificationService, private gridService: GridService, private resultService: ResultService) {
 
   }
 
@@ -36,39 +36,40 @@ export class ResultDetailsComponent {
 
   }
 
-  onDeleteResult(resultToDelete:Result){
+  onDeleteResult(resultToDelete: Result) {
     this.log.debug(this.TAG, "demande de suppression de resultat " + resultToDelete.place);
     this.resultService.deleteResult(resultToDelete)
-    .subscribe({
-    next: () => {      
-      this.notificationService.success('résultat supprimé');     
-    },
-    error: (err) => {
-      this.notificationService.error('erreur');
-    }});   
+      .subscribe({
+        next: () => {
+          this.notificationService.success('résultat supprimé');
+        },
+        error: (err) => {
+          this.notificationService.error('erreur');
+        }
+      });
   }
 
   getAvatarUrl(): string {
     return `assets/icons/logo/${this.getLogo(this.result?.code)}`;
   }
 
-  getLogo(code: string): string { 
+  getLogo(code: string): string {
     let imgLogo: string = 'logo-default.svg';
     this.gridService.getGridByCode(code).subscribe(grid => {
-      if (grid) {        
+      if (grid) {
         switch (grid.logo) {
           case 'Elite':
-             imgLogo = 'logo-elite.png';
+            imgLogo = 'logo-elite.png';
             break;
           case 'CDF N1':
-             imgLogo = 'logo-cdfn1.png';
+            imgLogo = 'logo-cdfn1.png';
             break;
           case 'CDF N2':
             imgLogo = 'logo-cdfn2.png';
             break;
           case 'CDF N3':
             imgLogo = 'logo-cdfn1.png';
-            break;           
+            break;
           case 'Open 1/2':
             imgLogo = 'logo-open-12.png';
             break;
@@ -98,7 +99,7 @@ export class ResultDetailsComponent {
         imgLogo = 'logo-default.png'; // valeur par défaut si aucun match
       }
     }
-    //TODO 1.0.0 logo pour championnat de france 
+      //TODO 1.0.0 logo pour championnat de france 
     );
     return imgLogo;
   }

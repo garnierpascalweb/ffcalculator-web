@@ -14,7 +14,7 @@ export class OverviewComponent implements OnInit {
   sumPts$: Observable<number>;
   ranking$: Observable<number>;
   percent$: Observable<number>;
-  constructor(private log: LoggerService, private resultService: ResultService, private rankingService : RankingService){
+  constructor(private log: LoggerService, private resultService: ResultService, private rankingService: RankingService) {
 
   }
   ngOnInit(): void {

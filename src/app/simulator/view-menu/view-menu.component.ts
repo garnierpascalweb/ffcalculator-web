@@ -9,11 +9,11 @@ import { ViewService } from 'src/app/services/view.service';
   styleUrls: ['./view-menu.component.scss']
 })
 export class ViewMenuComponent {
-viewOptions!: ViewOption[];
+  viewOptions!: ViewOption[];
   currentView!: ViewOption;
   currentView$: Observable<ViewOption>;
   constructor(private viewService: ViewService) {
-     this.currentView$ = this.viewService.selectedView$;
+    this.currentView$ = this.viewService.selectedView$;
   }
 
   ngOnInit() {

@@ -8,13 +8,13 @@ import { ViewListComponent } from './simulator/view-list/view-list.component';
 import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
-  { path: '', component: SimulatorComponent },  
+  { path: '', component: SimulatorComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     initialNavigation: 'enabledBlocking'
-})],
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./synthesis.component.scss']
 })
 export class SynthesisComponent {
-  @Input() sumpts!: Observable<number>;  
-  @Input() ranking!: Observable<number>;  
+  @Input() sumpts!: Observable<number>;
+  @Input() ranking!: Observable<number>;
 
 }

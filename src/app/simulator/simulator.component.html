@@ -9,21 +9,21 @@
 <mat-tab-group mat-stretch-tabs>
   <mat-tab>
     <ng-template mat-tab-label>
-       <img src="./assets/icons/add-logo.svg" alt="logo" width="24" height="24"> 
+      <img src="./assets/icons/add-logo.svg" alt="logo" width="24" height="24">
     </ng-template>
     <app-result-add></app-result-add>
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label>
-      <img src="./assets/icons/list-logo.svg" alt="logo" width="24" height="24">     
-    </ng-template> 
+      <img src="./assets/icons/list-logo.svg" alt="logo" width="24" height="24">
+    </ng-template>
     <ng-container *ngIf="results$ | async as results">
-    <app-result-list *ngIf="results" [results]="results"></app-result-list>
-    </ng-container>  
+      <app-result-list *ngIf="results" [results]="results"></app-result-list>
+    </ng-container>
   </mat-tab>
   <mat-tab>
     <ng-template mat-tab-label>
-      <img src="./assets/icons/cup-logo.svg" alt="logo" width="24" height="24">      
+      <img src="./assets/icons/cup-logo.svg" alt="logo" width="24" height="24">
     </ng-template>
     <app-overview></app-overview>
   </mat-tab>

@@ -8,10 +8,10 @@ import { ViewService } from 'src/app/services/view.service';
   styleUrls: ['./view-list.component.scss']
 })
 export class ViewListComponent {
-viewOptions!: ViewOption[];
+  viewOptions!: ViewOption[];
   currentView!: ViewOption;
 
-  constructor(private viewService: ViewService) {}
+  constructor(private viewService: ViewService) { }
 
   ngOnInit() {
     this.viewOptions = this.viewService.getViews();

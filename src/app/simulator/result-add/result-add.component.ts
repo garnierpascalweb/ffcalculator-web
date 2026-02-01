@@ -125,7 +125,7 @@ export class ResultAddComponent {
    * @param classeLibelle le libelle selectionné dans la liste déroulante
    */
   onGridSelectionChange(grid: Grid) {
-     // this.gridService.setGrid(grid);
+    // this.gridService.setGrid(grid);
     //TODO plutot manipuler un observable ici
     this.gridSubject.next(grid);
   }

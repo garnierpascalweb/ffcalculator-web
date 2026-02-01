@@ -1,23 +1,21 @@
 <div class="card-container" *ngIf="result">
-<mat-card class="responsive-card" appearance="outlined">
-  <mat-card-header>
-    <div mat-card-avatar class="logo-header-image"  [ngStyle]="{ 'background-image': 'url(' +  getAvatarUrl() + ')' }"></div>
-    <mat-card-title>{{ result.place }}</mat-card-title>
-    <mat-card-subtitle>{{ result.code }}</mat-card-subtitle>      
-  </mat-card-header>    
-  <mat-card-content>
-  <div class="row">   
-    <span>{{ 'RESULT_DETAILS.CARD.LABEL' | translate:{ pos: result.pos, prts: result.prts } }}</span>
-    <span 
-      class="badge"
-      [class.top]="isTop15"
-      [class.not-top]="!isTop15">      
-    </span>
-    <span class="points">{{ result.pts }}</span>
-     <button mat-icon-button color="warn" (click)="onDeleteResult(result)" >
-  <mat-icon>delete</mat-icon>
-  </button>
-  </div>
-</mat-card-content>
-</mat-card>
+  <mat-card class="responsive-card" appearance="outlined">
+    <mat-card-header>
+      <div mat-card-avatar class="logo-header-image" [ngStyle]="{ 'background-image': 'url(' +  getAvatarUrl() + ')' }">
+      </div>
+      <mat-card-title>{{ result.place }}</mat-card-title>
+      <mat-card-subtitle>{{ result.code }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <span>{{ 'RESULT_DETAILS.CARD.LABEL' | translate:{ pos: result.pos, prts: result.prts } }}</span>
+        <span class="badge" [class.top]="isTop15" [class.not-top]="!isTop15">
+        </span>
+        <span class="points">{{ result.pts }}</span>
+        <button mat-icon-button color="warn" (click)="onDeleteResult(result)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

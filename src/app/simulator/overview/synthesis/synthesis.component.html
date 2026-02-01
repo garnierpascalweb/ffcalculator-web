@@ -1,16 +1,12 @@
 <div class="stats-line">
-
   <div class="stat points">
     <mat-icon>star</mat-icon>
-    <span class="value">      
+    <span class="value">
       {{ 'OVERVIEW.SYNTHESIS.SUMPTS' | translate:{ sumpts: sumpts | async } }}
     </span>
-
   </div>
-
   <div class="stat ranking">
-    <mat-icon>emoji_events</mat-icon>    
-     <span class="value">{{ 'OVERVIEW.SYNTHESIS.RANKING' | translate:{ ranking: ranking | async } }}</span>
+    <mat-icon>emoji_events</mat-icon>
+    <span class="value">{{ 'OVERVIEW.SYNTHESIS.RANKING' | translate:{ ranking: ranking | async } }}</span>
   </div>
-
 </div>
