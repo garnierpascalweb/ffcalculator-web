@@ -9,18 +9,9 @@ import { Grid } from '../models/grid.model';
 export class GridService {
   private readonly TAG = 'GridService';
   private grids$!: Observable<Grid[]>;
-  private readonly STORAGE_KEY = 'selectedGrid';
-  private selectedGridSubject!: BehaviorSubject<Grid | null>;
-  selectedGrid$!: Observable<Grid | null>;
 
   constructor(private http: HttpClient) {
-    const saved = localStorage.getItem(this.STORAGE_KEY);
-    //const defaultView = this.grids$.find(v => v.id === (saved ?? 'E'))!;
-    // 👉 INITIALISATION EFFECTIVE ICI
-    // Subject et pas BehaviorSubject car pas de valeur par defaut
-    this.selectedGridSubject = new BehaviorSubject<Grid | null>(null);
-    // 👉 maintenant seulement, on peut définir selectedGrid$
-    this.selectedGrid$ = this.selectedGridSubject.asObservable();
+    
   }
 
   /** Charge les données une seule fois + cache */
@@ -35,9 +26,8 @@ export class GridService {
     return this.grids$;
   }
 
-
   /**
-   * 
+   * Utilisée dans result-add 
    * @param codeVue O1,O2,A, etc
    * @returns la liste des grilles pour un codeVue
    */
@@ -51,25 +41,14 @@ export class GridService {
     );
   }
 
+  /**
+   * Utilisée dans result-details pour fabriquer un logo
+   * @param code code de la grille (exemple 1.25.1)
+   * @returns l'instance Grid correspondante
+   */
   getGridByCode(code: string): Observable<Grid | undefined> {
     return this.getGrids().pipe(
       map((grids: Grid[]) => grids.find(g => g.code === code))
     );
-  }
-
-  /**
-   * 
-   * @returns la grille selectionnée
-   */
-  getCurrentGrid() {
-    return this.selectedGridSubject.value;
-  }
-
-
-  setGrid(grid: Grid) {
-    if (!grid)
-      return;
-    this.selectedGridSubject.next(grid);
-    localStorage.setItem(this.STORAGE_KEY, grid.code);
   }
 }
