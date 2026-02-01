@@ -9,6 +9,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -67,9 +68,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     HttpClientModule,
     MatSlideToggleModule,
-    MatTabsModule,
+    MatTabsModule,    
     MatGridListModule,
     MatInputModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
     MatIconModule,
