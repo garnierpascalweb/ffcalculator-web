@@ -1,0 +1,28 @@
+{
+    "HELLO": "Bonjour",
+    "ADD_RESULT" : {
+        "PLACE": {
+            "LABEL": "Lieu de l'épreuve",
+            "HINT":"Lieu ou nom de l'épreuve"
+        },
+        "CLASS": {
+            "LABEL": "Type d'épreuve",
+            "HINT":"{{gridsCount}} types d'épreuve disponibles pour la Vue {{currentViewLabel}}"
+        },
+        "POS": {
+            "LABEL": "Place obtenue",
+            "HINT":"Points attribués au TOP {{maxPos}} pour une épreuve de type {{longLabel}}"
+        },
+        "PRTS": {
+            "LABEL": "Nombre de partants",
+            "HINT":"200 participants maximum"
+        }
+
+    }, 
+    "RESULT_LIST" : {
+
+    }, 
+    "OVERVIEW" : {
+
+    }
+}

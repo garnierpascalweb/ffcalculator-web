@@ -18,7 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AccueilComponent } from './accueil/accueil.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DateFrFormatReadablePipe } from './pipes/date-fr-format-readable.pipe';
 import { SimulatorComponent } from './simulator/simulator.component';
 import { ResultEditComponent } from './simulator/result-edit/result-edit.component';
@@ -34,7 +34,17 @@ import { ResultLogoComponent } from './simulator/result-details/result-logo/resu
 import { OverviewComponent } from './simulator/overview/overview.component';
 import { PositionMarkerComponent } from './simulator/overview/position-marker/position-marker.component';
 import { SynthesisComponent } from './simulator/overview/synthesis/synthesis.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
+/**
+ * Factory pour la fonctionnalité i18n de ngx-translate
+ * @param http 
+ * @returns 
+ */
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -71,7 +81,15 @@ import { SynthesisComponent } from './simulator/overview/synthesis/synthesis.com
     MatCardModule,      
     MatSnackBarModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+  loader: {
+    provide: TranslateLoader,
+    useFactory: HttpLoaderFactory,
+    deps: [HttpClient]
+  }
+}),
+
     
   ],
   providers: [],
