@@ -34,11 +34,11 @@ export class ResultAddComponent {
    */
   filteredCities!: Observable<string[]>;
   /**
-   * Liste des positions possibles de 1 à N
+   * Liste des positions possibles de 1 à maxPos
    */
   positions: number[];
   /**
-   * Liste des partants de 1 à N
+   * Liste des partants de 1 à maxPos
    */
   partants: number[];
   /**
