@@ -11,7 +11,14 @@ import { ResultService } from 'src/app/services/result.service';
   styleUrls: ['./result-details.component.scss']
 })
 export class ResultDetailsComponent {
+  /**
+   * Le resultat
+   */
   @Input() result!: Result;
+  /**
+   * S'il fait parti du top 15 des meilleurs résultats
+   */
+  @Input() isTop15 = false;
   @Output() edit = new EventEmitter<void>();
   @Output() delete = new EventEmitter<void>();
 

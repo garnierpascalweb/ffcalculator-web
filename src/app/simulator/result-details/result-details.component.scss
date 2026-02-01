@@ -23,3 +23,17 @@
 .points {
   font-weight: bold;
 }
+
+.badge {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.badge.top {
+  background-color: #2ecc71; /* vert */
+}
+
+.badge.not-top {
+  background-color: #e74c3c; /* rouge */
+}

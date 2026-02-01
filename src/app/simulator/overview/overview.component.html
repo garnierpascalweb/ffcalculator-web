@@ -1,4 +1,17 @@
-<div class="full-width">
-<app-synthesis [sumpts]="sumPts$" [ranking]="ranking$"></app-synthesis>
-<app-position-marker  [percent]="percent$" ></app-position-marker>
+
+<div class="dashboard">
+
+  <div class="summary-card">
+    <app-synthesis
+      [sumpts]="sumPts$"
+      [ranking]="ranking$">
+    </app-synthesis>
+  </div>
+
+  <div class="visual-card">
+    <app-position-marker
+      [percent]="percent$">
+    </app-position-marker>
+  </div>
+
 </div>

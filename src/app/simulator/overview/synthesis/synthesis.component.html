@@ -1,2 +1,14 @@
-{{sumpts | async}} points
-{{ranking | async}} eme au classement national
+<div class="stats-line">
+
+  <div class="stat points">
+    <mat-icon>star</mat-icon>
+    <span class="value">{{sumpts | async}} points</span>
+
+  </div>
+
+  <div class="stat ranking">
+    <mat-icon>emoji_events</mat-icon>
+    <span class="value">{{ranking | async}} eme</span><span class="label"> au classement national</span>
+  </div>
+
+</div>

@@ -6,15 +6,18 @@
     <mat-card-subtitle>{{ result.code }}</mat-card-subtitle>      
   </mat-card-header>    
   <mat-card-content>
-  <div class="row">
+  <div class="row">   
     <span>P{{ result.pos }} sur {{ result.prts }} participants</span>
+    <span 
+      class="badge"
+      [class.top]="isTop15"
+      [class.not-top]="!isTop15">      
+    </span>
     <span class="points">{{ result.pts }}</span>
+     <button mat-icon-button color="warn" (click)="onDeleteResult(result)" >
+  <mat-icon>delete</mat-icon>
+  </button>
   </div>
 </mat-card-content>
-<mat-card-actions>
-   <button mat-icon-button color="warn" (click)="onDeleteResult(result)" >
-  <mat-icon>delete</mat-icon>
-</button>
-  </mat-card-actions>
 </mat-card>
 </div>

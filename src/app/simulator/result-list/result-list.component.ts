@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Result } from 'src/app/models/result.model';
 import { LoggerService } from 'src/app/services/logger.service';
@@ -9,17 +9,26 @@ import { ResultService } from 'src/app/services/result.service';
   templateUrl: './result-list.component.html',
   styleUrls: ['./result-list.component.scss']
 })
-export class ResultListComponent implements OnInit {
+export class ResultListComponent implements OnInit, OnChanges {
 
-private readonly TAG = 'ResultListComponent';
-  
-@Input() results: Result[] | null = null;
-  constructor(private log: LoggerService, private resultService: ResultService){
+  private readonly TAG = 'ResultListComponent';
+
+  @Input() results: Result[] | null = null;
+  top15Pts: number[] = [];
+
+  constructor(private log: LoggerService, private resultService: ResultService) {
 
   }
 
   ngOnInit(): void {
-   
+
   }
- 
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!this.results) return;
+    this.top15Pts = [...this.results]
+      .map(r => r.pts)         // mapper un resultat a ses points
+      .sort((a, b) => b - a)   // du plus grand au plus petit
+      .slice(0, 15);           // garder les 15 meilleurs
+  }
 }

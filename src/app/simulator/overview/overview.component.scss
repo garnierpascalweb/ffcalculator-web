@@ -1,8 +1,33 @@
-.full-width {
-  width: 100%;
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 20px;
+}
+
+/* Cartes */
+.summary-card,
+.visual-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   display: flex;
-  flex-direction: column;   // ⬅️ empile verticalement
-  align-items: center;      // ⬅️ centre horizontalement
-  justify-content: center;  // centre verticalement si hauteur dispo
-  gap: 24px;                // espace entre les deux composants
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card {
+    order: 1;
+  }
+
+  .visual-card {
+    order: 2;
+  }
 }

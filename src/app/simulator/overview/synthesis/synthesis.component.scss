@@ -1,0 +1,44 @@
+.stats-line {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* Points */
+.stat.points {
+  background: rgba(255, 193, 7, 0.12);
+  color: #f39c12;
+}
+
+/* Classement */
+.stat.ranking {
+  background: rgba(156, 39, 176, 0.12);
+  color: #9c27b0;
+}
+
+.stat mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.value {
+  font-weight: 600;
+}
+
+.label {
+  opacity: 0.8;
+  font-size: 12px;
+}
+
