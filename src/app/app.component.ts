@@ -17,9 +17,12 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     //this.http.get(environment.trackingUrl).subscribe();
     // 28/08/2025 - POST et utilisation du nouveau service
-    this.http.post(environment.trackingUrl, {}, {
+    // 02/02/2026 - tracking que si prod
+    if (environment.production){
+      this.http.post(environment.trackingUrl, {}, {
       params: { script: 'FFCalculator' }
     }
     ).subscribe();
+    }    
   }
 }
