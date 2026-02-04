@@ -65,7 +65,7 @@ export class RankingService {
     ]).pipe(
       map(([values, pts]) => {
         const index = this.findClosestIndexDicho(values, pts);
-        return 100 - ((index / 7000) * 100);
+        return 100 - ((index / values.length) * 100);
       })
     );
   }

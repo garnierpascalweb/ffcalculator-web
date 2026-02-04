@@ -33,6 +33,9 @@ import { PositionMarkerComponent } from './simulator/overview/position-marker/po
 import { SynthesisComponent } from './simulator/overview/synthesis/synthesis.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { ResultAddMenuComponent } from './simulator/result-add-menu/result-add-menu.component';
+import { HelpMenuComponent } from './simulator/help-menu/help-menu.component';
+import { ShareMenuComponent } from './simulator/share-menu/share-menu.component';
 
 /**
  * Factory pour la fonctionnalité i18n de ngx-translate
@@ -54,7 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResultAddComponent,
     ViewListComponent,
     ViewMenuComponent,
-    OverviewComponent, PositionMarkerComponent, SynthesisComponent
+    OverviewComponent, PositionMarkerComponent, SynthesisComponent, ResultAddMenuComponent, HelpMenuComponent, ShareMenuComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
