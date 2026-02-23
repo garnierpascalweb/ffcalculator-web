@@ -28,5 +28,12 @@
             "SUMPTS" : "{{sumpts}} points",
             "RANKING": "{{ranking}} eme au classement national"
         }
+    }, 
+    "MENU" : {
+        "SHARE" : {
+            "TITLE": "FFCalculator",
+            "TEXT": "Calcul des points FFC", 
+            "URL": "https://garnierpascalweb.fr/app/ffcalculator/"
+        }
     }
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { LoggerService } from 'src/app/services/logger.service';
 
 @Component({
   selector: 'app-share-menu',
@@ -6,5 +8,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./share-menu.component.scss']
 })
 export class ShareMenuComponent {
+  private readonly TAG = 'ShareMenuComponent';
+  constructor(private log: LoggerService, private translate: TranslateService) {
 
+  }
+
+  share() {
+    const customTitle = this.translate.instant('MENU.SHARE.TITLE');
+    const customText = this.translate.instant('MENU.SHARE.TEXT');
+    const customUrl = this.translate.instant('MENU.SHARE.URL');
+    const shareData = {
+      title: customTitle,
+      text: customText,
+      // url: window.location.href
+      url: customUrl
+    };
+
+    if (navigator.share) {
+      navigator.share(shareData)
+        .then(() => this.log.debug(this.TAG, ""))
+        .catch(err => this.log.error(this.TAG, ""));
+    } else {
+      this.log.error(this.TAG, "");
+    }
+  }
 }
