@@ -17,7 +17,7 @@ export class SimulatorComponent implements OnInit {
   private readonly APPNAME = 'FFCalculator';
   results$: Observable<Result[]> | undefined;
 
-  constructor(private log: LoggerService, private resultService: ResultService, private viewService: ViewService, private dialog: MatDialog) {
+  constructor(private log: LoggerService, private resultService: ResultService, private viewService: ViewService) {
 
   }
 
@@ -29,17 +29,5 @@ export class SimulatorComponent implements OnInit {
     return this.viewService.getCurrentView()?.label;
   }
 
-  openAddDialog(): void {
-    const dialogRef = this.dialog.open(ResultAddComponent, {
-      width: '520px',
-      maxWidth: '95vw',
-      autoFocus: false
-    });
-
-    dialogRef.afterClosed().subscribe(newResult => {
-      if (newResult) {
-        console.log('Résultat ajouté', newResult);
-      }
-    });
-  }
+  
 }

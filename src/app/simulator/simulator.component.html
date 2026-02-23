@@ -3,7 +3,7 @@
   <span>Vue {{getCurrentViewLabel()}}</span>
   <span class="spacer"></span>
   <!-- menu des vues -->       
-   <app-result-add-menu></app-result-add-menu>
+  <app-result-add-menu></app-result-add-menu>
   <app-view-menu></app-view-menu>
   <app-help-menu></app-help-menu>
   <app-share-menu></app-share-menu>
@@ -11,17 +11,25 @@
 
 <!-- Tabs -->
 <mat-tab-group mat-stretch-tabs>  
+  <!-- tab list -->
   <mat-tab>
     <ng-template mat-tab-label>
+      <div class="tab-label">
       <img src="./assets/icons/list-logo.svg" alt="logo" width="24" height="24">
+      <span>Saison</span>
+      </div>
     </ng-template>
     <ng-container *ngIf="results$ | async as results">
       <app-result-list *ngIf="results" [results]="results"></app-result-list>
     </ng-container>
   </mat-tab>
+   <!-- tab synthese -->
   <mat-tab>
     <ng-template mat-tab-label>
+      <div class="tab-label">
       <img src="./assets/icons/cup-logo.svg" alt="logo" width="24" height="24">
+      <span>Synthèse</span>
+      </div>
     </ng-template>
     <app-overview></app-overview>
   </mat-tab>
