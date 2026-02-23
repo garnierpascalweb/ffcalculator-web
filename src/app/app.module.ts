@@ -36,6 +36,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ResultAddMenuComponent } from './simulator/result-add-menu/result-add-menu.component';
 import { HelpMenuComponent } from './simulator/help-menu/help-menu.component';
 import { ShareMenuComponent } from './simulator/share-menu/share-menu.component';
+import { HelpComponent } from './simulator/help/help.component';
 
 /**
  * Factory pour la fonctionnalité i18n de ngx-translate
@@ -57,7 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResultAddComponent,
     ViewListComponent,
     ViewMenuComponent,
-    OverviewComponent, PositionMarkerComponent, SynthesisComponent, ResultAddMenuComponent, HelpMenuComponent, ShareMenuComponent
+    OverviewComponent, PositionMarkerComponent, SynthesisComponent, ResultAddMenuComponent, HelpMenuComponent, ShareMenuComponent, HelpComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

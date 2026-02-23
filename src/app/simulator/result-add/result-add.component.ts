@@ -68,15 +68,15 @@ export class ResultAddComponent {
     { validators: PosLessThanPrtsValidator }
   );
 
-
-
-
   constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService: ResultService, private notificationService: NotificationService, private dialogRef: MatDialogRef<ResultAddComponent>) {
     this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
     this.isPosDisabled = true;
     this.gridSubject = new BehaviorSubject<Grid | null>(null);
     this.grid$ = this.gridSubject.asObservable();
   }
+
+
+
 
   ngOnInit() {
     // Charge la liste des villes + filtre dynamique

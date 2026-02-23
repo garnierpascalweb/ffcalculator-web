@@ -21,7 +21,8 @@
     "RESULT_DETAILS" : {
         "CARD": {
             "LABEL": "P{{pos}} sur {{prts}} participants"
-        }
+        },
+        "EMPTY": "Aucun résultat a afficher"
     }, 
     "OVERVIEW" : {
         "SYNTHESIS": {
