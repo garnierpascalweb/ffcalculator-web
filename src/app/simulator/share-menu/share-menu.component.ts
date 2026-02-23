@@ -26,10 +26,10 @@ export class ShareMenuComponent {
 
     if (navigator.share) {
       navigator.share(shareData)
-        .then(() => this.log.debug(this.TAG, ""))
-        .catch(err => this.log.error(this.TAG, ""));
+        .then(() => this.log.debug(this.TAG, "Partage effectué"))
+        .catch(err => this.log.error(this.TAG, "Probleme lors du partage"));
     } else {
-      this.log.error(this.TAG, "");
+      this.log.error(this.TAG, "Partage impossible");
     }
   }
 }
