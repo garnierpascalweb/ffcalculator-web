@@ -9,20 +9,30 @@
 </mat-toolbar>
 
 <!-- Tabs -->
-<mat-tab-group mat-stretch-tabs>  
-  <!-- tab list -->
+<mat-tab-group mat-stretch-tabs> 
+  <!-- tab list (saison) -->
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <div class="tab-label">
+      <img src="./assets/icons/add-logo.svg" alt="logo" width="24" height="24">
+      <span>Ajouter un résultat</span>
+      </div>
+    </ng-template>
+    <app-result-add></app-result-add>
+  </mat-tab> 
+  <!-- tab list (saison) -->
   <mat-tab>
     <ng-template mat-tab-label>
       <div class="tab-label">
       <img src="./assets/icons/list-logo.svg" alt="logo" width="24" height="24">
-      <span>Saison</span>
+      <span>Liste des résultats</span>
       </div>
     </ng-template>
     <ng-container *ngIf="results$ | async as results">
       <app-result-list *ngIf="results" [results]="results"></app-result-list>
     </ng-container>
   </mat-tab>
-   <!-- tab synthese -->
+   <!-- tab overview (synthese) -->
   <mat-tab>
     <ng-template mat-tab-label>
       <div class="tab-label">

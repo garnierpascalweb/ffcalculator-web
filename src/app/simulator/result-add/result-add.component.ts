@@ -68,7 +68,7 @@ export class ResultAddComponent {
     { validators: PosLessThanPrtsValidator }
   );
 
-  constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService: ResultService, private notificationService: NotificationService, private dialogRef: MatDialogRef<ResultAddComponent>) {
+  constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService: ResultService, private notificationService: NotificationService) {
     this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
     this.isPosDisabled = true;
     this.gridSubject = new BehaviorSubject<Grid | null>(null);
@@ -151,8 +151,7 @@ export class ResultAddComponent {
     this.resultService.addResult(placeCtrl, classCtrl, posCtrl, prtsCtrl)
       .subscribe({
         next: () => {
-          this.notificationService.success('résultat ajoute avec succes');
-          this.dialogRef.close();
+          this.notificationService.success('résultat ajoute avec succes');          
           this.resetForm();
         },
         error: (err) => {
@@ -173,18 +172,11 @@ export class ResultAddComponent {
     });
   }
 
-
-    /**
-   * sauvegarde du résultat (validation du modal)
-   */
-  save() {
-    this.dialogRef.close(this.resultFormGroup.value);
-  }
   /**
-   * annulation du modal
+   * annulation de la saisie de nouveau resultat
    */
-  cancel() {
-    this.dialogRef.close();
+  onCancelAddResult() {
+   
   }
 
   /**
