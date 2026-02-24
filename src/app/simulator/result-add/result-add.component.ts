@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { BehaviorSubject, map, Observable, of, startWith, switchMap } from 'rxjs';
@@ -16,6 +16,11 @@ import { PosLessThanPrtsValidator } from 'src/app/validators/pos-less-than-prts-
   styleUrls: ['./result-add.component.scss']
 })
 export class ResultAddComponent {
+
+  /**
+   * pour emettre un evenement quand un résultat est ajouté pour switcher sur l'nglet "liste des résultats"
+   */
+  @Output() resultAdded = new EventEmitter<void>();
 
   /**
    * Label de 
@@ -153,6 +158,8 @@ export class ResultAddComponent {
         next: () => {
           this.notificationService.success('résultat ajoute avec succes');          
           this.resetForm();
+          // emission d'un evenement pour switch sur l'onglet "liste de resultats"
+          this.resultAdded.emit();
         },
         error: (err) => {
           this.notificationService.error('erreur');

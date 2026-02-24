@@ -8,7 +8,7 @@
 </mat-toolbar>
 
 <!-- Tabs -->
-<mat-tab-group mat-stretch-tabs> 
+<mat-tab-group mat-stretch-tabs [(selectedIndex)]="selectedTabIndex"> 
   <!-- tab list (saison) -->
   <mat-tab>
     <ng-template mat-tab-label>
@@ -17,7 +17,7 @@
       <span>{{ 'ADD_RESULT.MAT_TAB_TITLE' | translate}}</span>
       </div>
     </ng-template>
-    <app-result-add></app-result-add>
+    <app-result-add (resultAdded)="onResultAdded()"></app-result-add>
   </mat-tab> 
   <!-- tab list (saison) -->
   <mat-tab>

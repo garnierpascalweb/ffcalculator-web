@@ -15,6 +15,8 @@ import { ResultAddComponent } from './result-add/result-add.component';
 export class SimulatorComponent implements OnInit {
   private readonly TAG = 'SimulatorComponent';
   private readonly APPNAME = 'FFCalculator';
+  selectedTabIndex = 0;
+
   results$: Observable<Result[]> | undefined;
 
   constructor(private log: LoggerService, private resultService: ResultService, private viewService: ViewService) {
@@ -27,6 +29,15 @@ export class SimulatorComponent implements OnInit {
 
   getCurrentViewLabel() {
     return this.viewService.getCurrentView()?.label;
+  }
+
+  /**
+   * evenement envoyé par le composant enfant app-result-add
+   * survient quand un resultat est réellement ajouté
+   * change d'onglet pour basculer sur l'onglet résultats
+   */
+  onResultAdded() {
+    this.selectedTabIndex = 1; // bascule sur l'onglet liste
   }
 
   
