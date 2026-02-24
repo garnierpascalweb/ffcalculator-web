@@ -21,12 +21,6 @@ export class HelpMenuComponent {
       maxWidth: '95vw',
       autoFocus: false
     });
-
-    dialogRef.afterClosed().subscribe(newResult => {
-      if (newResult) {
-        console.log('Résultat ajouté', newResult);
-      }
-    });
   }
 
 }

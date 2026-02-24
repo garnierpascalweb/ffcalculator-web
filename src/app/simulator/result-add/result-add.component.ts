@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, map, Observable, of, startWith, switchMap } from 'rxjs';
 import { Grid } from 'src/app/models/grid.model';
 import { CityService } from 'src/app/services/city.service';
@@ -73,7 +74,7 @@ export class ResultAddComponent {
     { validators: PosLessThanPrtsValidator }
   );
 
-  constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService: ResultService, private notificationService: NotificationService) {
+  constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService: ResultService, private notificationService: NotificationService, private translate: TranslateService) {
     this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
     this.isPosDisabled = true;
     this.gridSubject = new BehaviorSubject<Grid | null>(null);
@@ -156,7 +157,9 @@ export class ResultAddComponent {
     this.resultService.addResult(placeCtrl, classCtrl, posCtrl, prtsCtrl)
       .subscribe({
         next: () => {
-          this.notificationService.success('résultat ajoute avec succes');          
+          //TODO faire apparaitre dans la notification le nombre de points ajoutés
+          //  this.translate.instant('OK', { points: 10 }); et modifier le i18n avec "OK": "Résultat ajouté - + {{points}} points"
+          this.notificationService.success(this.translate.instant('ADD_RESULT.NOTIFICATION.OK' ));          
           this.resetForm();
           // emission d'un evenement pour switch sur l'onglet "liste de resultats"
           this.resultAdded.emit();

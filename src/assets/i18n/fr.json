@@ -16,7 +16,11 @@
             "LABEL": "Nombre de partants",
             "HINT":"200 participants maximum"
         }, 
-        "MAT_TAB_TITLE" : "Ajouter un résultat"
+        "MAT_TAB_TITLE" : "Ajouter un résultat", 
+        "NOTIFICATION" : {
+            "OK": "Nouveau résultat ajouté",
+            "KO": "Erreur lors de l'ajout du résultat"
+        }
 
     }, 
     "RESULT_DETAILS" : {
