@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Result } from '../models/result.model';
 import { LoggerService } from '../services/logger.service';
 import { ResultService } from '../services/result.service';
@@ -24,7 +24,9 @@ export class SimulatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.results$ = this.resultService.results$;
+    this.results$ = this.resultService.results$.pipe(
+    map(results => [...results].reverse())
+  );
   }
 
   getCurrentViewLabel() {

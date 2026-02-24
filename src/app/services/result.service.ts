@@ -30,12 +30,6 @@ export class ResultService {
     return this.resultsSubject.value;
   }
 
-  getResultsObservable(): Observable<Result[]>{
-    return this.results$;
-  }
-
-
-
   /**
    * 
    * @param place le lieu de l'épreuve
