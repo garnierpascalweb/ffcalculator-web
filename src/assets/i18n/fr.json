@@ -15,26 +15,29 @@
         "PRTS": {
             "LABEL": "Nombre de partants",
             "HINT":"200 participants maximum"
-        }
+        }, 
+        "MAT_TAB_TITLE" : "Ajouter un résultat"
 
     }, 
     "RESULT_DETAILS" : {
         "CARD": {
             "LABEL": "P{{pos}} sur {{prts}} participants"
         },
-        "EMPTY": "Aucun résultat a afficher"
+        "EMPTY": "Aucun résultat a afficher",
+        "MAT_TAB_TITLE" : "Liste des résultats"
     }, 
     "OVERVIEW" : {
         "SYNTHESIS": {
             "SUMPTS" : "{{sumpts}} points",
             "RANKING": "{{ranking}} eme au classement national"
-        }
+        },
+        "MAT_TAB_TITLE" : "Synthèse"
     }, 
     "MENU" : {
         "SHARE" : {
             "TITLE": "FFCalculator",
             "TEXT": "Calcul des points FFC", 
             "URL": "https://garnierpascalweb.fr/app/ffcalculator/"
-        }
-    }
+        }        
+    }    
 }
