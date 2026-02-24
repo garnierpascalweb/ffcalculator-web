@@ -1,3 +1,7 @@
 <div class="image-wrapper">
   <img src="assets/img/ffcalculator-full.png" alt="Hiérarchie" />
+  <div *ngIf="versionInfo$ | async as version">
+  <p>Version : {{ version.version }}</p>
+  <p>Build : {{ version.buildDate }}</p>
+</div>
 </div>

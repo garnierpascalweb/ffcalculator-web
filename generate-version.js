@@ -1,6 +1,7 @@
 // generate-version.js
 const fs = require('fs');
 const path = require('path');
+const { version } = require('./package.json');
 
 // Assure que le dossier "src/assets" existe
 const outputDir = path.join(__dirname, 'src', 'assets');
@@ -13,6 +14,7 @@ if (!fs.existsSync(outputDir)) {
 
 // Contenu du fichier JSON
 const versionData = {
+  version: version,
   buildDate: new Date().toISOString()
 };
 
