@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -37,6 +38,7 @@ import { ResultAddMenuComponent } from './simulator/result-add-menu/result-add-m
 import { HelpMenuComponent } from './simulator/help-menu/help-menu.component';
 import { ShareMenuComponent } from './simulator/share-menu/share-menu.component';
 import { HelpComponent } from './simulator/help/help.component';
+import { PageTitleComponent } from './simulator/page-title/page-title.component';
 
 /**
  * Factory pour la fonctionnalité i18n de ngx-translate
@@ -58,7 +60,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResultAddComponent,
     ViewListComponent,
     ViewMenuComponent,
-    OverviewComponent, PositionMarkerComponent, SynthesisComponent, ResultAddMenuComponent, HelpMenuComponent, ShareMenuComponent, HelpComponent
+    OverviewComponent, PositionMarkerComponent, SynthesisComponent, ResultAddMenuComponent, HelpMenuComponent, ShareMenuComponent, HelpComponent, PageTitleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -73,6 +75,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatFormFieldModule,
     MatSelectModule,
     MatIconModule,
+    MatTooltipModule,
     MatDividerModule,    
     MatButtonModule,
     MatAutocompleteModule,

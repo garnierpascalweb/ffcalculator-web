@@ -13,8 +13,7 @@
   <mat-tab>
     <ng-template mat-tab-label>
       <div class="tab-label">
-      <img src="./assets/icons/add-logo.svg" alt="logo" width="24" height="24">
-      <span>{{ 'ADD_RESULT.MAT_TAB_TITLE' | translate}}</span>
+      <img src="./assets/icons/add-logo.svg" alt="logo" width="24" height="24" matTooltip="{{ 'ADD_RESULT.MAT_TAB_TITLE' | translate}}">      
       </div>
     </ng-template>
     <app-result-add (resultAdded)="onResultAdded()"></app-result-add>
@@ -23,8 +22,7 @@
   <mat-tab>
     <ng-template mat-tab-label>
       <div class="tab-label">
-      <img src="./assets/icons/list-logo.svg" alt="logo" width="24" height="24">
-      <span>{{ 'RESULT_DETAILS.MAT_TAB_TITLE' | translate}}</span>
+      <img src="./assets/icons/list-logo.svg" alt="logo" width="24" height="24" matTooltip="{{ 'RESULT_DETAILS.MAT_TAB_TITLE' | translate}}">    
       </div>
     </ng-template>
     <ng-container *ngIf="results$ | async as results">
@@ -35,8 +33,7 @@
   <mat-tab>
     <ng-template mat-tab-label>
       <div class="tab-label">
-      <img src="./assets/icons/cup-logo.svg" alt="logo" width="24" height="24">
-      <span>{{ 'OVERVIEW.MAT_TAB_TITLE' | translate}}</span>
+      <img src="./assets/icons/cup-logo.svg" alt="logo" width="24" height="24" matTooltip="{{ 'OVERVIEW.MAT_TAB_TITLE' | translate}}">      
       </div>
     </ng-template>
     <app-overview></app-overview>
