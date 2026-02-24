@@ -33,7 +33,7 @@
     "OVERVIEW" : {
         "SYNTHESIS": {
             "SUMPTS" : "{{sumpts}} points",
-            "RANKING": "{{ranking}} eme au classement national"
+            "RANKING": "Classsement National {{classType}} - {{ranking}}e"
         },
         "MAT_TAB_TITLE" : "Synthèse"
     }, 

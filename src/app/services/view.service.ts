@@ -12,15 +12,15 @@ private readonly TAG = 'ViewService';
 
   /** Liste des 8 vues possibles */
   private readonly views: ViewOption[] = [
-    { id: 'G',   label: 'Générale' },
-    { id: 'E',   label: 'Elite' },
-    { id: 'O1',  label: 'Open 1' },
-    { id: 'O2',  label: 'Open 2' },
-    { id: 'O3',  label: 'Open 3' },
-    { id: 'U17', label: 'U17' },
-    { id: 'U19', label: 'U19' },
-    { id: 'U23', label: 'U23' },
-    { id: 'A',   label: 'Access' },
+    { id: 'G',   label: 'Générale', classType: 'Amateur' },
+    { id: 'E',   label: 'Elite', classType: 'Amateur' },
+    { id: 'O1',  label: 'Open 1', classType: 'Amateur' },
+    { id: 'O2',  label: 'Open 2', classType: 'Amateur' },
+    { id: 'O3',  label: 'Open 3', classType: 'Amateur' },
+    { id: 'U17', label: 'U17', classType: 'U17' },
+    { id: 'U19', label: 'U19', classType: 'Amateur' },
+    { id: 'U23', label: 'U23', classType: 'Amateur' },
+    { id: 'A',   label: 'Access', classType: 'Amateur' },
   ];
 
   private selectedViewSubject!: BehaviorSubject<ViewOption>;
