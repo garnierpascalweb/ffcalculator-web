@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { Result } from 'src/app/models/result.model';
 import { GridService } from 'src/app/services/grid.service';
 import { LoggerService } from 'src/app/services/logger.service';
@@ -103,4 +104,17 @@ export class ResultDetailsComponent {
     );
     return imgLogo;
   }
+
+  /**
+   * Construction du subtitle (longLabel et code)
+   * @returns longLabel et code
+   */
+ getResultSubtitle(): Observable<string> {
+  return this.gridService.getGridByCode(this.result.code).pipe(
+    map(grid => {
+      if (!grid) return '';
+      return `${grid.longLabel}`;
+    })
+  );
+}
 }
