@@ -1,41 +1,50 @@
-<mat-toolbar color="primary">  
-  <span>Vue {{getCurrentViewLabel()}}</span>
-  <span class="spacer"></span>
-  <!-- menu des vues -->        
-  <app-view-menu></app-view-menu>
-  <app-help-menu></app-help-menu>
-  <app-share-menu></app-share-menu>
-</mat-toolbar>
+<div class="page-layout">
+  <mat-toolbar color="primary">
+    <span>Vue {{getCurrentViewLabel()}}</span>
+    <span class="spacer"></span>
+    <!-- menu des vues -->
+    <app-view-menu></app-view-menu>
+    <app-help-menu></app-help-menu>
+    <app-share-menu></app-share-menu>
+  </mat-toolbar>
 
-<!-- Tabs -->
-<mat-tab-group mat-stretch-tabs [(selectedIndex)]="selectedTabIndex"> 
-  <!-- tab list (saison) -->
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <div class="tab-label">
-      <img src="./assets/icons/add-logo.svg" alt="logo" width="24" height="24" matTooltip="{{ 'ADD_RESULT.MAT_TAB_TITLE' | translate}}">      
-      </div>
-    </ng-template>
-    <app-result-add (resultAdded)="onResultAdded()"></app-result-add>
-  </mat-tab> 
-  <!-- tab list (saison) -->
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <div class="tab-label">
-      <img src="./assets/icons/list-logo.svg" alt="logo" width="24" height="24" matTooltip="{{ 'RESULT_DETAILS.MAT_TAB_TITLE' | translate}}">    
-      </div>
-    </ng-template>
-    <ng-container *ngIf="results$ | async as results">
-      <app-result-list *ngIf="results" [results]="results"></app-result-list>
-    </ng-container>
-  </mat-tab>
-   <!-- tab overview (synthese) -->
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <div class="tab-label">
-      <img src="./assets/icons/cup-logo.svg" alt="logo" width="24" height="24" matTooltip="{{ 'OVERVIEW.MAT_TAB_TITLE' | translate}}">      
-      </div>
-    </ng-template>
-    <app-overview></app-overview>
-  </mat-tab>
-</mat-tab-group>
+  <div class="page-content">
+    <div class="page-container">
+      <!-- Tabs -->
+      <mat-tab-group mat-stretch-tabs [(selectedIndex)]="selectedTabIndex">
+        <!-- tab list (saison) -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="tab-label">
+              <img src="./assets/icons/add-logo.svg" alt="logo" width="24" height="24"
+                matTooltip="{{ 'ADD_RESULT.MAT_TAB_TITLE' | translate}}">
+            </div>
+          </ng-template>
+          <app-result-add (resultAdded)="onResultAdded()"></app-result-add>
+        </mat-tab>
+        <!-- tab list (saison) -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="tab-label">
+              <img src="./assets/icons/list-logo.svg" alt="logo" width="24" height="24"
+                matTooltip="{{ 'RESULT_DETAILS.MAT_TAB_TITLE' | translate}}">
+            </div>
+          </ng-template>
+          <ng-container *ngIf="results$ | async as results">
+            <app-result-list *ngIf="results" [results]="results"></app-result-list>
+          </ng-container>
+        </mat-tab>
+        <!-- tab overview (synthese) -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div class="tab-label">
+              <img src="./assets/icons/cup-logo.svg" alt="logo" width="24" height="24"
+                matTooltip="{{ 'OVERVIEW.MAT_TAB_TITLE' | translate}}">
+            </div>
+          </ng-template>
+          <app-overview></app-overview>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

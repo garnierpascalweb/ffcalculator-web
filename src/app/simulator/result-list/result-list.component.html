@@ -1,16 +1,17 @@
-<app-page-title 
-  icon="./assets/icons/add-logo.svg"
-  label="RESULT_DETAILS.MAT_TAB_TITLE">
-</app-page-title>
-<ng-container *ngIf="results?.length; else emptyState">
-<div *ngFor="let result of results">
-  <app-result-details [result]="result" [isTop15]="top15Pts.includes(result.pts)"></app-result-details>
+<div class="page-container">
+  <app-page-title icon="./assets/icons/list-logo.svg" label="RESULT_DETAILS.MAT_TAB_TITLE"></app-page-title>
+  <div class="page-content">
+    <ng-container *ngIf="results?.length; else emptyState">
+      <div *ngFor="let result of results">
+        <app-result-details [result]="result" [isTop15]="top15Pts.includes(result.pts)"></app-result-details>
+      </div>
+    </ng-container>
+    <ng-template #emptyState>
+      <mat-card class="empty-card" style="text-align:center; padding: 2rem;">
+        <mat-card-content>
+          <p>{{ 'RESULT_DETAILS.EMPTY' | translate }}</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-template>
+  </div>
 </div>
-</ng-container>
-<ng-template #emptyState>
-    <mat-card class="empty-card" style="text-align:center; padding: 2rem;">
-      <mat-card-content>
-        <p>{{ 'RESULT_DETAILS.EMPTY' | translate }}</p>        
-      </mat-card-content>
-    </mat-card>
-  </ng-template>

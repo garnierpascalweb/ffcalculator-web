@@ -56,3 +56,85 @@ $my-theme: mat.define-light-theme((
   align-items: center;
   font-size: 12px;
 }
+
+.page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.page-title {
+  display: block;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.app-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+// hiérarchie visuelle
+h1, .page-title {
+  font-weight: 600;
+  color: #27414a;
+}
+
+// espacement cohérent
+mat-form-field {
+  margin-bottom: 16px;
+}
+
+// hover subtil sur les cartes
+
+.app-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+// layout global
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+// contenu centré
+.page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+  width: 100%;
+}
+
+// zone scrollable
+.page-content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+.spacer {
+  flex: 1;
+}
