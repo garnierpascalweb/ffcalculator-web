@@ -1,9 +1,16 @@
-.page-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 16px;
+:host {
+  display: block;
+  max-width: 900px;
+  margin: 0 auto 24px;
+}
 
+.page-title {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center; // centré horizontalement
+  gap: 12px;
+
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
 }

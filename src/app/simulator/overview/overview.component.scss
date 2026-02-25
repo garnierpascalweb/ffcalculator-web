@@ -1,8 +1,7 @@
 .dashboard {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
+display: grid;
+  grid-template-columns: 1fr; // UNE seule colonne
   gap: 24px;
-  align-items: stretch;
   margin-top: 20px;
 }
 
@@ -16,18 +15,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-@media (max-width: 768px) {
-  .dashboard {
-    grid-template-columns: 1fr;
-  }
-
-  .summary-card {
-    order: 1;
-  }
-
-  .visual-card {
-    order: 2;
-  }
 }
