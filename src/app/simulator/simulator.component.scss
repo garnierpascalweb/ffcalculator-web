@@ -1,50 +1,3 @@
-@use '@angular/material' as mat;
-
-@include mat.core();
-
-// 🎨 Palette personnalisée
-$my-primary: mat.define-palette((
-  50:  #e5ebec,
-  100: #becfd2,
-  200: #93b0b5,
-  300: #689198,
-  400: #477a82,
-  500: #27414a, // ta couleur principale
-  600: #223a43,
-  700: #1c323a,
-  800: #172a32,
-  900: #0d1c22,
-  contrast: (
-    50: black,
-    100: black,
-    200: black,
-    300: white,
-    400: white,
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
-  )
-));
-
-// Accent
-$my-accent: mat.define-palette(mat.$teal-palette);
-
-// Warn
-$my-warn: mat.define-palette(mat.$red-palette);
-
-// Thème
-$my-theme: mat.define-light-theme((
-  color: (
-    primary: $my-primary,
-    accent: $my-accent,
-    warn: $my-warn,
-  )
-));
-
-// Appliquer le thème
-@include mat.all-component-themes($my-theme);
 
 .spacer {
   flex: 1 1 auto;
@@ -57,23 +10,6 @@ $my-theme: mat.define-light-theme((
   font-size: 12px;
 }
 
-.page-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 16px;
-}
-
-.page-title {
-  display: block;
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-.page-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 
 .app-card {
   background: white;

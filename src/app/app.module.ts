@@ -19,26 +19,29 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AccueilComponent } from './accueil/accueil.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { DateFrFormatReadablePipe } from './pipes/date-fr-format-readable.pipe';
+
 import { SimulatorComponent } from './simulator/simulator.component';
-import { ResultListComponent } from './simulator/result-list/result-list.component';
-import { ResultDetailsComponent } from './simulator/result-details/result-details.component';
-import { ResultAddComponent } from './simulator/result-add/result-add.component';
+
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-import { ViewListComponent } from './simulator/view-list/view-list.component';
-import { ViewMenuComponent } from './simulator/view-menu/view-menu.component';
-import { OverviewComponent } from './simulator/overview/overview.component';
-import { PositionMarkerComponent } from './simulator/overview/position-marker/position-marker.component';
-import { SynthesisComponent } from './simulator/overview/synthesis/synthesis.component';
+
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { ResultAddMenuComponent } from './simulator/result-add-menu/result-add-menu.component';
-import { HelpMenuComponent } from './simulator/help-menu/help-menu.component';
-import { ShareMenuComponent } from './simulator/share-menu/share-menu.component';
-import { HelpComponent } from './simulator/help/help.component';
-import { PageTitleComponent } from './simulator/page-title/page-title.component';
+import { OverviewComponent } from './simulator/features/overview/components/overview/overview.component';
+import { PositionMarkerComponent } from './simulator/features/overview/components/position-marker/position-marker.component';
+import { SynthesisComponent } from './simulator/features/overview/components/synthesis/synthesis.component';
+import { ResultAddComponent } from './simulator/features/result/components/result-add/result-add.component';
+import { ResultDetailsComponent } from './simulator/features/result/components/result-details/result-details.component';
+import { ResultListComponent } from './simulator/features/result/components/result-list/result-list.component';
+import { HelpMenuComponent } from './simulator/shared/components/help/components/help-menu/help-menu.component';
+import { HelpComponent } from './simulator/shared/components/help/components/help/help.component';
+import { PageTitleComponent } from './simulator/shared/components/page-title/page-title.component';
+import { ShareMenuComponent } from './simulator/shared/components/share/components/share-menu/share-menu.component';
+import { ViewListComponent } from './simulator/shared/components/view/components/view-list/view-list.component';
+import { ViewMenuComponent } from './simulator/shared/components/view/components/view-menu/view-menu.component';
+import { DateFrFormatReadablePipe } from './simulator/shared/pipes/date-fr-format-readable.pipe';
+
 
 /**
  * Factory pour la fonctionnalité i18n de ngx-translate
@@ -60,7 +63,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResultAddComponent,
     ViewListComponent,
     ViewMenuComponent,
-    OverviewComponent, PositionMarkerComponent, SynthesisComponent, ResultAddMenuComponent, HelpMenuComponent, ShareMenuComponent, HelpComponent, PageTitleComponent
+    OverviewComponent, 
+    PositionMarkerComponent, 
+    SynthesisComponent, 
+    HelpMenuComponent, 
+    ShareMenuComponent, 
+    HelpComponent, 
+    PageTitleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

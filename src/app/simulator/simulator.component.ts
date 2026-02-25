@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { map, Observable } from 'rxjs';
-import { Result } from '../models/result.model';
-import { LoggerService } from '../services/logger.service';
-import { ResultService } from '../services/result.service';
-import { ViewService } from '../services/view.service';
-import { ResultAddComponent } from './result-add/result-add.component';
+import { Result } from './features/result/models/result.model';
+import { ResultService } from './features/result/services/result.service';
+import { ViewService } from './shared/components/view/services/view.service';
+import { LoggerService } from './shared/services/logger.service';
+
 
 @Component({
   selector: 'app-simulator',

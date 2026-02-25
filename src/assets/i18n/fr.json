@@ -20,11 +20,7 @@
             "ADD": "Ajouter un résultat",
             "CANCEL": "Annuler"
         },
-        "MAT_TAB_TITLE" : "Ajouter un résultat", 
-        "NOTIFICATION" : {
-            "OK": "Nouveau résultat ajouté",
-            "KO": "Erreur lors de l'ajout du résultat"
-        }
+        "MAT_TAB_TITLE" : "Ajouter un résultat"        
 
     }, 
     "RESULT_DETAILS" : {
@@ -47,5 +43,15 @@
             "TEXT": "Calcul des points FFC", 
             "URL": "https://garnierpascalweb.fr/app/ffcalculator/"
         }        
-    }    
+    },
+    "NOTIFICATION" : {
+        "ADD_RESULT" : {
+            "OK": "Nouveau résultat ajouté",
+            "KO": "Erreur lors de l'ajout du résultat"
+        },
+        "DELETE_RESULT" : {
+             "OK": "Résultat supprimé",
+            "KO": "Erreur lors de la suppression du résultat"
+        }
+    }  
 }
