@@ -60,44 +60,7 @@ export class ResultDetailsComponent {
     let imgLogo: string = 'logo-default.svg';
     this.gridService.getGridByCode(code).subscribe(grid => {
       if (grid) {
-        switch (grid.logo) {
-          case 'Elite':
-            imgLogo = 'logo-elite.png';
-            break;
-          case 'CDF N1':
-            imgLogo = 'logo-cdfn1.png';
-            break;
-          case 'CDF N2':
-            imgLogo = 'logo-cdfn2.png';
-            break;
-          case 'CDF N3':
-            imgLogo = 'logo-cdfn1.png';
-            break;
-          case 'Open 1/2':
-            imgLogo = 'logo-open-12.png';
-            break;
-          case 'Open 1/2/3':
-            imgLogo = 'logo-open-123.png';
-            break;
-          case 'Open 2/3':
-            imgLogo = 'logo-open-23.png';
-            break;
-          case 'Open 3':
-            imgLogo = 'logo-open-3.png';
-            break;
-          case 'U23':
-            imgLogo = 'logo-u23.png';
-            break;
-          case 'U19':
-            imgLogo = 'logo-u19.png';
-            break;
-          case 'U17':
-            imgLogo = 'logo-u17.png';
-            break;
-          default:
-            imgLogo = 'logo-default.png'; // valeur par défaut si aucun match
-        }
-
+        imgLogo = `${grid.logo}.png`;        
       } else {
         imgLogo = 'logo-default.png'; // valeur par défaut si aucun match
       }

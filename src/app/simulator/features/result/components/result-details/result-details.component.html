@@ -20,7 +20,7 @@
 </div>
 
 
-<div class="result-card" [class.disabled]="isTop15">
+<div class="result-card" [class.disabled]="!isTop15">
   <!-- Image -->
   <div class="avatar">
     <img src="{{getAvatarUrl()}}" alt="avatar" />
@@ -36,7 +36,6 @@
   <!-- Partie droite -->
   <div class="actions">
     <div class="label"> {{ result.pts }}</div>
-
     <div class="icons">      
       <mat-icon>help_outline</mat-icon>                     
           <mat-icon>delete</mat-icon>       
