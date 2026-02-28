@@ -8,9 +8,14 @@ import { Observable } from 'rxjs';
 })
 export class PositionMarkerComponent  {
   @Input() percent!: Observable<number>;  
+  /**
+   * le type de classement correspondant a la vue courante donné par le parent
+   */
+  @Input() classType!: Observable<String>;
 
   //xPercent = 2.9;  
   yPercent = 20;  
+
 }
 
 

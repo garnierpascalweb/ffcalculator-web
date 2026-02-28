@@ -1,5 +1,5 @@
 <div class="image-wrapper">
-  <img src="assets/img/riders.png" alt="Hiérarchie" />
+  <img [src]="'assets/img/riders-' + (classType | async) + '.png'" alt="Hiérarchie" />
 
   <div
     class="arrow"
