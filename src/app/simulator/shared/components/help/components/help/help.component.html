@@ -1,7 +1,102 @@
-<div class="image-wrapper">
-  <img src="assets/img/ffcalculator-full.png" alt="Hiérarchie" />
-  <div *ngIf="versionInfo$ | async as version">
-  <p>Version : {{ version.version }}</p>
-  <p>Build : {{ version.buildDate }}</p>
+
+  <div class="help-logo">
+      <img src="assets/img/ffcalculator-full.png" alt="logo" class="logo" />
+  </div>
+
+
+<div class="help-header">
+  <h2 mat-dialog-title>📘 Aide de l'application</h2>
 </div>
-</div>
+
+
+<mat-dialog-content class="help-content">
+
+  <!-- Présentation -->
+  <section>
+    <h3>🎯 Présentation</h3>
+    <p>
+      Cette application s’adresse aux coureurs cyclistes sur route (hommes)
+      licenciés en Access Open 1, 2, 3, Élite et U17.
+    </p>
+
+    <p>
+      Elle permet d’enregistrer vos résultats, calculer vos points et estimer ton classement national.
+    </p>
+
+    <div class="tabs">
+      <div>➕ Saisie</div>
+      <div>📋 Résultats</div>
+      <div>📈 Synthèse</div>
+    </div>
+
+    <mat-divider></mat-divider>
+  </section>
+
+  <!-- Saisie -->
+  <section>
+    <h3>➕ Saisie d’un résultat</h3>
+
+    <p>Renseignez les 4 champs suivants :</p>
+
+    <ul>
+      <li><strong>📍 Lieu</strong> : le lieu de la course,  autocomplétion dès 3 caractères (36000 communes connues)</li>
+      <li><strong>🏁 Type d’épreuve</strong> : catégorie de la course : Les choix de la liste dépendent de la Vue sélectionnée (menu Vue). 
+        👉 Seules les épreuves éligibles à ta catégorie sont proposées</li>
+      <li><strong>🥇 Place</strong> : la place obtenue - La liste est limitée aux places rapportant des points pour Type d’épreuve sélectionnée 👉 Si ta place n’apparaît pas, cela signifie que tu ne marques pas de points pour ton résultat</li>
+      <li><strong>👥 Participants</strong> : généralement jusqu’à 200</li>
+    </ul>
+
+    <div class="info">
+      ✅ Une fois validé, bascule sur l'onglet "Liste des résultats" : le résultat est ajouté en haut de la liste
+    </div>
+
+    <mat-divider></mat-divider>
+  </section>
+
+  <!-- Résultats -->
+  <section>
+    <h3>📋 Liste des résultats</h3>
+
+    <p>
+      Retrouvez tous vos résultats avec :
+    </p>
+
+    <ul>
+      <li>Lieu, épreuve, place, participants</li>
+      <li>Nombre de points</li>
+      <li>Actions : détail ou suppression</li>
+    </ul>
+
+    <div class="warning">
+      ⚠️ Seuls les 15 meilleurs résultats (en terme de points) comptent. Les résultats qui apparaissent grisés ne sont pas pris en compte.
+    </div>
+
+    <mat-divider></mat-divider>
+  </section>
+
+  <!-- Synthèse -->
+  <section>
+    <h3>📈 Synthèse</h3>
+
+    <ul>
+      <li><strong>Total de points</strong> sur les 15 meilleurs résultats de la saison</li>
+      <li><strong>Classement national estimé</strong></li>
+    </ul>
+
+    <p>
+      Une illustration représente le peloton amateur français. La flèche jaune verticale permet de voir ta position approximative dans la hiérarchie des amateurs Francais sur
+       <ul>
+      <li>Le Classement National U17 si ta vue est U17</li>
+      <li>Le Classement National Homme pour toutes les autres vues</li>
+    </ul>    
+  </section>
+  <section>
+    <h3>📈 Bonne saison a tous les coursiers</h3>
+  </section>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" mat-dialog-close>
+    Fermer
+  </button>
+</mat-dialog-actions>

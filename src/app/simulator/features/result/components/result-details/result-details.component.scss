@@ -126,6 +126,17 @@
   background: green;
 }
 
+.icon-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  line-height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 350px) {
   .result-card {
     grid-template-columns: auto 1fr;

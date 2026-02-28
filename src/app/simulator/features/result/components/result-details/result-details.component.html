@@ -1,44 +1,28 @@
-<div class="card-container" *ngIf="result">
-  <mat-card class="responsive-card" appearance="outlined">
-    <mat-card-header>
-      <div mat-card-avatar class="logo-header-image" [ngStyle]="{ 'background-image': 'url(' +  getAvatarUrl() + ')' }">
-      </div>
-      <mat-card-title>{{ result.place }}</mat-card-title>
-      <mat-card-subtitle>{{ getResultSubtitle() | async }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="row">
-        <span>{{ 'RESULT_DETAILS.CARD.LABEL' | translate:{ pos: result.pos, prts: result.prts } }}</span>
-        <span class="badge" [class.top]="isTop15" [class.not-top]="!isTop15"></span>
-        <span class="points">{{ result.pts }}</span>
-        <button mat-icon-button color="warn" (click)="onDeleteResult(result)">
+<div class="card-container">
+  <div class="result-card" [class.disabled]="!isTop15">
+    <!-- Image -->
+    <div class="avatar">
+      <img src="{{getAvatarUrl()}}" alt="avatar" />
+    </div>
+
+    <!-- Contenu central -->
+    <div class="content">
+      <div class="title">{{ result.place }}</div>
+      <div class="subtitle">{{ getResultSubtitle() | async }}</div>
+      <div class="subtitle">{{ 'RESULT_DETAILS.CARD.LABEL' | translate:{ pos: result.pos, prts: result.prts } }}</div>
+    </div>
+
+    <!-- Partie droite -->
+    <div class="actions">
+      <div class="label"> {{ result.pts }}</div>
+      <div class="icons">
+        <button mat-icon-button class="icon-btn" (click)="onHelpResult(result)">
+          <mat-icon>help_outline</mat-icon>
+        </button>
+        <button mat-icon-button class="icon-btn" (click)="onDeleteResult(result)">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
-    </mat-card-content>
-  </mat-card>
-</div>
-
-
-<div class="result-card" [class.disabled]="!isTop15">
-  <!-- Image -->
-  <div class="avatar">
-    <img src="{{getAvatarUrl()}}" alt="avatar" />
-  </div>
-
-  <!-- Contenu central -->
-  <div class="content">
-    <div class="title">{{ result.place }}</div>
-    <div class="subtitle">{{ getResultSubtitle() | async }}</div>
-    <div class="subtitle">{{ 'RESULT_DETAILS.CARD.LABEL' | translate:{ pos: result.pos, prts: result.prts } }}</div>
-  </div>
-
-  <!-- Partie droite -->
-  <div class="actions">
-    <div class="label"> {{ result.pts }}</div>
-    <div class="icons">      
-      <mat-icon>help_outline</mat-icon>                     
-          <mat-icon>delete</mat-icon>       
     </div>
   </div>
 </div>

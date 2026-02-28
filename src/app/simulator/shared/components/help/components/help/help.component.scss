@@ -1,11 +1,61 @@
-.image-wrapper {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+.help-content {
   max-width: 600px;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-.image-wrapper img {
-  width: 100%;
-  display: block;
+section {
+  margin-bottom: 16px;
+}
+
+h3 {
+  margin: 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+ul {
+  padding-left: 16px;
+  margin: 8px 0;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+
+  div {
+    flex: 1;
+    text-align: center;
+    padding: 6px;
+    border-radius: 8px;
+    background: #f5f5f5;
+    font-weight: 500;
+  }
+}
+
+.info {
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  background: #e8f5e9;
+  font-size: 13px;
+}
+
+.warning {
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  background: #fff3e0;
+  font-size: 13px;
+}
+.help-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
 }

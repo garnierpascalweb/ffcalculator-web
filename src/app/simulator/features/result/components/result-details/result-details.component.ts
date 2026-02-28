@@ -52,6 +52,10 @@ export class ResultDetailsComponent {
       });
   }
 
+  onHelpResult(esultToHelp: Result) {
+    this.log.debug(this.TAG, "demande aide de resultat " + esultToHelp.place);
+  }
+
   getAvatarUrl(): string {
     return `assets/icons/logo/${this.getLogo(this.result?.code)}`;
   }
