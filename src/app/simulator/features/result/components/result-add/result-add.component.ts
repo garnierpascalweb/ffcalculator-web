@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, map, Observable, of, startWith, switchMap } from 'rxjs';
@@ -16,7 +16,7 @@ import { ResultService } from '../../services/result.service';
   templateUrl: './result-add.component.html',
   styleUrls: ['./result-add.component.scss']
 })
-export class ResultAddComponent {
+export class ResultAddComponent implements OnInit {
 
   /**
    * pour emettre un evenement quand un résultat est ajouté pour switcher sur l'nglet "liste des résultats"

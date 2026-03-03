@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class PageTitleComponent {
   @Input() icon!: string;
-@Input() label!: string;
+  @Input() label!: string;
 }

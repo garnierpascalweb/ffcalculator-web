@@ -49,9 +49,28 @@ ul {
   background: #fff3e0;
   font-size: 13px;
 }
-.help-header {
+.help-header.banner {
   display: flex;
   align-items: center;
   gap: 12px;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px 8px 0 0;
+}
+
+.help-header.banner img {
+  width: 128px;
+  height: 62px;
+}
+
+.propos {
+  display: flex;
+  align-items: center; /* centre verticalement */
+  gap: 10px;           /* espace entre image et texte */
+}
+
+.propos img {
+  width: 50%;
+  max-width: 150px;    /* optionnel pour éviter trop grand */
 }
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { map, Observable } from 'rxjs';
 import { GridService } from 'src/app/simulator/shared/services/grid.service';
@@ -13,7 +13,7 @@ import { ResultService } from '../../services/result.service';
   templateUrl: './result-details.component.html',
   styleUrls: ['./result-details.component.scss']
 })
-export class ResultDetailsComponent {
+export class ResultDetailsComponent implements OnInit, OnChanges {
   /**
    * Le resultat
    */

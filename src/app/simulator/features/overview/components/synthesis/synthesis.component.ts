@@ -19,6 +19,6 @@ export class SynthesisComponent {
   /**
    * le type de classement correspondant a la vue courante donné par le parent
    */
-  @Input() classType!: Observable<String>;
+  @Input() classType!: Observable<string>;
 
 }

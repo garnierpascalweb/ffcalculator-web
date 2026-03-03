@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { VersionService } from '../version.service';
+import { VersionService } from '../simulator/shared/services/version.service';
 
 
 @Component({

@@ -29,13 +29,13 @@ export class OverviewComponent implements OnInit {
   /**
    * vue courante
    */
-  view$ : Observable<ViewOption>;
+  view$: Observable<ViewOption>;
   /**
    * le type de classement associé a la vue courante
    */
   classType$!: Observable<string>;
 
-  constructor(private log: LoggerService, private resultService: ResultService, private rankingService: RankingService, private viewService : ViewService) {
+  constructor(private log: LoggerService, private resultService: ResultService, private rankingService: RankingService, private viewService: ViewService) {
 
   }
   ngOnInit(): void {
@@ -44,8 +44,8 @@ export class OverviewComponent implements OnInit {
     this.percent$ = this.rankingService.getPercent(this.sumPts$);
     this.view$ = this.viewService.selectedView$;
     this.classType$ = this.view$.pipe(
-    map(view => view?.classType)
-  );
+      map(view => view?.classType)
+    );
   }
 
 

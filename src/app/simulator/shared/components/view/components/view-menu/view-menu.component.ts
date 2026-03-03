@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ViewOption } from '../../models/viewoption.model';
 import { ViewService } from '../../services/view.service';
@@ -9,7 +9,7 @@ import { ViewService } from '../../services/view.service';
   templateUrl: './view-menu.component.html',
   styleUrls: ['./view-menu.component.scss']
 })
-export class ViewMenuComponent {
+export class ViewMenuComponent implements OnInit {
   viewOptions!: ViewOption[];
   currentView!: ViewOption;
   currentView$: Observable<ViewOption>;

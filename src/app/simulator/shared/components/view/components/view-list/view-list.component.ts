@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ViewOption } from '../../models/viewoption.model';
 import { ViewService } from '../../services/view.service';
 
@@ -8,7 +8,7 @@ import { ViewService } from '../../services/view.service';
   templateUrl: './view-list.component.html',
   styleUrls: ['./view-list.component.scss']
 })
-export class ViewListComponent {
+export class ViewListComponent implements OnInit {
   viewOptions!: ViewOption[];
   currentView!: ViewOption;
 

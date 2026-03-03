@@ -10,12 +10,12 @@ import { HelpComponent } from '../help/help.component';
   styleUrls: ['./help-menu.component.scss']
 })
 export class HelpMenuComponent {
- private readonly TAG = 'HelpMenuComponent';
-  constructor(private log: LoggerService, private dialog: MatDialog){
+  private readonly TAG = 'HelpMenuComponent';
+  constructor(private log: LoggerService, private dialog: MatDialog) {
 
   }
 
-    openHelpDialog(): void {
+  openHelpDialog(): void {
     this.log.debug(this.TAG, "click menu a propos");
     const dialogRef = this.dialog.open(HelpComponent, {
       width: '520px',

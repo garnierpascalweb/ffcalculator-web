@@ -1,5 +1,5 @@
-<div class="help-header">
-  <h2 mat-dialog-title>📘 Aide de l'application</h2>  
+<div class="help-header banner" mat-dialog-title>
+  <span>Aide de l'application</span>
 </div>
 
 <mat-dialog-content class="help-content">
@@ -12,10 +12,12 @@
     </p>
 
     <p>
-     Ce simulateur te permet de calculer ton nombre de points et d’estimer ta position au sein du peloton français à partir de tes résultats.
+      Ce simulateur te permet de calculer ton nombre de points et d’estimer ta position au sein du peloton français à
+      partir de tes résultats.
     </p>
     <p>
-    L'interface se présente en 3 parties. Onglet de gauche pour saisir un nouveau résultat. Onglet central pour la liste de tous les résultats, et onglet de droite pour une synthèse.
+      L'interface se présente en 3 parties. Onglet de gauche pour saisir un nouveau résultat. Onglet central pour la
+      liste de tous les résultats, et onglet de droite pour une synthèse.
     </p>
 
     <div class="tabs">
@@ -34,10 +36,13 @@
     <p>Renseigne les 4 champs :</p>
 
     <ul>
-      <li><strong>📍 Lieu</strong> : le lieu de la course,  autocomplétion dès 3 caractères (36000 communes connues)</li>
-      <li><strong>🏁 Type d’épreuve</strong> : catégorie de la course : Les choix de la liste dépendent de la Vue sélectionnée (menu Vue). 
+      <li><strong>📍 Lieu</strong> : le lieu de la course, autocomplétion dès 3 caractères (36000 communes connues)</li>
+      <li><strong>🏁 Type d’épreuve</strong> : catégorie de la course : Les choix de la liste dépendent de la Vue
+        sélectionnée (menu Vue).
         👉 Seules les épreuves éligibles à ta catégorie sont proposées</li>
-      <li><strong>🥇 Place</strong> : la place obtenue - La liste est limitée aux places rapportant des points pour Type d’épreuve sélectionnée 👉 Si ta place n’apparaît pas, cela signifie que tu ne marques pas de points pour ton résultat</li>
+      <li><strong>🥇 Place</strong> : la place obtenue - La liste est limitée aux places rapportant des points pour Type
+        d’épreuve sélectionnée 👉 Si ta place n’apparaît pas, cela signifie que tu ne marques pas de points pour ton
+        résultat</li>
       <li><strong>👥 Participants</strong> : généralement jusqu’à 200</li>
     </ul>
 
@@ -63,10 +68,13 @@
     </ul>
 
     <div class="warning">
-      ⚠️ Seuls les 15 meilleurs résultats (en terme de points) comptent. Les résultats qui apparaissent grisés ne sont pas pris en compte.
+      ⚠️ Seuls les 15 meilleurs résultats (en terme de points) comptent. Les résultats qui apparaissent grisés ne sont
+      pas pris en compte.
     </div>
     <div class="warning">
-      ⚠️ La liste de tes résultats est stockée dans le navigateur et tu dois pouvoir les retrouver quand tu reviens sur l'application. Toutefois, ils peuvent tous disparaitre (si tu vides le cache de ton navigateur par exemple ou autre mise a jour système impactante).
+      ⚠️ La liste de tes résultats est stockée dans le navigateur et tu dois pouvoir les retrouver quand tu reviens sur
+      l'application. Toutefois, ils peuvent tous disparaitre (si tu vides le cache de ton navigateur par exemple ou
+      autre mise a jour système impactante).
     </div>
 
     <mat-divider></mat-divider>
@@ -82,18 +90,24 @@
     </ul>
 
     <p>
-      Une illustration (image peloton) représente le peloton amateur français. La flèche jaune verticale permet de donner une idée de ta position approximative dans la hiérarchie des amateurs Francais sur
-       <ul>
+      Une illustration (image peloton) représente le peloton amateur français. La flèche jaune verticale permet de
+      donner une idée de ta position approximative dans la hiérarchie des amateurs Francais sur
+    <ul>
       <li>Le Classement National U17 si tu es U17 (ta &#171;Vue&#187; est U17)</li>
       <li>Le Classement National Homme pour toutes les autres vues</li>
-    </ul>    
+    </ul>
+    Bonne saison a tous les coursiers !
   </section>
   <section>
-    <h3>📈 Bonne saison a tous les coursiers</h3>    
-  </section>
-   <section>
-    <h3>📈 Inforrmations Techniques</h3>
-    <img src="assets/img/ffcalculator-full.png" alt="logo" class="logo" />
+    <h3>📈 A Propos</h3>
+    <p class="propos">
+      <img src="assets/img/ffcalculator-full.png" />
+      <span>
+        FFCalculator par Pascal GARNIER <br />
+        Version {{version$ | async}} <br />
+        Build {{buildDate$ | async}}
+      </span>
+    </p>
   </section>
 </mat-dialog-content>
 
