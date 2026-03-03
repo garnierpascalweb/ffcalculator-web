@@ -159,13 +159,13 @@ export class ResultAddComponent implements OnInit {
         next: () => {
           //TODO faire apparaitre dans la notification le nombre de points ajoutés
           //  this.translate.instant('OK', { points: 10 }); et modifier le i18n avec "OK": "Résultat ajouté - + {{points}} points"
-          this.notificationService.success(this.translate.instant('ADD_RESULT.NOTIFICATION.OK' ));          
+          this.notificationService.success(this.translate.instant('NOTIFICATION.ADD_RESULT.OK' ));          
           this.resetForm();
           // emission d'un evenement pour switch sur l'onglet "liste de resultats"
           this.resultAdded.emit();
         },
         error: (err) => {
-          this.notificationService.error('erreur');
+          this.notificationService.error(this.translate.instant('NOTIFICATION.ADD_RESULT.KO' ));
         }
       });
   }
