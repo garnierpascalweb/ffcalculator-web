@@ -49,7 +49,7 @@ export class ResultAddComponent implements OnInit {
    * Liste des positions possibles de 1 à maxPos
    */
   positions$: Observable<number[]>;
-  
+
   hintPos$: Observable<{ maxPos: number; longLabel: string; } | null>;
   /**
    * Liste des partants de 1 à maxPos
@@ -113,7 +113,7 @@ export class ResultAddComponent implements OnInit {
       map(grid => !grid),
       startWith(true)
     );
-
+    // chargement du hint du champ position
     this.hintPos$ = combineLatest([
       this.isPosDisabled$,
       this.grid$

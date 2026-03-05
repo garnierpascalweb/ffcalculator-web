@@ -1,8 +1,10 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, catchError, EMPTY, map, Observable, of } from 'rxjs';
 import { Grid } from 'src/app/simulator/shared/models/grid.model';
 import { LoggerService } from 'src/app/simulator/shared/services/logger.service';
 import { PointsService } from 'src/app/simulator/shared/services/points.service';
+import { environment } from 'src/environments/environment';
 import { Result } from '../models/result.model';
 
 
@@ -16,7 +18,7 @@ export class ResultService {
   results$!: Observable<Result[]>;
 
 
-  constructor(private log: LoggerService, private ptsService: PointsService) {
+  constructor(private log: LoggerService, private ptsService: PointsService, private http: HttpClient) {
     this.log.debug(this.TAG, "lecture de la liste des resultats dans le localStorage sous <" + this.STORAGE_KEY + ">");
     const saved = localStorage.getItem(this.STORAGE_KEY);
     this.log.debug(this.TAG, "  json <" + saved + ">");
@@ -44,7 +46,7 @@ export class ResultService {
       try {
         this.log.debug(this.TAG, "ajout d'un nouveau resultat");
         if (!grid) {
-           this.log.error(this.TAG, "aucune grille selectionnée");
+          this.log.error(this.TAG, "aucune grille selectionnée");
           throw new Error("Grid is null");
         }
         const result: Result = {
@@ -59,6 +61,8 @@ export class ResultService {
         this.resultsSubject.next(newList);
         this.log.debug(this.TAG, "mise a jour de la liste des resultats dans le localStorage sous " + this.STORAGE_KEY);
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newList));
+        // envoi http non bloquant
+        this.sendResultToBackend(result).subscribe();
         observer.next();
         this.log.error(this.TAG, "notification observer complete");
         observer.complete();
@@ -74,20 +78,20 @@ export class ResultService {
    * @param resultToDelete 
    * @returns un Observable qui renvoie rien mais permet de gerer les erreurs
    */
-deleteResult(resultToDelete: Result): Observable<void> {
-  this.log.info(this.TAG, "suppression d'un resultat");
-  const currentResults = this.getResults();
-  const newList = currentResults.filter(r =>
-    !(r.code === resultToDelete.code &&
-      r.place === resultToDelete.place &&
-      r.pos === resultToDelete.pos &&
-      r.prts === resultToDelete.prts &&
-      r.pts === resultToDelete.pts)
-  );
-  this.resultsSubject.next(newList);
-  localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newList));
-  return of(void 0);
-}
+  deleteResult(resultToDelete: Result): Observable<void> {
+    this.log.info(this.TAG, "suppression d'un resultat");
+    const currentResults = this.getResults();
+    const newList = currentResults.filter(r =>
+      !(r.code === resultToDelete.code &&
+        r.place === resultToDelete.place &&
+        r.pos === resultToDelete.pos &&
+        r.prts === resultToDelete.prts &&
+        r.pts === resultToDelete.pts)
+    );
+    this.resultsSubject.next(newList);
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newList));
+    return of(void 0);
+  }
 
 
   /**
@@ -95,19 +99,46 @@ deleteResult(resultToDelete: Result): Observable<void> {
    * @returns un observable number : la somme des 15 meilleurs résultats : le nombre de points de la saison
    */
   getSumPts(): Observable<number> {
-  return this.results$.pipe(
-    map(results =>
-      Math.round(
-        results
-          .map(r => r.pts)               // points
-          .sort((a, b) => b - a)         // tri décroissant
-          .slice(0, 15)                  // top 15
-          .reduce((sum, pts) => sum + pts, 0) // somme
-        * 100
-      ) / 100
-    )
-  );
-}
+    return this.results$.pipe(
+      map(results =>
+        Math.round(
+          results
+            .map(r => r.pts)               // points
+            .sort((a, b) => b - a)         // tri décroissant
+            .slice(0, 15)                  // top 15
+            .reduce((sum, pts) => sum + pts, 0) // somme
+          * 100
+        ) / 100
+      )
+    );
+  }
 
-
+  /**
+   * trace sur le backend
+   * @param result 
+   * @param env 
+   * @returns 
+   */
+  sendResultToBackend(result: Result): Observable<void> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      uuid: crypto.randomUUID(),
+      env: environment.env
+    });    
+    const jsonRes = {
+      prts: result.prts,
+      pos: result.pos,
+      code: result.code,
+      place: result.place
+    };
+    this.log.debug(this.TAG, "envoi au backend " + environment.addResultUrl );
+    this.log.debug(this.TAG, "eheaders  " + headers );
+    this.log.debug(this.TAG, "datas  " + jsonRes );
+    return this.http.post<void>(environment.addResultUrl, jsonRes, { headers }).pipe(
+      catchError(err => {
+        this.log.error(this.TAG, 'Erreur envoi résultat backend' + err);
+        return EMPTY; // on ignore l'erreur
+      })
+    );
+  }
 }
