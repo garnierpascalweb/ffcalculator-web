@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { map, Observable } from 'rxjs';
 import { GridService } from 'src/app/simulator/shared/services/grid.service';
@@ -6,6 +7,7 @@ import { LoggerService } from 'src/app/simulator/shared/services/logger.service'
 import { NotificationService } from 'src/app/simulator/shared/services/notification.service';
 import { Result } from '../../models/result.model';
 import { ResultService } from '../../services/result.service';
+import { ResultDialogComponent } from '../result-dialog/result-dialog.component';
 
 
 @Component({
@@ -27,7 +29,7 @@ export class ResultDetailsComponent implements OnInit, OnChanges {
 
   private readonly TAG = 'ResultDetailsComponent';
 
-  constructor(private log: LoggerService, private notificationService: NotificationService, private gridService: GridService, private resultService: ResultService, private translate: TranslateService) {
+  constructor(private log: LoggerService, private notificationService: NotificationService, private gridService: GridService, private resultService: ResultService, private translate: TranslateService, private dialog: MatDialog) {
 
   }
 
@@ -52,8 +54,14 @@ export class ResultDetailsComponent implements OnInit, OnChanges {
       });
   }
 
-  onHelpResult(esultToHelp: Result) {
-    this.log.debug(this.TAG, "demande aide de resultat " + esultToHelp.place);
+  openResultDialog(resultToHelp: Result) {
+    this.log.debug(this.TAG, "demande aide de resultat " + resultToHelp.place);
+    const dialogRef = this.dialog.open(ResultDialogComponent, {
+      width: '520px',
+      maxWidth: '95vw',
+      autoFocus: false,
+      data: resultToHelp
+    });
   }
 
   getAvatarUrl(): string {

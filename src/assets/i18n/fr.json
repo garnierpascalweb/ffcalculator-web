@@ -29,7 +29,7 @@
         },
         "EMPTY": "Aucun résultat a afficher",
         "MAT_TAB_TITLE" : "Liste des résultats"
-    }, 
+    },     
     "OVERVIEW" : {
         "SYNTHESIS": {
             "SUMPTS" : "{{sumpts}} points",

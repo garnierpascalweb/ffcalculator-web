@@ -1,0 +1,66 @@
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compact-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.compact-table th {
+  font-weight: 600;
+  font-size: 12px;
+  padding: 6px 8px;
+}
+
+.compact-table td {
+  padding: 4px 8px;
+}
+
+.compact-table tr.highlight {
+  background-color: #e3f2fd;
+}
+
+.result-table th,
+.result-table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+   text-align: center;
+  vertical-align: middle;
+}
+
+.highlight {
+  background-color: #2196f3;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+}
+
+.grid-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; // espace entre les lignes
+}
+
+.line {
+  font-family: 'Roboto', sans-serif;
+}
+
+.title-line {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.subtitle-line {
+  font-size: 13px;
+  color: #666;
+}
+
+.highlight-line {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1976d2; // bleu Material
+  text-align: center;
+}

@@ -1,0 +1,56 @@
+<mat-dialog-content>
+
+    <div class="grid-info-container">
+        <!-- Ligne 1 : titre -->
+        <div class="line title-line">
+            {{result.place}} 
+        </div>
+        <div class="line subtitle-line">
+           Epreuve {{gridLongLabel$ | async}}
+        </div>
+        <!-- Ligne 2 : discrète -->
+        <div class="line subtitle-line">
+            Base points pour P{{result.pos}} sur cette épreuve = {{gridBasePts$ | async}}
+        </div>
+        <!-- Ligne 3 : discrète -->
+        <div class="line subtitle-line">
+            Coefficient pour {{result.prts}} partants = {{coef}}
+        </div>
+        <!-- Ligne 4 : plus visible et centrée -->
+        <div class="line highlight-line">
+            {{gridBasePts$ | async}} &times; {{coef}} = {{result.pts}}
+        </div>
+    </div>
+
+
+    <mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Voir la grille de points pour {{result.code}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <table *ngIf="gridItems$ | async as pts" class="result-table compact-table mat-elevation-z1">
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let point of pts; let i = index"
+            [class.highlight]="i + 1 === result.pos">
+          <td>{{ i + 1 }}</td>
+          <td>{{ point }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-expansion-panel>
+</mat-accordion>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="primary" mat-dialog-close>
+        Fermer
+    </button>
+</mat-dialog-actions>

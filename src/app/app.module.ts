@@ -25,7 +25,7 @@ import { SimulatorComponent } from './simulator/simulator.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { OverviewComponent } from './simulator/features/overview/components/overview/overview.component';
@@ -41,6 +41,7 @@ import { ShareMenuComponent } from './simulator/shared/components/share/componen
 import { ViewListComponent } from './simulator/shared/components/view/components/view-list/view-list.component';
 import { ViewMenuComponent } from './simulator/shared/components/view/components/view-menu/view-menu.component';
 import { DateFrFormatReadablePipe } from './simulator/shared/pipes/date-fr-format-readable.pipe';
+import { ResultDialogComponent } from './simulator/features/result/components/result-dialog/result-dialog.component';
 
 
 /**
@@ -69,7 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HelpMenuComponent, 
     ShareMenuComponent, 
     HelpComponent, 
-    PageTitleComponent
+    PageTitleComponent, ResultDialogComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -83,10 +84,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatExpansionModule,
     MatIconModule,
     MatTooltipModule,
     MatDividerModule,    
     MatButtonModule,
+    MatDialogModule,
     MatAutocompleteModule,
     MatToolbarModule,
     MatMenuModule,

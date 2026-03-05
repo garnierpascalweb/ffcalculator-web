@@ -1,9 +1,4 @@
 <div class="image-wrapper">
   <img [src]="'assets/img/riders-' + (classType | async) + '.png'" alt="Hiérarchie" />
-
-  <div
-    class="arrow"
-    [style.left.%]="percent | async"
-    [style.height.%]="yPercent">
-  </div>
+  <div class="arrow" [style.left.%]="percent | async" [style.height.%]="yPercent"></div>
 </div>
