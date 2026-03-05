@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { Grid } from 'src/app/simulator/shared/models/grid.model';
 import { LoggerService } from 'src/app/simulator/shared/services/logger.service';
 import { PointsService } from 'src/app/simulator/shared/services/points.service';
@@ -75,31 +75,18 @@ export class ResultService {
    * @returns un Observable qui renvoie rien mais permet de gerer les erreurs
    */
 deleteResult(resultToDelete: Result): Observable<void> {
-  return new Observable<void>((observer) => {
-    try {
-      this.log.info(this.TAG, "suppression d'un resultat");
-      const currentResults = this.getResults();
-      // On filtre la liste pour retirer l'élément
-      const newList = currentResults.filter(r =>
-        !(
-          r.code === resultToDelete.code &&
-          r.place === resultToDelete.place &&
-          r.pos === resultToDelete.pos &&
-          r.prts === resultToDelete.prts &&
-          r.pts === resultToDelete.pts
-        )
-      );
-      this.log.debug(this.TAG, "nouvelle liste après suppression");
-      this.resultsSubject.next(newList);
-      this.log.debug(this.TAG, "mise a jour localStorage sous " + this.STORAGE_KEY);
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newList));
-      observer.next();
-      observer.complete();
-    } catch (e) {
-      this.log.error(this.TAG, "erreur suppression resultat");
-      observer.error(e);
-    }
-  });
+  this.log.info(this.TAG, "suppression d'un resultat");
+  const currentResults = this.getResults();
+  const newList = currentResults.filter(r =>
+    !(r.code === resultToDelete.code &&
+      r.place === resultToDelete.place &&
+      r.pos === resultToDelete.pos &&
+      r.prts === resultToDelete.prts &&
+      r.pts === resultToDelete.pts)
+  );
+  this.resultsSubject.next(newList);
+  localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newList));
+  return of(void 0);
 }
 
 

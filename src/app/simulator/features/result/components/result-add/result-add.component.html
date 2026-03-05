@@ -1,73 +1,68 @@
 <div class="page-container">
   <app-page-title icon="./assets/icons/add-logo.svg" label="ADD_RESULT.MAT_TAB_TITLE"></app-page-title>
- 
-    <div class="app-card form-card">
-      <form [formGroup]="resultFormGroup">
-        <!-- Lieu de l'épreuve -->
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-icon matPrefix>place</mat-icon>
-          <mat-label>{{ 'ADD_RESULT.PLACE.LABEL' | translate }}</mat-label>
-          <input type="text" matInput formControlName="placeCtrl" [matAutocomplete]="autoPlace" maxlength="30">
-          <mat-autocomplete #autoPlace="matAutocomplete">
-            <mat-option *ngFor="let city of filteredCities | async" [value]="city">
-              {{ city }}
-            </mat-option>
-          </mat-autocomplete>
-          <mat-hint>{{ 'ADD_RESULT.PLACE.HINT' | translate }}</mat-hint>
-        </mat-form-field>
-        <!-- Type d'épreuve -->
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-icon matPrefix>list</mat-icon>
-          <mat-label>{{ 'ADD_RESULT.CLASS.LABEL' | translate }}</mat-label>
-          <mat-select formControlName="classCtrl" (selectionChange)="onGridSelectionChange($event.value)">
-            <mat-option *ngFor="let grid of (grids$ | async)" [value]="grid">
-              {{ grid.longLabel }}
-            </mat-option>
-          </mat-select>
-          <mat-hint>{{ 'ADD_RESULT.CLASS.HINT' | translate:{ gridsCount: gridsCount$ | async, view: currentViewLabel }
-            }}</mat-hint>
-        </mat-form-field>
-        <!-- Position obtenue -->
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-icon matPrefix>flag</mat-icon>
-          <mat-label>{{ 'ADD_RESULT.POS.LABEL' | translate }}</mat-label>
-          <mat-select formControlName="posCtrl" [disabled]="isPosDisabled">
-            <mat-option [value]="null" disabled>
-              {{ 'ADD_RESULT.POS.LABEL' | translate }}
-            </mat-option>
-            <mat-option *ngFor="let pos of positions" [value]="pos">
-              {{ pos }}
-            </mat-option>
-          </mat-select>
-          <mat-hint *ngIf="!isPosDisabled">
-            <ng-container *ngIf="grid$ | async as grid">
-              {{ 'ADD_RESULT.POS.HINT' | translate:{
-              maxPos: maxPos,
-              longLabel: grid.longLabel
-              } }}
-            </ng-container>
-          </mat-hint>
-        </mat-form-field>
-        <!-- Nombre de partants -->
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-icon matPrefix>groups</mat-icon>
-          <mat-label>{{ 'ADD_RESULT.PRTS.LABEL' | translate }}</mat-label>
-          <mat-select formControlName="prtsCtrl">
-            <mat-option [value]="null" disabled>
-              {{ 'ADD_RESULT.PRTS.LABEL' | translate }}
-            </mat-option>
-            <mat-option *ngFor="let prts of partants" [value]="prts">
-              {{ prts }}
-            </mat-option>
-          </mat-select>
-          <mat-hint>{{ 'ADD_RESULT.PRTS.HINT' | translate }}</mat-hint>
-        </mat-form-field>
-        <div class="button-container">
-          <button mat-button (click)="onCancelAddResult()">{{ 'ADD_RESULT.BUTTON.CANCEL' | translate }}</button>
-          <button mat-raised-button color="primary" (click)="onAddResult()" [disabled]="!resultFormGroup.valid">
-            {{ 'ADD_RESULT.BUTTON.ADD' | translate }}
-          </button>
-        </div>
-      </form>
-    </div>
+
+  <div class="app-card form-card">
+    <form [formGroup]="resultFormGroup">
+      <!-- Lieu de l'épreuve -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-icon matPrefix>place</mat-icon>
+        <mat-label>{{ 'ADD_RESULT.PLACE.LABEL' | translate }}</mat-label>
+        <input type="text" matInput formControlName="placeCtrl" [matAutocomplete]="autoPlace" maxlength="30">
+        <mat-autocomplete #autoPlace="matAutocomplete">
+          <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+            {{ city }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-hint>{{ 'ADD_RESULT.PLACE.HINT' | translate }}</mat-hint>
+      </mat-form-field>
+      <!-- Type d'épreuve -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-icon matPrefix>list</mat-icon>
+        <mat-label>{{ 'ADD_RESULT.CLASS.LABEL' | translate }}</mat-label>
+        <mat-select formControlName="classCtrl">
+          <mat-option *ngFor="let grid of (grids$ | async)" [value]="grid">
+            {{ grid.longLabel }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>{{ 'ADD_RESULT.CLASS.HINT' | translate:{ gridsCount: gridsCount$ | async, view: currentViewLabel }
+          }}</mat-hint>
+      </mat-form-field>
+      <!-- Position obtenue -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-icon matPrefix>flag</mat-icon>
+        <mat-label>{{ 'ADD_RESULT.POS.LABEL' | translate }}</mat-label>
+        <mat-select formControlName="posCtrl" [disabled]="(isPosDisabled$ | async) ?? false">
+          <mat-option [value]="null" disabled>
+            {{ 'ADD_RESULT.POS.LABEL' | translate }}
+          </mat-option>
+          <mat-option *ngFor="let pos of (positions$ | async)" [value]="pos">
+            {{ pos }}
+          </mat-option>
+        </mat-select>
+        <mat-hint *ngIf="hintPos$ | async as hint">
+          {{ 'ADD_RESULT.POS.HINT' | translate:{ maxPos: hint.maxPos, longLabel: hint.longLabel } }}
+        </mat-hint>
+      </mat-form-field>
+      <!-- Nombre de partants -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-icon matPrefix>groups</mat-icon>
+        <mat-label>{{ 'ADD_RESULT.PRTS.LABEL' | translate }}</mat-label>
+        <mat-select formControlName="prtsCtrl">
+          <mat-option [value]="null" disabled>
+            {{ 'ADD_RESULT.PRTS.LABEL' | translate }}
+          </mat-option>
+          <mat-option *ngFor="let prts of partants" [value]="prts">
+            {{ prts }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>{{ 'ADD_RESULT.PRTS.HINT' | translate }}</mat-hint>
+      </mat-form-field>
+      <div class="button-container">
+        <button mat-button (click)="onCancelAddResult()">{{ 'ADD_RESULT.BUTTON.CANCEL' | translate }}</button>
+        <button mat-raised-button color="primary" (click)="onAddResult()" [disabled]="!resultFormGroup.valid">
+          {{ 'ADD_RESULT.BUTTON.ADD' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

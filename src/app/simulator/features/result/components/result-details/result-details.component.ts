@@ -15,7 +15,7 @@ import { ResultDialogComponent } from '../result-dialog/result-dialog.component'
   templateUrl: './result-details.component.html',
   styleUrls: ['./result-details.component.scss']
 })
-export class ResultDetailsComponent implements OnInit, OnChanges {
+export class ResultDetailsComponent implements OnInit {
   /**
    * Le resultat
    */
@@ -34,10 +34,6 @@ export class ResultDetailsComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
 
   }
 
@@ -64,23 +60,11 @@ export class ResultDetailsComponent implements OnInit, OnChanges {
     });
   }
 
-  getAvatarUrl(): string {
-    return `assets/icons/logo/${this.getLogo(this.result?.code)}`;
-  }
-
-  getLogo(code: string): string {
-    let imgLogo: string = 'logo-default.svg';
-    this.gridService.getGridByCode(code).subscribe(grid => {
-      if (grid) {
-        imgLogo = `${grid.logo}.png`;        
-      } else {
-        imgLogo = 'logo-default.png'; // valeur par défaut si aucun match
-      }
-    }
-      //TODO 1.0.0 logo pour championnat de france 
-    );
-    return imgLogo;
-  }
+  getLogo(code: string): Observable<string> {
+  return this.gridService.getGridByCode(code).pipe(
+    map(grid => grid ? `${grid.logo}.png` : 'logo-default.png')
+  );
+}
 
   /**
    * Construction du subtitle (longLabel et code)

@@ -2,7 +2,7 @@
   <div class="result-card" [class.disabled]="!isTop15">
     <!-- Image -->
     <div class="avatar">
-      <img src="{{getAvatarUrl()}}" alt="avatar" />
+      <img [src]="'assets/icons/logo/' + (getLogo(result.code) | async)">
     </div>
 
     <!-- Contenu central -->
