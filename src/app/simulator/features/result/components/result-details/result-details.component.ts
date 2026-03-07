@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { GridService } from 'src/app/simulator/shared/services/grid.service';
 import { LoggerService } from 'src/app/simulator/shared/services/logger.service';
 import { NotificationService } from 'src/app/simulator/shared/services/notification.service';
@@ -61,21 +61,24 @@ export class ResultDetailsComponent implements OnInit {
   }
 
   getLogo(code: string): Observable<string> {
-  return this.gridService.getGridByCode(code).pipe(
-    map(grid => grid ? `${grid.logo}.png` : 'logo-default.png')
-  );
-}
+    if (!code) {
+      return of('logo-default.png');
+    }
+    return this.gridService.getGridByCode(code).pipe(
+      map(grid => grid ? `${grid.logo}.png` : 'logo-default.png')
+    );
+  }
 
   /**
    * Construction du subtitle (longLabel et code)
    * @returns longLabel et code
    */
- getResultSubtitle(): Observable<string> {
-  return this.gridService.getGridByCode(this.result.code).pipe(
-    map(grid => {
-      if (!grid) return '';
-      return `${grid.longLabel}`;
-    })
-  );
-}
+  getResultSubtitle(): Observable<string> {
+    return this.gridService.getGridByCode(this.result.code).pipe(
+      map(grid => {
+        if (!grid) return '';
+        return `${grid.longLabel}`;
+      })
+    );
+  }
 }
