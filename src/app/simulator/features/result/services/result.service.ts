@@ -130,10 +130,7 @@ export class ResultService {
       pos: result.pos,
       code: result.code,
       place: result.place
-    };
-    this.log.debug(this.TAG, "envoi au backend " + environment.addResultUrl );
-    this.log.debug(this.TAG, "eheaders  " + headers );
-    this.log.debug(this.TAG, "datas  " + jsonRes );
+    };    
     return this.http.post<void>(environment.addResultUrl, jsonRes, { headers }).pipe(
       catchError(err => {
         this.log.error(this.TAG, 'Erreur envoi résultat backend' + err);
