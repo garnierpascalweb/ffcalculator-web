@@ -183,6 +183,19 @@ export class ResultAddComponent implements OnInit {
   }
 
   /**
+   * Fermeture du clavier apres la saisie pour une meilleure experience utilisateur
+   */
+  closeKeyboard() {
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  }
+
+  closeKeyboardInput(input: HTMLInputElement) {
+    input.blur();
+  }
+
+  /**
    * 
    * @param cities la liste de scommunes francaises
    * @param value la valeur en train d'etre saisie a l'écran
@@ -195,6 +208,11 @@ export class ResultAddComponent implements OnInit {
     );
   }
 
+  /**
+   * 
+   * @param value 
+   * @returns 
+   */
   private normalize(value: string): string {
     return value
       .toLowerCase()

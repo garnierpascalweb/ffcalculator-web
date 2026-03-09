@@ -7,8 +7,8 @@
       <mat-form-field appearance="outline" class="full-width">
         <mat-icon matPrefix>place</mat-icon>
         <mat-label>{{ 'ADD_RESULT.PLACE.LABEL' | translate }}</mat-label>
-        <input type="text" matInput formControlName="placeCtrl" [matAutocomplete]="autoPlace" maxlength="30">
-        <mat-autocomplete #autoPlace="matAutocomplete">
+        <input #placeInput type="text" matInput formControlName="placeCtrl" [matAutocomplete]="autoPlace" maxlength="30">
+        <mat-autocomplete #autoPlace="matAutocomplete" (optionSelected)="closeKeyboardInput(placeInput)">
           <mat-option *ngFor="let city of filteredCities | async" [value]="city">
             {{ city }}
           </mat-option>
@@ -19,7 +19,7 @@
       <mat-form-field appearance="outline" class="full-width">
         <mat-icon matPrefix>list</mat-icon>
         <mat-label>{{ 'ADD_RESULT.CLASS.LABEL' | translate }}</mat-label>
-        <mat-select formControlName="classCtrl">
+        <mat-select formControlName="classCtrl" (openedChange)="closeKeyboard()">
           <mat-option *ngFor="let grid of (grids$ | async)" [value]="grid">
             {{ grid.longLabel }}
           </mat-option>
@@ -31,7 +31,7 @@
       <mat-form-field appearance="outline" class="full-width">
         <mat-icon matPrefix>flag</mat-icon>
         <mat-label>{{ 'ADD_RESULT.POS.LABEL' | translate }}</mat-label>
-        <mat-select formControlName="posCtrl" [disabled]="(isPosDisabled$ | async) ?? false">
+        <mat-select formControlName="posCtrl" [disabled]="(isPosDisabled$ | async) ?? false" (openedChange)="closeKeyboard()">
           <mat-option [value]="null" disabled>
             {{ 'ADD_RESULT.POS.LABEL' | translate }}
           </mat-option>
@@ -47,7 +47,7 @@
       <mat-form-field appearance="outline" class="full-width">
         <mat-icon matPrefix>groups</mat-icon>
         <mat-label>{{ 'ADD_RESULT.PRTS.LABEL' | translate }}</mat-label>
-        <mat-select formControlName="prtsCtrl">
+        <mat-select formControlName="prtsCtrl" (openedChange)="closeKeyboard()">
           <mat-option [value]="null" disabled>
             {{ 'ADD_RESULT.PRTS.LABEL' | translate }}
           </mat-option>
