@@ -191,9 +191,20 @@ export class ResultAddComponent implements OnInit {
     }
   }
 
-  closeKeyboardInput(input: HTMLInputElement) {
-    input.blur();
-  }
+// app.component.ts ou ton composant
+closeKeyboardDelayed(input: HTMLInputElement) {
+  // timeout laisse le temps à Angular Material de traiter la sélection
+  setTimeout(() => {
+    if (input) {
+      input.blur();
+    }
+
+    // fallback supplémentaire pour certains mobiles
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  }, 50); // 50ms fonctionne très bien sur iOS/Android
+}
 
   /**
    * 

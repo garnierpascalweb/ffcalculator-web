@@ -8,7 +8,7 @@
         <mat-icon matPrefix>place</mat-icon>
         <mat-label>{{ 'ADD_RESULT.PLACE.LABEL' | translate }}</mat-label>
         <input #placeInput type="text" matInput formControlName="placeCtrl" [matAutocomplete]="autoPlace" maxlength="30">
-        <mat-autocomplete #autoPlace="matAutocomplete" (optionSelected)="closeKeyboardInput(placeInput)">
+        <mat-autocomplete #autoPlace="matAutocomplete" (optionSelected)="closeKeyboardDelayed(placeInput)">
           <mat-option *ngFor="let city of filteredCities | async" [value]="city">
             {{ city }}
           </mat-option>

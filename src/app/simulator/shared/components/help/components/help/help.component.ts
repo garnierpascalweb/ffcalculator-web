@@ -33,6 +33,6 @@ export class HelpComponent implements OnInit {
   }
 
   getVersionInfo(): Observable<VersionInfo> {
-    return this.http.get<VersionInfo>(this.versionUrl);
+    return this.http.get<VersionInfo>(this.versionUrl + `?v=${Date.now()}`);
   }
 }
