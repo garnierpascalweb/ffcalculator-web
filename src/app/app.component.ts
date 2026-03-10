@@ -18,11 +18,11 @@ export class AppComponent implements OnInit {
     //this.http.get(environment.trackingUrl).subscribe();
     // 28/08/2025 - POST et utilisation du nouveau service
     // 02/02/2026 - tracking que si prod
-    if (environment.production){
+    if (environment.production) {
       this.http.post(environment.trackingUrl, {}, {
-      params: { script: 'FFCalculator' }
+        params: { script: 'FFCalculator' }
+      }
+      ).subscribe();
     }
-    ).subscribe();
-    }    
   }
 }

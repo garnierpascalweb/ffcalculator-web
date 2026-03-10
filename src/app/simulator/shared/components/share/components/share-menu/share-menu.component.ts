@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LoggerService } from 'src/app/simulator/shared/services/logger.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -10,7 +12,7 @@ import { LoggerService } from 'src/app/simulator/shared/services/logger.service'
 })
 export class ShareMenuComponent {
   private readonly TAG = 'ShareMenuComponent';
-  constructor(private log: LoggerService, private translate: TranslateService) {
+  constructor(private http: HttpClient, private log: LoggerService, private translate: TranslateService) {
 
   }
 
@@ -27,7 +29,15 @@ export class ShareMenuComponent {
 
     if (navigator.share) {
       navigator.share(shareData)
-        .then(() => this.log.debug(this.TAG, "Partage effectué"))
+        .then(() => {
+          this.log.debug(this.TAG, "Partage effectué");
+          if (environment.production) {
+            this.http.post(environment.trackingUrl, {}, {
+              params: { script: 'FFCalculator-Share' }
+            }
+            ).subscribe();
+          }
+        })
         .catch(err => this.log.error(this.TAG, "Probleme lors du partage"));
     } else {
       this.log.error(this.TAG, "Partage impossible");
