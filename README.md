@@ -16,6 +16,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ng build --configuration=production --base-href /app/ffcalculator/  
 ou  
 npm run prerender
+https://bit.ly/3NEiAQ5
 
 ## Running unit tests
 
