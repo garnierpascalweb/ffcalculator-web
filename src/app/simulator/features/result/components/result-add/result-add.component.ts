@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, combineLatest, map, Observable, of, startWith, switchMap, tap } from 'rxjs';
-import { CityService } from 'src/app/simulator/shared/components/city/services/city.service';
+import { combineLatest, map, Observable, startWith, switchMap, tap } from 'rxjs';
+import { CityService } from 'src/app/simulator/shared/services/city.service';
 import { ViewService } from 'src/app/simulator/shared/components/view/services/view.service';
 import { Grid } from 'src/app/simulator/shared/models/grid.model';
 import { GridService } from 'src/app/simulator/shared/services/grid.service';
@@ -69,7 +69,7 @@ export class ResultAddComponent implements OnInit {
     { validators: PosLessThanPrtsValidator }
   );
 
-  constructor(private cityService: CityService, private viewService: ViewService, private gridService: GridService, private resultService: ResultService, private notificationService: NotificationService, private translate: TranslateService) {
+  constructor(private readonly cityService: CityService, private readonly viewService: ViewService, private readonly gridService: GridService, private readonly resultService: ResultService, private readonly notificationService: NotificationService, private readonly translate: TranslateService) {
     this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
   }
 

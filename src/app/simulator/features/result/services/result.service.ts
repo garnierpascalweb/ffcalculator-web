@@ -14,11 +14,11 @@ import { Result } from '../models/result.model';
 export class ResultService {
   private readonly STORAGE_KEY = 'season';
   private readonly TAG = 'ResultService';
-  private resultsSubject!: BehaviorSubject<Result[]>;
+  private readonly resultsSubject!: BehaviorSubject<Result[]>;
   results$!: Observable<Result[]>;
 
 
-  constructor(private log: LoggerService, private ptsService: PointsService, private http: HttpClient) {
+  constructor(private readonly log: LoggerService, private readonly ptsService: PointsService, private readonly http: HttpClient) {
     this.log.debug(this.TAG, "lecture de la liste des resultats dans le localStorage sous <" + this.STORAGE_KEY + ">");
     const saved = localStorage.getItem(this.STORAGE_KEY);
     this.log.debug(this.TAG, "  json <" + saved + ">");

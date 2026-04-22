@@ -23,8 +23,8 @@ private readonly TAG = 'ViewService';
     { id: 'A',   label: 'Access', classType: 'Amateur' },
   ];
 
-  private selectedViewSubject!: BehaviorSubject<ViewOption>;
-  //selectedView$ = this.selectedViewSubject as unknown as BehaviorSubject<ViewOption>;
+  private readonly selectedViewSubject!: BehaviorSubject<ViewOption>;
+  
    selectedView$!: Observable<ViewOption>;
 
   constructor() {

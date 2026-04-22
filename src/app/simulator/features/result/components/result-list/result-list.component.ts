@@ -1,7 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { LoggerService } from 'src/app/simulator/shared/services/logger.service';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Result } from '../../models/result.model';
-import { ResultService } from '../../services/result.service';
 
 
 @Component({
@@ -9,18 +7,14 @@ import { ResultService } from '../../services/result.service';
   templateUrl: './result-list.component.html',
   styleUrls: ['./result-list.component.scss']
 })
-export class ResultListComponent implements OnInit, OnChanges {
+export class ResultListComponent implements  OnChanges {
 
   private readonly TAG = 'ResultListComponent';
 
   @Input() results: Result[] | null = null;
   top15Pts: number[] = [];
 
-  constructor(private log: LoggerService, private resultService: ResultService) {
-
-  }
-
-  ngOnInit(): void {
+  constructor() {
 
   }
 

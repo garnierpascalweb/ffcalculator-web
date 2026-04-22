@@ -16,12 +16,12 @@ export class RankingService {
   private readonly TAG = 'RankingService';
   private readonly JSON_URL_RANKING = 'assets/data/ranking.json';
 
-    constructor(private log: LoggerService, private http: HttpClient, private viewService: ViewService) {
+    constructor(private readonly log: LoggerService, private readonly http: HttpClient, private readonly viewService: ViewService) {
 
   }
 
   // Cache Observable  
-  private rankingData$ = this.http.get<RankingResponse>(this.JSON_URL_RANKING).pipe(
+  private readonly rankingData$ = this.http.get<RankingResponse>(this.JSON_URL_RANKING).pipe(
     shareReplay(1)
   );
 

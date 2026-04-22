@@ -9,7 +9,7 @@ export class CityService {
  private readonly TAG = 'CityService';
  private cities$!: Observable<string[]>;
   private readonly JSON_URL = 'assets/data/towns.txt';
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   /** Chargement unique + mise en cache */
   getCities(): Observable<string[]> {

@@ -3,7 +3,6 @@ import { map, Observable } from 'rxjs';
 import { Result } from './features/result/models/result.model';
 import { ResultService } from './features/result/services/result.service';
 import { ViewService } from './shared/components/view/services/view.service';
-import { LoggerService } from './shared/services/logger.service';
 
 
 @Component({
@@ -18,7 +17,7 @@ export class SimulatorComponent implements OnInit {
 
   results$: Observable<Result[]> | undefined;
 
-  constructor(private log: LoggerService, private resultService: ResultService, private viewService: ViewService) {
+  constructor(private readonly resultService: ResultService, private readonly viewService: ViewService) {
 
   }
 

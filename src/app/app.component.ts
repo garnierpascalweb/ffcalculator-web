@@ -9,7 +9,7 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private http: HttpClient, private translate: TranslateService) {
+  constructor(private readonly http: HttpClient, private readonly translate: TranslateService) {
     // Utilisation du language francais
     this.translate.setDefaultLang('fr');
     this.translate.use('fr');

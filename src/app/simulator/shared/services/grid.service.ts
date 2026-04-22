@@ -10,7 +10,7 @@ export class GridService {
   private readonly TAG = 'GridService';
   private grids$!: Observable<Grid[]>;
 
-  constructor(private http: HttpClient) {
+  constructor(private readonly http: HttpClient) {
     
   }
 

@@ -1,12 +1,12 @@
-<div>  
-  <div class="page-content">
-    <div class="summary-card">
-      <app-synthesis [sumpts]="sumPts$" [ranking]="ranking$" [classType]="classType$">
-      </app-synthesis>
-    </div>
-    <div class="visual-card">
-      <app-position-marker [percent]="percent$" [classType]="classType$">
-      </app-position-marker>
-    </div>
-  </div>
+<div class="summary-card">
+  <app-synthesis
+    [sumpts]="sumPts$"
+    [ranking]="ranking$"
+    [classType]="classType$"
+  >
+  </app-synthesis>
+</div>
+<div class="visual-card">
+  <app-position-marker [percent]="percent$" [classType]="classType$">
+  </app-position-marker>
 </div>

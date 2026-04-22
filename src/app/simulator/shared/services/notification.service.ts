@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class NotificationService {
 private readonly TAG = 'NotificationService';
- constructor(private snackBar: MatSnackBar) {}
+ constructor(private readonly snackBar: MatSnackBar) {}
 
   success(msg: string) {
     this.snackBar.open(msg, 'OK', {

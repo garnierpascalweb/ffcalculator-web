@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { map, Observable, of } from 'rxjs';
@@ -7,7 +7,6 @@ import { LoggerService } from 'src/app/simulator/shared/services/logger.service'
 import { NotificationService } from 'src/app/simulator/shared/services/notification.service';
 import { Result } from '../../models/result.model';
 import { ResultService } from '../../services/result.service';
-import { ResultDialogComponent } from '../result-dialog/result-dialog.component';
 
 
 @Component({
@@ -15,7 +14,7 @@ import { ResultDialogComponent } from '../result-dialog/result-dialog.component'
   templateUrl: './result-details.component.html',
   styleUrls: ['./result-details.component.scss']
 })
-export class ResultDetailsComponent implements OnInit {
+export class ResultDetailsComponent  {
   /**
    * Le resultat
    */
@@ -29,13 +28,11 @@ export class ResultDetailsComponent implements OnInit {
 
   private readonly TAG = 'ResultDetailsComponent';
 
-  constructor(private log: LoggerService, private notificationService: NotificationService, private gridService: GridService, private resultService: ResultService, private translate: TranslateService, private dialog: MatDialog) {
+  constructor(private readonly log: LoggerService, private readonly notificationService: NotificationService, private readonly gridService: GridService, private readonly resultService: ResultService, private readonly translate: TranslateService, private readonly dialog: MatDialog) {
 
   }
 
-  ngOnInit() {
-
-  }
+  
 
   onDeleteResult(resultToDelete: Result) {
     this.log.debug(this.TAG, "demande de suppression de resultat " + resultToDelete.place);
@@ -52,12 +49,6 @@ export class ResultDetailsComponent implements OnInit {
 
   openResultDialog(resultToHelp: Result) {
     this.log.debug(this.TAG, "demande aide de resultat " + resultToHelp.place);
-    const dialogRef = this.dialog.open(ResultDialogComponent, {
-      width: '520px',
-      maxWidth: '95vw',
-      autoFocus: false,
-      data: resultToHelp
-    });
   }
 
   getLogo(code: string): Observable<string> {

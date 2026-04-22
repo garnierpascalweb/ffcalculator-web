@@ -1,9 +1,3 @@
-/* Reset global (IMPORTANT) */
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
 /* Shell principal */
 .app-shell {
   display: flex;
@@ -19,20 +13,29 @@ html, body {
 /* Zone de contenu */
 .app-content {
   flex: 1;
-  min-height: 0; /* 🔥 CRUCIAL */
+  min-height: 0;
   display: flex;
+  flex-direction: column; /* 👈 AJOUT IMPORTANT */
 }
 
-/* Wrapper centré */
+/* Deskop tabs */
 .desktop-tabs {
   flex: 1;
-  overflow: auto; /* ✅ scroll ici uniquement */
-  max-width: 900px;
-   min-height: 0;
-  margin-inline: auto;
+  min-height: 0;
+  overflow-y: auto;   /* ✅ scroll unique */
+  overflow-x: hidden;
   padding: 16px;
-  width: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/**
+ * Mobile tabs non montrée en mode desktop
+ */
+.mobile-tabs {
+  display: none;
 }
 
 /* Spacer toolbar */
@@ -40,14 +43,13 @@ html, body {
   flex: 1 1 auto;
 }
 
-.mobile-tabs {
-  display: none;
-}
+
 
 mat-tab-group {
   display: flex;
   flex-direction: column;
   flex: 1;
+    
 }
 
 ::ng-deep .mat-mdc-tab-body-wrapper {
@@ -63,13 +65,9 @@ mat-tab-group {
   height: 100%;
   display: flex;
   flex-direction: column;
+  
 }
 
-// centrage vertical du contenu du tab uniquement quand nécessaire
-.center-content {
-  justify-content: center;
-  align-items: center;
-}
 
 @media (max-width: 599px) {
 

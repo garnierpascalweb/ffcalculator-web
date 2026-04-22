@@ -9,7 +9,7 @@ import { LoggerService } from './logger.service';
 export class PointsService {
   private readonly TAG = 'PointsService';
 
-  constructor(private log: LoggerService) {
+  constructor(private readonly log: LoggerService) {
 
   }
 

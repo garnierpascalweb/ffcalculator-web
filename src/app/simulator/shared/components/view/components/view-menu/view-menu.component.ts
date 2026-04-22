@@ -13,7 +13,7 @@ export class ViewMenuComponent implements OnInit {
   viewOptions!: ViewOption[];
   currentView!: ViewOption;
   currentView$: Observable<ViewOption>;
-  constructor(private viewService: ViewService) {
+  constructor(private readonly viewService: ViewService) {
     this.currentView$ = this.viewService.selectedView$;
   }
 

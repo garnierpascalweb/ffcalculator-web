@@ -1,11 +1,10 @@
-import { Component, Inject, Input } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { map, Observable, of } from 'rxjs';
 import { Grid } from 'src/app/simulator/shared/models/grid.model';
 import { GridService } from 'src/app/simulator/shared/services/grid.service';
 import { PointsService } from 'src/app/simulator/shared/services/points.service';
 import { Result } from '../../models/result.model';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-result-dialog',
@@ -21,7 +20,7 @@ export class ResultDialogComponent {
   coef!: number;
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public result: Result, private pointsService: PointsService, private gridService: GridService, private dialog: MatDialog) {
+  constructor(@Inject(MAT_DIALOG_DATA) public result: Result, private readonly pointsService: PointsService, private readonly gridService: GridService) {
      this.coef = this.result ? this.pointsService.calcCoef(this.result.prts) : 0; 
       this.grid$ = this.result
       ? this.gridService.getGridByCode(this.result.code)

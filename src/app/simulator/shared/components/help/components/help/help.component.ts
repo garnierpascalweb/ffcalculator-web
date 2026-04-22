@@ -14,12 +14,12 @@ export interface VersionInfo {
 })
 export class HelpComponent implements OnInit {
 
-  private versionUrl = 'assets/version.json';
+  private readonly versionUrl = 'assets/version.json';
    versionInfo$: Observable<VersionInfo>;
     buildDate$: Observable<string>;
     version$: Observable<string>;
 
-  constructor(private http: HttpClient) {
+  constructor(private readonly http: HttpClient) {
 
   }
   ngOnInit(): void {

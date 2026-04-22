@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ShareMenuComponent {
   private readonly TAG = 'ShareMenuComponent';
-  constructor(private http: HttpClient, private log: LoggerService, private translate: TranslateService) {
+  constructor(private readonly http: HttpClient, private readonly log: LoggerService, private readonly translate: TranslateService) {
 
   }
 

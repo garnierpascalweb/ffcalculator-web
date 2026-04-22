@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ViewOption } from 'src/app/simulator/shared/components/view/models/viewoption.model';
 import { ViewService } from 'src/app/simulator/shared/components/view/services/view.service';
-import { LoggerService } from 'src/app/simulator/shared/services/logger.service';
 import { RankingService } from 'src/app/simulator/shared/services/ranking.service';
 import { ResultService } from '../../../result/services/result.service';
 
@@ -35,7 +34,7 @@ export class OverviewComponent implements OnInit {
    */
   classType$!: Observable<string>;
 
-  constructor(private log: LoggerService, private resultService: ResultService, private rankingService: RankingService, private viewService: ViewService) {
+  constructor(private readonly resultService: ResultService, private readonly rankingService: RankingService, private readonly viewService: ViewService) {
 
   }
   ngOnInit(): void {
