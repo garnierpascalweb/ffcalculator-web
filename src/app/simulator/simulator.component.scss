@@ -1,53 +1,3 @@
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.tab-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 12px;
-}
-
-
-.app-card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.app-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
-}
-
-// hiérarchie visuelle
-h1, .page-title {
-  font-weight: 600;
-  color: #27414a;
-}
-
-// espacement cohérent
-mat-form-field {
-  margin-bottom: 16px;
-}
-
-// hover subtil sur les cartes
-
-.app-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
-}
-
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
 // layout global
 .page-layout {
   display: flex;
@@ -70,8 +20,17 @@ html, body {
   overflow: auto;
 }
 
+// Forcer le layout flex dans les tabs
+mat-tab-group {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
+::ng-deep .mat-mdc-tab-body-wrapper {
+  flex: 1;
+}
 
 .spacer {
-  flex: 1;
+  flex: 1 1 auto;
 }

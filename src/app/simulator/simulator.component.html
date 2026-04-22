@@ -9,10 +9,11 @@
   </mat-toolbar>
 
   <div class="page-content">
+    <!-- debut page container -->
     <div class="page-container">
       <!-- Tabs -->
       <mat-tab-group mat-stretch-tabs [(selectedIndex)]="selectedTabIndex">
-        <!-- tab list (saison) -->
+        <!-- tab list (saison) incluant le composant app-result-add -->
         <mat-tab>
           <ng-template mat-tab-label>
             <div class="tab-label">
@@ -22,7 +23,7 @@
           </ng-template>
           <app-result-add (resultAdded)="onResultAdded()"></app-result-add>
         </mat-tab>
-        <!-- tab list (saison) -->
+        <!-- tab list (saison) incluant le composant app-result-list -->
         <mat-tab>
           <ng-template mat-tab-label>
             <div class="tab-label">
@@ -34,7 +35,7 @@
             <app-result-list *ngIf="results" [results]="results"></app-result-list>
           </ng-container>
         </mat-tab>
-        <!-- tab overview (synthese) -->
+        <!-- tab overview (synthese) incluant le composant app-overview  -->
         <mat-tab>
           <ng-template mat-tab-label>
             <div class="tab-label">
@@ -46,5 +47,6 @@
         </mat-tab>
       </mat-tab-group>
     </div>
+    <!-- fin  page container -->
   </div>
 </div>
