@@ -1,8 +1,7 @@
-<div class="page-container">
-  <app-page-title icon="./assets/icons/add-logo.svg" label="ADD_RESULT.MAT_TAB_TITLE"></app-page-title>
+<div>
 
-  <div class="app-card form-card">
-    <form [formGroup]="resultFormGroup">
+  <div class="form-card">
+    <form [formGroup]="resultFormGroup" class="form-content">
       <!-- Lieu de l'épreuve -->
       <mat-form-field appearance="outline" class="full-width">
         <mat-icon matPrefix>place</mat-icon>
@@ -57,6 +56,7 @@
         </mat-select>
         <mat-hint>{{ 'ADD_RESULT.PRTS.HINT' | translate }}</mat-hint>
       </mat-form-field>
+      <!-- Fin Nombre de partants -->
       <div class="button-container">
         <button mat-button (click)="onCancelAddResult()">{{ 'ADD_RESULT.BUTTON.CANCEL' | translate }}</button>
         <button mat-raised-button color="primary" (click)="onAddResult()" [disabled]="!resultFormGroup.valid">

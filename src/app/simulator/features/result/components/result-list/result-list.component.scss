@@ -1,0 +1,31 @@
+.result-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  max-width: 900px;
+  margin: 0 auto;
+
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.empty-card {
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 24px auto;
+}
+
+@media (max-width: 599px) {
+  .cards-container {
+    padding: 12px;
+    gap: 10px;
+  }
+}

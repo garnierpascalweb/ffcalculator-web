@@ -1,36 +1,132 @@
-// layout global
-.page-layout {
+/* Reset global (IMPORTANT) */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Shell principal */
+.app-shell {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 
-// contenu centré
-.page-container {
+/* Toolbar fixe */
+.app-toolbar {
+  flex-shrink: 0;
+}
+
+/* Zone de contenu */
+.app-content {
+  flex: 1;
+  min-height: 0; /* 🔥 CRUCIAL */
+  display: flex;
+}
+
+/* Wrapper centré */
+.desktop-tabs {
+  flex: 1;
+  overflow: auto; /* ✅ scroll ici uniquement */
   max-width: 900px;
-  margin: 0 auto;
+   min-height: 0;
+  margin-inline: auto;
   padding: 16px;
   width: 100%;
-   box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-// zone scrollable
-.page-content {
-  flex: 1;
-  overflow: auto;
+/* Spacer toolbar */
+.spacer {
+  flex: 1 1 auto;
 }
 
-// Forcer le layout flex dans les tabs
+.mobile-tabs {
+  display: none;
+}
+
 mat-tab-group {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
 }
 
 ::ng-deep .mat-mdc-tab-body-wrapper {
   flex: 1;
+  min-height: 0;
 }
 
-.spacer {
-  flex: 1 1 auto;
+.mat-mdc-tab-body {
+  height: 100%;
+}
+
+.tab-center {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+// centrage vertical du contenu du tab uniquement quand nécessaire
+.center-content {
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 599px) {
+
+  .desktop-tabs {
+    display: none;
+  }
+
+  .tab-center {
+    align-items: flex-start; /* souvent mieux en mobile */
+    padding-top: 12px;
+    padding-bottom: 56px;
+  }
+
+  .mobile-tabs {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .tab-content {
+    flex: 1;
+    overflow: auto;
+    padding-bottom: 56px; /* espace pour bottom nav */
+  }
+
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 56px;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+
+    z-index: 1000;
+  }
+
+  .bottom-nav button {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .bottom-nav img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .bottom-nav button.active {
+    filter: invert(30%) sepia(100%) saturate(2000%) hue-rotate(200deg);
+  }
 }

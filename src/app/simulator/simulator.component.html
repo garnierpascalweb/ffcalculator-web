@@ -1,6 +1,6 @@
-<div class="page-layout">
-  <mat-toolbar color="primary">   
-    <span>Vue {{getCurrentViewLabel()}}</span>
+<div class="app-shell">
+  <mat-toolbar color="primary" class="app-toolbar">
+    <span>Vue {{ getCurrentViewLabel() }}</span>
     <span class="spacer"></span>
     <!-- menu des vues -->
     <app-view-menu></app-view-menu>
@@ -8,45 +8,138 @@
     <app-share-menu></app-share-menu>
   </mat-toolbar>
 
-  <div class="page-content">
+  <div class="app-content">
     <!-- debut page container -->
-    <div class="page-container">
+    <!-- DESKTOP / TABLET -->
+    <div class="desktop-tabs">
       <!-- Tabs -->
-      <mat-tab-group mat-stretch-tabs [(selectedIndex)]="selectedTabIndex">
+      <mat-tab-group [(selectedIndex)]="selectedTabIndex">
         <!-- tab list (saison) incluant le composant app-result-add -->
         <mat-tab>
           <ng-template mat-tab-label>
             <div class="tab-label">
-              <img src="./assets/icons/tabs/add-logo.svg" alt="logo" width="24" height="24"
-                matTooltip="{{ 'ADD_RESULT.MAT_TAB_TITLE' | translate}}">
+              <img
+                src="./assets/icons/tabs/add-logo.svg"
+                alt="logo"
+                width="24"
+                height="24"
+                matTooltip="{{ 'ADD_RESULT.MAT_TAB_TITLE' | translate }}"
+              />
             </div>
           </ng-template>
-          <app-result-add (resultAdded)="onResultAdded()"></app-result-add>
+          <div class="tab-center center-content">
+            <app-page-title
+              icon="./assets/icons/add-logo.svg"
+              label="ADD_RESULT.MAT_TAB_TITLE"
+            ></app-page-title>
+
+            <app-result-add (resultAdded)="onResultAdded()"></app-result-add>
+          </div>
         </mat-tab>
         <!-- tab list (saison) incluant le composant app-result-list -->
         <mat-tab>
           <ng-template mat-tab-label>
             <div class="tab-label">
-              <img src="./assets/icons/tabs/list-logo.svg" alt="logo" width="24" height="24"
-                matTooltip="{{ 'RESULT_DETAILS.MAT_TAB_TITLE' | translate}}">
+              <img
+                src="./assets/icons/tabs/list-logo.svg"
+                alt="logo"
+                width="24"
+                height="24"
+                matTooltip="{{ 'RESULT_DETAILS.MAT_TAB_TITLE' | translate }}"
+              />
             </div>
           </ng-template>
+
           <ng-container *ngIf="results$ | async as results">
-            <app-result-list *ngIf="results" [results]="results"></app-result-list>
+            <div class="tab-center">
+              <app-page-title
+                icon="./assets/icons/list-logo.svg"
+                label="RESULT_DETAILS.MAT_TAB_TITLE"
+              ></app-page-title>
+              <app-result-list
+                *ngIf="results"
+                [results]="results"
+              ></app-result-list>
+            </div>
           </ng-container>
         </mat-tab>
         <!-- tab overview (synthese) incluant le composant app-overview  -->
         <mat-tab>
           <ng-template mat-tab-label>
             <div class="tab-label">
-              <img src="./assets/icons/tabs/cup-logo.svg" alt="logo" width="24" height="24"
-                matTooltip="{{ 'OVERVIEW.MAT_TAB_TITLE' | translate}}">
+              <img
+                src="./assets/icons/tabs/cup-logo.svg"
+                alt="logo"
+                width="24"
+                height="24"
+                matTooltip="{{ 'OVERVIEW.MAT_TAB_TITLE' | translate }}"
+              />
             </div>
           </ng-template>
-          <app-overview></app-overview>
+          <div class="tab-center">
+            <app-page-title
+              icon="./assets/icons/cup-logo.svg"
+              label="OVERVIEW.MAT_TAB_TITLE"
+            ></app-page-title>
+            <app-overview></app-overview>
+          </div>
         </mat-tab>
       </mat-tab-group>
     </div>
-    <!-- fin  page container -->
+    <!-- fin  desktop tablet -->
+    <!-- MOBILE -->
+    <div class="mobile-tabs">
+      <div class="tab-content">
+        <div class="tab-center center-content" *ngIf="selectedTabIndex === 0">
+          <app-page-title
+            icon="./assets/icons/add-logo.svg"
+            label="ADD_RESULT.MAT_TAB_TITLE"
+          ></app-page-title>
+          <app-result-add></app-result-add>
+        </div>
+        <div class="tab-center">
+          
+        </div>
+         <div class="tab-center center-content" *ngIf="selectedTabIndex === 1">
+          <app-page-title
+            icon="./assets/icons/list-logo.svg"
+            label="RESULT_DETAILS.MAT_TAB_TITLE"
+          ></app-page-title>
+          <app-result-list></app-result-list>
+        </div>
+
+        <div class="tab-center center-content" *ngIf="selectedTabIndex === 2">
+          <app-page-title
+            icon="./assets/icons/cup-logo.svg"
+            label="OVERVIEW.MAT_TAB_TITLE"
+          ></app-page-title>
+          <app-overview></app-overview>
+        </div>
+      </div>
+
+      <div class="bottom-nav">
+        <button
+          (click)="selectedTabIndex = 0"
+          [class.active]="selectedTabIndex === 0"
+        >
+          <img src="./assets/icons/tabs/add-logo.svg" />
+        </button>
+
+        <button
+          (click)="selectedTabIndex = 1"
+          [class.active]="selectedTabIndex === 1"
+        >
+          <img src="./assets/icons/tabs/list-logo.svg" />
+        </button>
+
+        <button
+          (click)="selectedTabIndex = 2"
+          [class.active]="selectedTabIndex === 2"
+        >
+          <img src="./assets/icons/tabs/cup-logo.svg" />
+        </button>
+      </div>
+    </div>
+    <!-- FIN MOBILE -->
   </div>
 </div>
