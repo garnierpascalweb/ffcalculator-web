@@ -4,7 +4,6 @@ import { OverviewComponent } from './simulator/features/overview/components/over
 import { ResultAddComponent } from './simulator/features/result/components/result-add/result-add.component';
 import { ResultListComponent } from './simulator/features/result/components/result-list/result-list.component';
 import { ShellComponent } from './simulator/layout/shell/shell.component';
-import { SimulatorComponent } from './simulator/simulator.component';
 
 const routes: Routes = [
   {

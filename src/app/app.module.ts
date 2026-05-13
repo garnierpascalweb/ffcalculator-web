@@ -19,9 +19,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AccueilComponent } from './accueil/accueil.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
-import { SimulatorComponent } from './simulator/simulator.component';
-
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
