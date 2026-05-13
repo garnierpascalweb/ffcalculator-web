@@ -36,12 +36,14 @@ import { ResultDetailsComponent } from './simulator/features/result/components/r
 import { ResultListComponent } from './simulator/features/result/components/result-list/result-list.component';
 import { HelpMenuComponent } from './simulator/shared/components/help/components/help-menu/help-menu.component';
 import { HelpComponent } from './simulator/shared/components/help/components/help/help.component';
-import { PageTitleComponent } from './simulator/shared/components/page-title/page-title.component';
 import { ShareMenuComponent } from './simulator/shared/components/share/components/share-menu/share-menu.component';
 import { ViewListComponent } from './simulator/shared/components/view/components/view-list/view-list.component';
 import { ViewMenuComponent } from './simulator/shared/components/view/components/view-menu/view-menu.component';
 import { DateFrFormatReadablePipe } from './simulator/shared/pipes/date-fr-format-readable.pipe';
 import { ResultDialogComponent } from './simulator/features/result/components/result-dialog/result-dialog.component';
+import { ShellComponent } from './simulator/layout/shell/shell.component';
+import { NavigationComponent } from './simulator/layout/navigation/navigation.component';
+
 
 
 /**
@@ -70,7 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HelpMenuComponent, 
     ShareMenuComponent, 
     HelpComponent, 
-    PageTitleComponent, ResultDialogComponent
+    ResultDialogComponent, ShellComponent, NavigationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -28,11 +28,6 @@
             </div>
           </ng-template>
           <div class="tab-center center-content">
-            <app-page-title
-              icon="./assets/icons/add-logo.svg"
-              label="ADD_RESULT.MAT_TAB_TITLE"
-            ></app-page-title>
-
             <app-result-add (resultAdded)="onResultAdded()"></app-result-add>
           </div>
         </mat-tab>
@@ -52,11 +47,7 @@
 
           <ng-container *ngIf="results$ | async as datas">
             <div class="tab-center">
-              <app-page-title
-                icon="./assets/icons/list-logo.svg"
-                label="RESULT_DETAILS.MAT_TAB_TITLE"
-              ></app-page-title>
-              <app-result-list [results]="datas"></app-result-list>
+             
             </div>
           </ng-container>
         </mat-tab>
@@ -74,11 +65,7 @@
             </div>
           </ng-template>
           <div class="tab-center">
-            <app-page-title
-              icon="./assets/icons/cup-logo.svg"
-              label="OVERVIEW.MAT_TAB_TITLE"
-            ></app-page-title>
-            <app-overview></app-overview>
+           <app-overview></app-overview>
           </div>
         </mat-tab>
       </mat-tab-group>
@@ -88,31 +75,19 @@
     <div class="mobile-tabs">
       <div class="tab-content">
          <!-- MOBILE : onglet ajouter resultat -->
-        <div class="tab-center" *ngIf="selectedTabIndex === 0">
-          <app-page-title
-            icon="./assets/icons/add-logo.svg"
-            label="ADD_RESULT.MAT_TAB_TITLE"
-          ></app-page-title>
+        <div class="tab-center" *ngIf="selectedTabIndex === 0">         
           <app-result-add (resultAdded)="onResultAdded()"></app-result-add>
         </div>
          <!-- MOBILE : fin onglet ajouter resultat -->
          <!-- MOBILE : onglet resultats -->
-        <div class="tab-center" *ngIf="selectedTabIndex === 1">
-          <app-page-title
-            icon="./assets/icons/list-logo.svg"
-            label="RESULT_DETAILS.MAT_TAB_TITLE"
-          ></app-page-title>
+        <div class="tab-center" *ngIf="selectedTabIndex === 1">          
           <ng-container *ngIf="results$ | async as datas">
-            <app-result-list [results]="datas"></app-result-list>
+           
           </ng-container>
         </div>
          <!-- MOBILE : fin onglet resultats -->
         <!-- MOBILE : onglet synthese -->
-        <div class="tab-center" *ngIf="selectedTabIndex === 2">
-          <app-page-title
-            icon="./assets/icons/cup-logo.svg"
-            label="OVERVIEW.MAT_TAB_TITLE"
-          ></app-page-title>
+        <div class="tab-center" *ngIf="selectedTabIndex === 2">        
           <app-overview></app-overview>
         </div>
         <!-- MOBILE : fin onglet synthese -->

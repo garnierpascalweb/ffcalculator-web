@@ -12,27 +12,25 @@ export interface VersionInfo {
   templateUrl: './help.component.html',
   styleUrls: ['./help.component.scss']
 })
-export class HelpComponent implements OnInit {
+export class HelpComponent  {
 
-  private readonly versionUrl = 'assets/version.json';
-   versionInfo$: Observable<VersionInfo>;
-    buildDate$: Observable<string>;
-    version$: Observable<string>;
+   private readonly versionUrl = 'assets/version.json';
 
-  constructor(private readonly http: HttpClient) {
+  versionInfo$ = this.getVersionInfo();
 
-  }
-  ngOnInit(): void {
-    this.versionInfo$ = this.getVersionInfo(); 
-      this.buildDate$ = this.versionInfo$.pipe(
-      map(versionInfo => versionInfo?.buildDate)
-    );
-    this.version$ = this.versionInfo$.pipe(
-      map(versionInfo => versionInfo?.version)
-    );
-  }
+  buildDate$ = this.versionInfo$.pipe(
+    map(v => v?.buildDate)
+  );
+
+  version$ = this.versionInfo$.pipe(
+    map(v => v?.version)
+  );
+
+  constructor(private readonly http: HttpClient) {}
 
   getVersionInfo(): Observable<VersionInfo> {
-    return this.http.get<VersionInfo>(this.versionUrl + `?v=${Date.now()}`);
+    return this.http.get<VersionInfo>(
+      `${this.versionUrl}?v=${Date.now()}`
+    );
   }
 }

@@ -1,0 +1,15 @@
+<nav class="bottom-nav">
+
+  <button (click)="tabChange.emit(0)" [class.active]="selected === 0">
+    <img src="assets/icons/tabs/add-logo.svg">
+  </button>
+
+  <button (click)="tabChange.emit(1)" [class.active]="selected === 1">
+    <img src="assets/icons/tabs/list-logo.svg">
+  </button>
+
+  <button (click)="tabChange.emit(2)" [class.active]="selected === 2">
+    <img src="assets/icons/tabs/cup-logo.svg">
+  </button>
+
+</nav>

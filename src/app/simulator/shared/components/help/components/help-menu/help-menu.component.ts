@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoggerService } from 'src/app/simulator/shared/services/logger.service';
+import { HelpComponent } from '../help/help.component';
 
 
 @Component({
@@ -16,6 +17,11 @@ export class HelpMenuComponent {
 
   openHelpDialog(): void {
     this.log.debug(this.TAG, "click menu a propos");
+     this.dialog.open(HelpComponent, {
+    width: '90vw',
+    maxWidth: '500px',
+    panelClass: 'help-dialog'
+  });
   }
 
 }

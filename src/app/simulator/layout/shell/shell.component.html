@@ -1,0 +1,22 @@
+<div class="app-shell">
+
+  <mat-toolbar class="app-toolbar" color="primary">
+    <span>{{ getCurrentViewLabel() }}</span>
+
+    <span class="spacer"></span>
+
+    <app-view-menu></app-view-menu>
+    <app-help-menu></app-help-menu>
+    <app-share-menu></app-share-menu>
+  </mat-toolbar>
+
+  <main class="app-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <app-navigation
+    [selected]="selectedTabIndex"
+    (tabChange)="onTabChange($event)">
+  </app-navigation>
+
+</div>

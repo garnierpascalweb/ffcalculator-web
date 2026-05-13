@@ -1,18 +1,22 @@
-<div class="result-list">
-  <ng-container *ngIf="results?.length; else emptyState">
-      <div class="cards-container">
-        <app-result-details
-          *ngFor="let result of results"
-          [result]="result"
-          [isTop15]="top15Pts.includes(result.pts)"
-        ></app-result-details>
-      </div>
+<div class="screen">
+  <div class="result-list">
+
+    <ng-container *ngIf="results$ | async as results">
+      <ng-container *ngIf="top15Set$ | async as top15Set">
+
+        <div class="cards-container">
+
+          <app-result-details
+            *ngFor="let result of results"
+            [result]="result"
+            [isTop15]="top15Set.has(result.pts)"
+          >
+          </app-result-details>
+
+        </div>
+
+      </ng-container>
     </ng-container>
-    <ng-template #emptyState>
-      <mat-card class="empty-card">
-        <mat-card-content>
-          <p>{{ "RESULT_DETAILS.EMPTY" | translate }}</p>
-        </mat-card-content>
-      </mat-card>
-    </ng-template>
+
+  </div>
 </div>

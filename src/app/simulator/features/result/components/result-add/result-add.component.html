@@ -1,3 +1,4 @@
+<div class="screen">
 <div class="form-card">
   <form [formGroup]="resultFormGroup" class="form-content">
     <!-- Lieu de l'épreuve -->
@@ -75,10 +76,7 @@
       <mat-hint>{{ "ADD_RESULT.PRTS.HINT" | translate }}</mat-hint>
     </mat-form-field>
     <!-- Fin Nombre de partants -->
-    <div class="button-container">
-      <button mat-button (click)="onCancelAddResult()">
-        {{ "ADD_RESULT.BUTTON.CANCEL" | translate }}
-      </button>
+    <div class="button-container">     
       <button
         mat-raised-button
         color="primary"
@@ -87,6 +85,10 @@
       >
         {{ "ADD_RESULT.BUTTON.ADD" | translate }}
       </button>
+       <button mat-button (click)="onCancelAddResult()">
+        {{ "ADD_RESULT.BUTTON.CANCEL" | translate }}
+      </button>
     </div>
   </form>
+</div>
 </div>

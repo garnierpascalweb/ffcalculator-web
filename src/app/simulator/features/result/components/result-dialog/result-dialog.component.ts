@@ -27,6 +27,6 @@ export class ResultDialogComponent {
       : of(undefined);
      this.gridItems$ = this.grid$.pipe(map(grid => grid?.pts));
      this.gridLongLabel$ = this.grid$.pipe(map(grid => grid?.longLabel));
-     this.gridBasePts$ = this.grid$.pipe(map(grid => grid?.pts.at(result.pos-1)));
+     this.gridBasePts$ = this.grid$.pipe(map(grid => grid?.pts.at(this.result.pos-1)));
   }
 }

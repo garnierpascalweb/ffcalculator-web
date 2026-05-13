@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { map } from 'rxjs';
 import { Result } from '../../models/result.model';
+import { ResultService } from '../../services/result.service';
 
 
 @Component({
@@ -7,22 +9,25 @@ import { Result } from '../../models/result.model';
   templateUrl: './result-list.component.html',
   styleUrls: ['./result-list.component.scss']
 })
-export class ResultListComponent implements  OnChanges {
+export class ResultListComponent {
 
   private readonly TAG = 'ResultListComponent';
+results$ = this.resultService.results$;
 
-  @Input() results: Result[] | null = null;
-  top15Pts: number[] = [];
+top15Set$ = this.resultService.results$.pipe(
+  map(results => {
+    const top15 = results
+      .map(r => r.pts)
+      .sort((a, b) => b - a)
+      .slice(0, 15);
 
-  constructor() {
+    return new Set(top15);
+  })
+);
+
+  constructor(private readonly resultService: ResultService) {
 
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (!this.results) return;
-    this.top15Pts = [...this.results]
-      .map(r => r.pts)         // mapper un resultat a ses points
-      .sort((a, b) => b - a)   // du plus grand au plus petit
-      .slice(0, 15);           // garder les 15 meilleurs
-  }
+ 
 }

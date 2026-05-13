@@ -1,0 +1,31 @@
+.bottom-nav {
+  height: 64px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  border-top: 1px solid #eee;
+  background: white;
+
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottom-nav button {
+  background: none;
+  border: none;
+  opacity: 0.5;
+  transition: 0.2s;
+}
+
+.bottom-nav button.active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.bottom-nav button img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+

@@ -7,14 +7,14 @@ import { LoggerService } from 'src/app/simulator/shared/services/logger.service'
 import { NotificationService } from 'src/app/simulator/shared/services/notification.service';
 import { Result } from '../../models/result.model';
 import { ResultService } from '../../services/result.service';
-
+import { ResultDialogComponent } from '../result-dialog/result-dialog.component';
 
 @Component({
   selector: 'app-result-details',
   templateUrl: './result-details.component.html',
-  styleUrls: ['./result-details.component.scss']
+  styleUrls: ['./result-details.component.scss'],
 })
-export class ResultDetailsComponent  {
+export class ResultDetailsComponent {
   /**
    * Le resultat
    */
@@ -28,36 +28,50 @@ export class ResultDetailsComponent  {
 
   private readonly TAG = 'ResultDetailsComponent';
 
-  constructor(private readonly log: LoggerService, private readonly notificationService: NotificationService, private readonly gridService: GridService, private readonly resultService: ResultService, private readonly translate: TranslateService, private readonly dialog: MatDialog) {
-
-  }
-
-  
+  constructor(
+    private readonly log: LoggerService,
+    private readonly notificationService: NotificationService,
+    private readonly gridService: GridService,
+    private readonly resultService: ResultService,
+    private readonly translate: TranslateService,
+    private readonly dialog: MatDialog,
+  ) {}
 
   onDeleteResult(resultToDelete: Result) {
-    this.log.debug(this.TAG, "demande de suppression de resultat " + resultToDelete.place);
-    this.resultService.deleteResult(resultToDelete)
-      .subscribe({
-        next: () => {
-          this.notificationService.success(this.translate.instant('NOTIFICATION.DELETE_RESULT.OK'));
-        },
-        error: (err) => {
-          this.notificationService.error(this.translate.instant('NOTIFICATION.DELETE_RESULT.KO'));
-        }
-      });
+    this.log.debug(
+      this.TAG,
+      'demande de suppression de resultat ' + resultToDelete.place,
+    );
+    this.resultService.deleteResult(resultToDelete).subscribe({
+      next: () => {
+        this.notificationService.success(
+          this.translate.instant('NOTIFICATION.DELETE_RESULT.OK'),
+        );
+      },
+      error: (err) => {
+        this.notificationService.error(
+          this.translate.instant('NOTIFICATION.DELETE_RESULT.KO'),
+        );
+      },
+    });
   }
 
   openResultDialog(resultToHelp: Result) {
-    this.log.debug(this.TAG, "demande aide de resultat " + resultToHelp.place);
+    this.log.debug(this.TAG, 'demande aide de resultat ' + resultToHelp.place);
+    this.dialog.open(ResultDialogComponent, {
+      width: '90vw',
+      maxWidth: '500px',
+      data: resultToHelp,
+    });
   }
 
   getLogo(code: string): Observable<string> {
     if (!code) {
       return of('logo-default.png');
     }
-    return this.gridService.getGridByCode(code).pipe(
-      map(grid => grid ? `${grid.logo}.png` : 'logo-default.png')
-    );
+    return this.gridService
+      .getGridByCode(code)
+      .pipe(map((grid) => (grid ? `${grid.logo}.png` : 'logo-default.png')));
   }
 
   /**
@@ -66,10 +80,10 @@ export class ResultDetailsComponent  {
    */
   getResultSubtitle(): Observable<string> {
     return this.gridService.getGridByCode(this.result.code).pipe(
-      map(grid => {
+      map((grid) => {
         if (!grid) return '';
         return `${grid.longLabel}`;
-      })
+      }),
     );
   }
 }
