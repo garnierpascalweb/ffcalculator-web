@@ -123,7 +123,7 @@ export class ResultService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       uuid: crypto.randomUUID(),
-      env: environment.env
+      env: environment.name
     });    
     const jsonRes = {
       prts: result.prts,
@@ -131,7 +131,7 @@ export class ResultService {
       code: result.code,
       place: result.place
     };    
-    return this.http.post<void>(environment.addResultUrl, jsonRes, { headers }).pipe(
+    return this.http.post<void>(environment.api.addResultUrl, jsonRes, { headers }).pipe(
       catchError(err => {
         this.log.error(this.TAG, 'Erreur envoi résultat backend' + err);
         return EMPTY; // on ignore l'erreur

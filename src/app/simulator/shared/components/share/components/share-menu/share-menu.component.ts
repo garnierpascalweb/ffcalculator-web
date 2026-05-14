@@ -31,8 +31,8 @@ export class ShareMenuComponent {
       navigator.share(shareData)
         .then(() => {
           this.log.debug(this.TAG, "Partage effectué");
-          if (environment.production) {
-            this.http.post(environment.trackingUrl, {}, {
+          if (environment.features.sharing) {
+            this.http.post(environment.api.trackingUrl, {}, {
               params: { script: 'FFCalculator-Share' }
             }
             ).subscribe();

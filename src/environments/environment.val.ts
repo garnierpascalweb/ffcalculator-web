@@ -1,6 +1,14 @@
 export const environment = {
-  production: false,
-  trackingUrl: 'https://garnierpascalweb.fr/core/api/VisiteursApi.php',
-  addResultUrl: 'https://garnierpascalweb.fr/app/ffcalculator/api/FFCPointsApi.php',
-  env: 'dev'
+  name: 'val',
+
+  api: {
+    addResultUrl: 'https://garnierpascalweb.fr/app/ffcalculator/api/FFCPointsApi.php',
+    trackingUrl: 'https://garnierpascalweb.fr/core/api/VisiteursApi.php'
+  },
+
+  features: {
+    tracking: true,
+    logging: true,
+    sharing: true
+  }
 };

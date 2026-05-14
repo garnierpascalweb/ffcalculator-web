@@ -9,7 +9,7 @@ export class LoggerService {
   enabled: boolean;
 
   constructor() {
-    this.enabled = !environment.production;
+    this.enabled = environment.features.logging;
     console.log(' loggine enabled : ' + this.enabled);
   }
 
