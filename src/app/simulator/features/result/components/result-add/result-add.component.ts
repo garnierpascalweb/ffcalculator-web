@@ -9,6 +9,7 @@ import { GridService } from 'src/app/simulator/shared/services/grid.service';
 import { NotificationService } from 'src/app/simulator/shared/services/notification.service';
 import { PosLessThanPrtsValidator } from 'src/app/simulator/shared/validators/pos-less-than-prts-validator';
 import { ResultService } from '../../services/result.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -69,7 +70,7 @@ export class ResultAddComponent implements OnInit {
     { validators: PosLessThanPrtsValidator }
   );
 
-  constructor(private readonly cityService: CityService, private readonly viewService: ViewService, private readonly gridService: GridService, private readonly resultService: ResultService, private readonly notificationService: NotificationService, private readonly translate: TranslateService) {
+  constructor(private readonly router: Router, private readonly cityService: CityService, private readonly viewService: ViewService, private readonly gridService: GridService, private readonly resultService: ResultService, private readonly notificationService: NotificationService, private readonly translate: TranslateService) {
     this.partants = Array.from({ length: 200 }, (_, i) => i + 1);
   }
 
@@ -155,7 +156,8 @@ export class ResultAddComponent implements OnInit {
           this.notificationService.success(this.translate.instant('NOTIFICATION.ADD_RESULT.OK'));
           this.resetForm();
           // emission d'un evenement pour switch sur l'onglet "liste de resultats"
-          this.resultAdded.emit();
+          //this.resultAdded.emit();
+          this.router.navigate(['/list']);
         },
         error: (err) => {
           this.notificationService.error(this.translate.instant('NOTIFICATION.ADD_RESULT.KO'));

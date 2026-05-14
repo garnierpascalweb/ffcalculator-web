@@ -1,11 +1,55 @@
+/* 
+  html et body occupent toute la fenêtre.
+  Nécessaire pour les layouts pleine hauteur.
+*/
 html, body {
+   /* Largeur totale de la fenêtre */
   width: 100%;
+  /* Hauteur totale de la fenêtre */
   height: 100%;
+  /* Supprime les marges par défaut du navigateur */
   margin: 0;
+   /* Police globale de l'application */
    font-family: Arial, sans-serif;
+   overflow: hidden; /* IMPORTANT */
 }
 
+/* 
+  Composant racine Angular.
+*/
 app-root {
-  display: block;
-  width: 100%;
+   display: block;
+  height: 100%;
+ outline: 5px solid purple;
+}
+
+/* 
+  Classe générique utilisée par les écrans
+  affichés dans le router-outlet.
+*/
+.screen {
+  /* 
+    Prend tout l'espace disponible  dans un conteneur flex.
+  */
+  flex: 1;
+  /* 
+    Autorise le composant à rétrécir correctement
+    dans un layout flex.
+    
+    Important pour éviter les problèmes de scroll.
+  */
+  min-height: 0;
+  /* Active flexbox */
+  display: flex;
+  /* Organisation verticale du contenu */
+  flex-direction: column;
+  /* Active le scroll interne si le contenu dépasse */
+  overflow: auto;
+  /* Centre horizontalement les enfants du conteneur flex */
+  align-items: center;
+  /* Ajoute un espace intérieur autour du contenu */
+  padding: 8px; 
+  /* Inclut le padding dans le calcul largeur/hauteur */
+  box-sizing: border-box;
+  outline: 5px solid green;
 }

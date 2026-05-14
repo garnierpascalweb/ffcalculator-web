@@ -17,7 +17,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { AccueilComponent } from './accueil/accueil.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -55,9 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,    
-    AccueilComponent,
     DateFrFormatReadablePipe,
-    SimulatorComponent,
     ResultListComponent,
     ResultDetailsComponent,
     ResultAddComponent,
@@ -69,7 +66,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HelpMenuComponent, 
     ShareMenuComponent, 
     HelpComponent, 
-    ResultDialogComponent, ShellComponent, NavigationComponent
+    ResultDialogComponent, 
+    ShellComponent, 
+    NavigationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -109,9 +108,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [],
   bootstrap: [AppComponent],
   exports: [
-    AccueilComponent,
-    ResultListComponent,
-    ResultDetailsComponent,
+   
   ]
 })
 export class AppModule { }

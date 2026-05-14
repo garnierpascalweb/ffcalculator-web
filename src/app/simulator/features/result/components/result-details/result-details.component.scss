@@ -1,68 +1,18 @@
-.card-container {
-  display: flex;
-  justify-content: center;
-  padding: 6px;
-}
-
-.responsive-card {
-  width: 100%;
-  max-width: 600px;
-}
-
-.logo-header-image {  
-  background-size: cover;
-}
-
-.row {
-  display: flex;
-  align-items: center;      /* centrage vertical */
-  justify-content: space-between; /* gauche / droite */
-  width: 100%;
-}
-
-.points {
-  font-weight: bold;
-}
-
-.badge {
-  display: inline-flex;        // encore mieux
-  align-items: center;
-  justify-content: center;
-  width: 24px !important;
-  height: 24px !important;
-  border-radius: 50%;  
-  flex-shrink: 0;
-}
-
-.badge.top {
-  background-color: #2ecc71; /* vert */
-}
-
-.badge.not-top {
-  background-color: #e74c3c; /* rouge */
-}
-
-
-
-// 
-/* Container comme ton mat-card */
-
-
-/* Card */
+/* Card principale */
 .result-card {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-
   width: 100%;
-  max-width: 400px;
-
+  max-width: 100%;
   padding: 12px 16px;
-
+  box-sizing: border-box;
   border-radius: 12px;
   background: white;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   gap: 12px;
+  min-width: 0;
+  outline: 2px solid blue;
+
 }
 
 .result-card.disabled {
@@ -70,6 +20,7 @@
   pointer-events: none;
 }
 
+/* Avatar */
 .avatar img {
   width: 56px;
   height: 56px;
@@ -77,6 +28,7 @@
   object-fit: cover;
 }
 
+/* Centre */
 .content {
   display: flex;
   flex-direction: column;
@@ -90,13 +42,14 @@
 
 .subtitle {
   font-size: 13px;
-  color: rgba(0,0,0,0.6);
+  color: rgba(0, 0, 0, 0.6);
 
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+/* Droite */
 .actions {
   display: flex;
   flex-direction: column;
@@ -115,6 +68,7 @@
   align-items: center;
 }
 
+/* Badge */
 .badge {
   width: 10px;
   height: 10px;
@@ -126,6 +80,11 @@
   background: green;
 }
 
+.badge.not-top {
+  background: #e74c3c;
+}
+
+/* Boutons */
 .icon-btn {
   width: 24px;
   height: 24px;
@@ -137,16 +96,3 @@
   justify-content: center;
 }
 
-@media (max-width: 350px) {
-  .result-card {
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
-  }
-
-  .actions {
-    grid-column: 1 / -1;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-  }
-}

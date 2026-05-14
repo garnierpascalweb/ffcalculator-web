@@ -1,7 +1,6 @@
 .form-card {
   width: 100%;
   max-width: 600px;
-  flex-shrink: 0;
   background: white;
   border-radius: 12px;
   padding: 16px;
@@ -17,6 +16,8 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
+  /* sinon dernier bouton trop proche de nav */
+  padding-bottom: 24px;
 }
 
 .button-container {
@@ -25,6 +26,5 @@
   gap: 12px;
   padding-top: 12px;
   border-top: 1px solid #e0e0e0;
-  background: white;
 }
 
