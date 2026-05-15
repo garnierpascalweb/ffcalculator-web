@@ -18,9 +18,8 @@ html, body {
   Composant racine Angular.
 */
 app-root {
-   display: block;
+  display: block;
   height: 100%;
- outline: 5px solid purple;
 }
 
 /* 
@@ -34,8 +33,7 @@ app-root {
   flex: 1;
   /* 
     Autorise le composant à rétrécir correctement
-    dans un layout flex.
-    
+    dans un layout flex.    
     Important pour éviter les problèmes de scroll.
   */
   min-height: 0;
@@ -46,10 +44,16 @@ app-root {
   /* Active le scroll interne si le contenu dépasse */
   overflow: auto;
   /* Centre horizontalement les enfants du conteneur flex */
-  align-items: center;
+  align-items: center; 
   /* Ajoute un espace intérieur autour du contenu */
   padding: 8px; 
   /* Inclut le padding dans le calcul largeur/hauteur */
   box-sizing: border-box;
-  outline: 5px solid green;
+}
+
+:host {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }

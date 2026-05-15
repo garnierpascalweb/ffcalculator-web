@@ -1,22 +1,14 @@
-
-  <div class="screen">
-  <div class="form-card">
-
+<div class="screen"> 
+  <div class="result-list">
     <ng-container *ngIf="results$ | async as results">
       <ng-container *ngIf="top15Set$ | async as top15Set">
-
-          <div class="scroll-zone">
-          <app-result-details 
-            *ngFor="let result of results"
-            [result]="result"
-            [isTop15]="top15Set.has(result.pts)"
-          >
-          </app-result-details>
-          </div>
-   
-
+        <app-result-details
+          *ngFor="let result of results"
+          [result]="result"
+          [isTop15]="top15Set.has(result.pts)"
+        >
+        </app-result-details>        
       </ng-container>
     </ng-container>
-
   </div>
 </div>

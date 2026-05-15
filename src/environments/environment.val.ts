@@ -7,8 +7,8 @@ export const environment = {
   },
 
   features: {
-    tracking: true,
+    tracking: false,
     logging: true,
-    sharing: true
+    sharing: false
   }
 };

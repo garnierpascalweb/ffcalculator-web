@@ -9,6 +9,6 @@ export const environment = {
   features: {
     tracking: false,
     logging: true,
-    sharing: true
+    sharing: false
   }
 };

@@ -1,34 +1,13 @@
 .result-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-height: 0;
-  overflow: auto;
-  outline: 2px solid red;
-}
-
-.form-card {
   /* hauteur contrainte sinon il grandit a l'infinit et ne scrolle jamais */
-   height: 100%;
+  height: 100%;
   width: 100%;
-   min-height: 0;
+  min-height: 0;
   max-width: 800px; /* OU la largeur souhaitée */
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
- 
+  flex-direction: column; 
   overflow: auto;
-  outline: 2px solid red;
-}
-
-.scroll-zone {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
 .empty-card {
@@ -36,4 +15,11 @@
   padding: 2rem;
   max-width: 600px;
   margin: 24px auto;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }

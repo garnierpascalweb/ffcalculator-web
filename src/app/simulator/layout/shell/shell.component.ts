@@ -49,7 +49,7 @@ export class ShellComponent {
     switch (this.selectedTabIndex) {
       case 1: return 'Résultats';
       case 2: return 'Synthèse';
-      default: return 'Ajout';
+      default: return 'Ajout d un résultat';
     }
   }
 }
